@@ -641,7 +641,7 @@ describe("core", function () {
   it("minter mint", async function () {
     console.log(await ve_dist.last_token_time());
     console.log(await ve_dist.timestamp());
-    await minter.initialize([owner.address],[ethers.BigNumber.from("1000000000000000000")], ethers.BigNumber.from("1000000000000000000"));
+    await minter.initialize(owner.address, ethers.BigNumber.from("20000000000000000000000000"));
     await minter.update_period();
     await gauge_factory.updateGauge(gauge.address);
     console.log(await ve_underlying.balanceOf(ve_dist.address));

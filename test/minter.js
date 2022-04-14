@@ -83,7 +83,7 @@ describe("minter", function () {
   });
 
   it("initialize veNFT", async function () {
-    await minter.initialize([owner.address],[ethers.BigNumber.from("1000000000000000000000000")], ethers.BigNumber.from("20000000000000000000000000"))
+    await minter.initialize(owner.address, ethers.BigNumber.from("20000000000000000000000000"))
     expect(await ve.ownerOf(2)).to.equal(owner.address);
     expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
     await network.provider.send("evm_mine")

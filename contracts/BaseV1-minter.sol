@@ -49,6 +49,7 @@ contract BaseV1Minter {
     uint internal constant lock = 86400 * 7 * 52 * 4;
 
     address internal initializer;
+    address public devWallet;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
@@ -66,16 +67,12 @@ contract BaseV1Minter {
     }
 
     function initialize(
-        address[] memory claimants,
-        uint[] memory amounts,
-        uint max // sum amounts / max = % ownership of top protocols, so if initial 20m is distributed, and target is 25% protocol ownership, then max - 4 x 20m = 80m
+      address _devWallet,
+      uint max
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
-        _token.approve(address(_ve), type(uint).max);
-        for (uint i = 0; i < claimants.length; i++) {
-            _ve.create_lock_for(amounts[i], lock, claimants[i]);
-        }
+        devWallet = _devWallet;
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
     }
@@ -112,14 +109,16 @@ contract BaseV1Minter {
             _period = block.timestamp / week * week;
             active_period = _period;
             weekly = weekly_emission();
+            uint dev = weekly / 100 * 20;
 
-            uint _growth = calculate_growth(weekly);
-            uint _required = _growth + weekly;
+            uint _growth = calculate_growth(weekly + dev);
+            uint _required = _growth + weekly + dev;
             uint _balanceOf = _token.balanceOf(address(this));
             if (_balanceOf < _required) {
                 _token.mint(address(this), _required-_balanceOf);
             }
 
+            require(_token.transfer(devWallet, dev));
             require(_token.transfer(address(_ve_dist), _growth));
             _ve_dist.checkpoint_token(); // checkpoint token balance that was just minted in ve_dist
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
