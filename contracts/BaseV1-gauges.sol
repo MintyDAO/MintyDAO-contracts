@@ -141,6 +141,12 @@ contract Gauge {
 
     function _claimFees() internal returns (uint claimed0, uint claimed1) {
         (claimed0, claimed1) = IBaseV1Core(stake).claimFees();
+
+        // cut fee if user not hold any ve nft
+        uint veBalance = erc20(_ve).balanceOf(msg.sender);
+        claimed0 = veBalance > 0 ? claimed0 : claimed0 * 10 / 25;
+        claimed1 = veBalance > 0 ? claimed1 : claimed1 * 10 / 25;
+
         if (claimed0 > 0 || claimed1 > 0) {
             uint _fees0 = fees0 + claimed0;
             uint _fees1 = fees1 + claimed1;
