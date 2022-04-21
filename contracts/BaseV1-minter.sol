@@ -50,6 +50,7 @@ contract BaseV1Minter {
 
     address internal initializer;
     address public devWallet;
+    address public fetch;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
@@ -68,13 +69,22 @@ contract BaseV1Minter {
 
     function initialize(
       address _devWallet,
+      address _fetch,
       uint max
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
         devWallet = _devWallet;
+        fetch = _fetch;
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
+    }
+
+    // allow mint for fetch
+    function mintForFetch(uint _amount) external {
+      require(msg.sender == fetch, "Not fetch");
+      _token.mint(fetch, _amount);
+      emit Mint(fetch, _amount, circulating_supply(), circulating_emission());
     }
 
     // calculate circulating supply as total token supply - locked supply
