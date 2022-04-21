@@ -15,7 +15,7 @@ interface IVE {
 }
 
 interface ISolidly {
-  function WFTM() external pure returns (address);
+  function wftm() external pure returns (address);
 
   function addLiquidity(
       address tokenA,
@@ -615,7 +615,7 @@ contract Fetch is Ownable {
     )
   {
     dexRouter = _dexRouter;
-    WETH = ISolidly(dexRouter).WFTM();
+    WETH = ISolidly(dexRouter).wftm();
     token = _token;
     beneficiary = _beneficiary;
     minter = IMinter(_minter);
@@ -684,7 +684,7 @@ contract Fetch is Ownable {
  function sale(uint _ethAmount) internal {
    // get price
    address[] memory path = new address[](2);
-   path[0] = ISolidly(dexRouter).WFTM();
+   path[0] = WETH;
    path[1] = address(token);
    uint256[] memory res = ISolidly(dexRouter).getAmountsOut(_ethAmount, path);
    uint256 amount = res[1];
