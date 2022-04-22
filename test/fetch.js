@@ -124,11 +124,15 @@ describe("fetch", function () {
   });
 
   it("Fetch can convert FTM for mint and lock ve NFT", async function () {
+    const userInput = "100000000"
+    console.log("Sale rate for user input ", Number(await fetch.getTokenPrice(userInput)))
+    console.log("Balance of NFT before fetch", Number(await ve.balanceOfNFT(2)))
     await network.provider.send("evm_mine")
-    console.log("NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
-    await fetch.convert({value:"10000000000"})
+    console.log("User NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
+    await fetch.convert({value:userInput})
     await network.provider.send("evm_mine")
-    console.log("NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
+    console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
+    console.log("Balance of NFT after fetch", Number(await ve.balanceOfNFT(2)))
   });
 
 });

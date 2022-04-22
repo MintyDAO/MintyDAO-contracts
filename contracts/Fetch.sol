@@ -602,6 +602,8 @@ contract Fetch is Ownable {
 
   uint256 public percentToSale = 50;
 
+  uint256 public bonusPercent = 100;
+
   address public beneficiary;
 
   IMinter public minter;
@@ -687,20 +689,22 @@ contract Fetch is Ownable {
    );
  }
 
- // helper for sale
- function sale(uint _ethAmount) internal {
-   // get price
+ function getTokenPrice(uint _ethAmount) public view returns(uint256){
    ISolidly.route[] memory routes = new ISolidly.route[](1);
    routes[0].from = WETH;
    routes[0].to = address(token);
    routes[0].stable = false;
 
    uint256[] memory res = ISolidly(dexRouter).getAmountsOut(_ethAmount, routes);
-   uint256 amount = res[1];
+   return res[1];
+ }
 
+ // helper for sale
+ function sale(uint _ethAmount) internal {
+   // get price
+   uint256 amount = getTokenPrice(_ethAmount);
    // compute bonus 25% from current price
-   uint256 bonus = amount.div(100).mul(25);
-
+   uint256 bonus = amount.div(100).mul(bonusPercent);
    // mint amount from price
    minter.mintForFetch(amount.add(bonus));
    // send eth beneficiary
@@ -748,6 +752,18 @@ contract Fetch is Ownable {
 
    percentToDex = _percentToDex;
    percentToSale = _percentToSale;
+ }
+
+
+ function updateBonusPercent(
+   uint _bonusPercent
+ )
+  external
+  onlyOwner
+ {
+   require(bonusPercent > 0, "Zerro bonus");
+   require(bonusPercent <= 100, "Overflow bonus");
+   bonusPercent = _bonusPercent;
  }
 
  /**
