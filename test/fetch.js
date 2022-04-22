@@ -121,28 +121,14 @@ describe("fetch", function () {
       Date.now(),
       { value:ethLD }
     )
-
-    console.log(Number(await ve_underlying.balanceOf(owner.address)))
-
-    await router.swapExactFTMForTokens(
-      1,
-      [{from:wftm.address, to:ve_underlying.address, stable:false}],
-      owner.address,
-      Date.now(),
-      { value:"10000000000" }
-    )
-
-    await fetch.convert({value:"10000000000"})
-
-    console.log(Number(await ve_underlying.balanceOf(owner.address)))
   });
 
-  // it("initialize veNFT", async function () {
-  //   await minter.initialize(owner.address, owner.address, ethers.BigNumber.from("20000000000000000000000000"))
-  //   expect(await ve.ownerOf(2)).to.equal(owner.address);
-  //   expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
-  //   await network.provider.send("evm_mine")
-  //   expect(await ve_underlying.balanceOf(minter.address)).to.equal(ethers.BigNumber.from("19000000000000000000000000"));
-  // });
+  it("Fetch can convert FTM for mint and lock ve NFT", async function () {
+    await network.provider.send("evm_mine")
+    console.log("NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
+    await fetch.convert({value:"10000000000"})
+    await network.provider.send("evm_mine")
+    console.log("NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
+  });
 
 });
