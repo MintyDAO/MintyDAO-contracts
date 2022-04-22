@@ -49,9 +49,9 @@ library Math {
 }
 
 interface IWFTM {
-    function deposit() external payable returns (uint);
-    function transfer(address to, uint value) external returns (bool);
-    function withdraw(uint) external returns (uint);
+    function deposit() external payable;
+    function transfer(address to, uint value) external returns(bool);
+    function withdraw(uint) external;
 }
 
 contract BaseV1Router01 {

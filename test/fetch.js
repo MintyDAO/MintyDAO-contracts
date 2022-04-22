@@ -26,6 +26,7 @@ describe("fetch", function () {
   let minter;
   let ve_dist;
   let fetch;
+  let wftm;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -40,8 +41,11 @@ describe("fetch", function () {
     const BaseV1Factory = await ethers.getContractFactory("BaseV1Factory");
     factory = await BaseV1Factory.deploy();
     await factory.deployed();
+    const WETH9 = await ethers.getContractFactory("WETH9");
+    wftm = await WETH9.deploy()
+    await wftm.deployed()
     const BaseV1Router = await ethers.getContractFactory("BaseV1Router01");
-    router = await BaseV1Router.deploy(factory.address, owner.address);
+    router = await BaseV1Router.deploy(factory.address, wftm.address);
     await router.deployed();
     const BaseV1GaugeFactory = await ethers.getContractFactory("BaseV1GaugeFactory");
     gauges_factory = await BaseV1GaugeFactory.deploy();
@@ -94,9 +98,43 @@ describe("fetch", function () {
 
     await fetch.deployed();
 
-    // await minter.initialize(owner.address, fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
-    //
-    // expect(await fetch.dexRouter()).to.equal(owner.address);
+    await minter.initialize(owner.address, fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
+
+    expect(await fetch.dexRouter()).to.equal(router.address);
+
+    const tokenLD = await ve_underlying.balanceOf(owner.address)
+    const ethLD = "1000000000000000000"
+
+    // await network.provider.send("evm_mine")
+
+    await ve_underlying.approve(router.address, tokenLD)
+
+    await wftm.deposit({value:"1000000000000000000"})
+
+    await router.addLiquidityFTM(
+      ve_underlying.address,
+      false,
+      tokenLD,
+      1,
+      1,
+      owner.address,
+      Date.now(),
+      { value:ethLD }
+    )
+
+    console.log(Number(await ve_underlying.balanceOf(owner.address)))
+
+    await router.swapExactFTMForTokens(
+      1,
+      [{from:wftm.address, to:ve_underlying.address, stable:false}],
+      owner.address,
+      Date.now(),
+      { value:"10000000000" }
+    )
+
+    await fetch.convert({value:"10000000000"})
+
+    console.log(Number(await ve_underlying.balanceOf(owner.address)))
   });
 
   // it("initialize veNFT", async function () {

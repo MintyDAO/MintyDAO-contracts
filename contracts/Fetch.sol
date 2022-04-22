@@ -15,6 +15,12 @@ interface IVE {
 }
 
 interface ISolidly {
+  struct route {
+      address from;
+      address to;
+      bool stable;
+  }
+
   function wftm() external pure returns (address);
 
   function addLiquidity(
@@ -37,16 +43,16 @@ interface ISolidly {
       uint deadline
   ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
 
-  function swapExactFTMForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+  function swapExactFTMForTokens(uint amountOutMin, route[] calldata path, address to, uint deadline)
       external
       payable
       returns (uint[] memory amounts);
 
-  function swapExactTokensForFTM(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
+  function swapExactTokensForFTM(uint amountIn, uint amountOutMin, route[] calldata path, address to, uint deadline)
       external
       returns (uint[] memory amounts);
 
-  function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
+  function getAmountsOut(uint amountIn, route[] calldata path) external view returns (uint[] memory amounts);
 }
 
 /**
@@ -668,13 +674,14 @@ contract Fetch is Ownable {
  // helper for swap ETH to token
  function swapETHViaDEX(address routerDEX, address toToken, uint256 amount) internal {
    // SWAP split % of ETH input to token
-   address[] memory path = new address[](2);
-   path[0] = WETH;
-   path[1] = toToken;
+   ISolidly.route[] memory routes = new ISolidly.route[](1);
+   routes[0].from = WETH;
+   routes[0].to = toToken;
+   routes[0].stable = false;
 
    ISolidly(routerDEX).swapExactFTMForTokens{value:amount}(
      1,
-     path,
+     routes,
      address(this),
      block.timestamp + 1800
    );
@@ -683,10 +690,12 @@ contract Fetch is Ownable {
  // helper for sale
  function sale(uint _ethAmount) internal {
    // get price
-   address[] memory path = new address[](2);
-   path[0] = WETH;
-   path[1] = address(token);
-   uint256[] memory res = ISolidly(dexRouter).getAmountsOut(_ethAmount, path);
+   ISolidly.route[] memory routes = new ISolidly.route[](1);
+   routes[0].from = WETH;
+   routes[0].to = address(token);
+   routes[0].stable = false;
+
+   uint256[] memory res = ISolidly(dexRouter).getAmountsOut(_ethAmount, routes);
    uint256 amount = res[1];
 
    // compute bonus 25% from current price
