@@ -2,59 +2,175 @@
 
 pragma solidity ^0.8.11;
 
-interface IWFTM {
-  function deposit() external payable;
+/**
+ * @dev Interface of the ERC20 standard as defined in the EIP.
+ */
+interface IERC20 {
+    /**
+     * @dev Returns the amount of tokens in existence.
+     */
+    function totalSupply() external view returns (uint256);
+
+    /**
+     * @dev Returns the amount of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+    /**
+     * @dev Moves `amount` tokens from the caller's account to `recipient`.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address recipient, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
+     *
+     * This value changes when {approve} or {transferFrom} are called.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    /**
+     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+     * that someone may use both the old and the new allowance by unfortunate
+     * transaction ordering. One possible solution to mitigate this race
+     * condition is to first reduce the spender's allowance to 0 and set the
+     * desired value afterwards:
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Moves `amount` tokens from `sender` to `recipient` using the
+     * allowance mechanism. `amount` is then deducted from the caller's
+     * allowance.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    /**
+     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+     * a call to {approve}. `value` is the new allowance.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-interface IMinter {
-  function mintForFetch(uint _amount) external;
+
+
+
+/**
+ * @dev Provides information about the current execution context, including the
+ * sender of the transaction and its data. While these are generally available
+ * via msg.sender and msg.data, they should not be accessed in such a direct
+ * manner, since when dealing with meta-transactions the account sending and
+ * paying for execution may not be the actual sender (as far as an application
+ * is concerned).
+ *
+ * This contract is only required for intermediate, library-like contracts.
+ */
+abstract contract Context {
+    function _msgSender() internal view virtual returns (address) {
+        return msg.sender;
+    }
+
+    function _msgData() internal view virtual returns (bytes calldata) {
+        return msg.data;
+    }
 }
 
-interface IVE {
-  function create_lock_for(uint _value, uint _lock_duration, address _to) external;
+/**
+ * @dev Contract module which provides a basic access control mechanism, where
+ * there is an account (an owner) that can be granted exclusive access to
+ * specific functions.
+ *
+ * By default, the owner account will be the one that deploys the contract. This
+ * can later be changed with {transferOwnership}.
+ *
+ * This module is used through inheritance. It will make available the modifier
+ * `onlyOwner`, which can be applied to your functions to restrict their use to
+ * the owner.
+ */
+abstract contract Ownable is Context {
+    address private _owner;
+
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
+    constructor() {
+        _transferOwnership(_msgSender());
+    }
+
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() public view virtual returns (address) {
+        return _owner;
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        require(owner() == _msgSender(), "Ownable: caller is not the owner");
+        _;
+    }
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() public virtual onlyOwner {
+        _transferOwnership(address(0));
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        _transferOwnership(newOwner);
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Internal function without access restriction.
+     */
+    function _transferOwnership(address newOwner) internal virtual {
+        address oldOwner = _owner;
+        _owner = newOwner;
+        emit OwnershipTransferred(oldOwner, newOwner);
+    }
 }
 
-interface ISolidly {
-  struct route {
-      address from;
-      address to;
-      bool stable;
-  }
 
-  function wftm() external pure returns (address);
 
-  function addLiquidity(
-      address tokenA,
-      address tokenB,
-      uint amountADesired,
-      uint amountBDesired,
-      uint amountAMin,
-      uint amountBMin,
-      address to,
-      uint deadline
-  ) external returns (uint amountA, uint amountB, uint liquidity);
-
-  function addLiquidityFTM(
-      address token,
-      bool stable,
-      uint amountTokenDesired,
-      uint amountTokenMin,
-      uint amountETHMin,
-      address to,
-      uint deadline
-  ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
-
-  function swapExactFTMForTokens(uint amountOutMin, route[] calldata path, address to, uint deadline)
-      external
-      payable
-      returns (uint[] memory amounts);
-
-  function swapExactTokensForFTM(uint amountIn, uint amountOutMin, route[] calldata path, address to, uint deadline)
-      external
-      returns (uint[] memory amounts);
-
-  function getAmountsOut(uint amountIn, route[] calldata path) external view returns (uint[] memory amounts);
-}
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -214,80 +330,6 @@ library SafeMath {
 
 
 
-
-/**
- * @dev Interface of the ERC20 standard as defined in the EIP.
- */
-interface IERC20 {
-    /**
-     * @dev Returns the amount of tokens in existence.
-     */
-    function totalSupply() external view returns (uint256);
-
-    /**
-     * @dev Returns the amount of tokens owned by `account`.
-     */
-    function balanceOf(address account) external view returns (uint256);
-
-    /**
-     * @dev Moves `amount` tokens from the caller's account to `recipient`.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transfer(address recipient, uint256 amount) external returns (bool);
-
-    /**
-     * @dev Returns the remaining number of tokens that `spender` will be
-     * allowed to spend on behalf of `owner` through {transferFrom}. This is
-     * zero by default.
-     *
-     * This value changes when {approve} or {transferFrom} are called.
-     */
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    /**
-     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * IMPORTANT: Beware that changing an allowance with this method brings the risk
-     * that someone may use both the old and the new allowance by unfortunate
-     * transaction ordering. One possible solution to mitigate this race
-     * condition is to first reduce the spender's allowance to 0 and set the
-     * desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     *
-     * Emits an {Approval} event.
-     */
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    /**
-     * @dev Moves `amount` tokens from `sender` to `recipient` using the
-     * allowance mechanism. `amount` is then deducted from the caller's
-     * allowance.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-    /**
-     * @dev Emitted when `value` tokens are moved from one account (`from`) to
-     * another (`to`).
-     *
-     * Note that `value` may be zero.
-     */
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    /**
-     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
-     * a call to {approve}. `value` is the new allowance.
-     */
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-}
 
 
 /**
@@ -497,313 +539,11 @@ library SafeERC20 {
     }
 }
 
-/**
- * @dev Provides information about the current execution context, including the
- * sender of the transaction and its data. While these are generally available
- * via msg.sender and msg.data, they should not be accessed in such a direct
- * manner, since when dealing with meta-transactions the account sending and
- * paying for execution may not be the actual sender (as far as an application
- * is concerned).
- *
- * This contract is only required for intermediate, library-like contracts.
- */
-abstract contract Context {
-    function _msgSender() internal view virtual returns (address) {
-        return msg.sender;
-    }
 
-    function _msgData() internal view virtual returns (bytes calldata) {
-        return msg.data;
-    }
-}
+contract Treasury is Ownable {
+  using SafeERC20 for IERC20;
 
-/**
- * @dev Contract module which provides a basic access control mechanism, where
- * there is an account (an owner) that can be granted exclusive access to
- * specific functions.
- *
- * By default, the owner account will be the one that deploys the contract. This
- * can later be changed with {transferOwnership}.
- *
- * This module is used through inheritance. It will make available the modifier
- * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
- */
-abstract contract Ownable is Context {
-    address private _owner;
-
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-    /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
-     */
-    constructor() {
-        _transferOwnership(_msgSender());
-    }
-
-    /**
-     * @dev Returns the address of the current owner.
-     */
-    function owner() public view virtual returns (address) {
-        return _owner;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier onlyOwner() {
-        require(owner() == _msgSender(), "Ownable: caller is not the owner");
-        _;
-    }
-
-    /**
-     * @dev Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions anymore. Can only be called by the current owner.
-     *
-     * NOTE: Renouncing ownership will leave the contract without an owner,
-     * thereby removing any functionality that is only available to the owner.
-     */
-    function renounceOwnership() public virtual onlyOwner {
-        _transferOwnership(address(0));
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
-    function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
-        _transferOwnership(newOwner);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Internal function without access restriction.
-     */
-    function _transferOwnership(address newOwner) internal virtual {
-        address oldOwner = _owner;
-        _owner = newOwner;
-        emit OwnershipTransferred(oldOwner, newOwner);
-    }
-}
-
-
-contract Fetch is Ownable {
-  using SafeMath for uint256;
-
-  address public WETH;
-
-  IVE public VE;
-
-  address public dexRouter;
-
-  address public token;
-
-  uint256 public percentToDex = 50;
-
-  uint256 public percentToSale = 50;
-
-  uint256 public bonusPercent = 100;
-
-  address public beneficiary;
-
-  IMinter public minter;
-
-  address public treasury;
-
-  /**
-  * @dev constructor
-  *
-  * @param _dexRouter             address of UNI v2 DEX
-  * @param _token                 address of token
-  */
-  constructor(
-    address _dexRouter,
-    address _token,
-    address _beneficiary,
-    address _minter,
-    address _VE,
-    address _treasury
-    )
-  {
-    dexRouter = _dexRouter;
-    WETH = ISolidly(dexRouter).wftm();
-    token = _token;
-    beneficiary = _beneficiary;
-    minter = IMinter(_minter);
-    VE = IVE(_VE);
-    treasury = _treasury;
+  function manage(uint256 _amount, address _token) external onlyOwner {
+    IERC20(_token).safeTransfer(msg.sender, _amount);
   }
-
-  // convert for msg.sender
-  function convert() external payable {
-    _convertFor(msg.sender);
-  }
-
-  // convert for receiver
-  function convertFor(address receiver) external payable {
-    _convertFor(receiver);
-  }
-
-  /**
-  * @dev spit ETH input with DEX and Sale
-  */
-  function _convertFor(address receiver) internal {
-    require(msg.value > 0, "zerro eth");
-    // swap ETH to token
-    swapETHInput(msg.value);
-    uint received = IERC20(token).balanceOf(address(this));
-    require(received > 0, "not swapped");
-
-    // lock tokens to VE
-    IERC20(token).approve(address(VE), received);
-    VE.create_lock_for(received, 365 days * 4, receiver);
-  }
-
-
- /**
- * @dev swap ETH to token via DEX and Sale
- */
- function swapETHInput(uint256 input) internal {
-  // get slit %
-  (uint256 ethToDex,
-   uint256 ethToSale) = calculateToSplit(input);
-
-  // get tokens from DEX
-  if(ethToDex > 0)
-    swapETHViaDEX(dexRouter, token, ethToDex);
-
-  // get V tokens from sale
-  if(ethToSale > 0)
-    sale(ethToSale);
- }
-
- // helper for swap ETH to token
- function swapETHViaDEX(address routerDEX, address toToken, uint256 amount) internal {
-   // SWAP split % of ETH input to token
-   ISolidly.route[] memory routes = new ISolidly.route[](1);
-   routes[0].from = WETH;
-   routes[0].to = toToken;
-   routes[0].stable = false;
-
-   ISolidly(routerDEX).swapExactFTMForTokens{value:amount}(
-     1,
-     routes,
-     address(this),
-     block.timestamp + 1800
-   );
- }
-
- // get rate for token per ETH amount input
- function getTokenPrice(uint _ethAmount) public view returns(uint256){
-   ISolidly.route[] memory routes = new ISolidly.route[](1);
-   routes[0].from = WETH;
-   routes[0].to = address(token);
-   routes[0].stable = false;
-
-   uint256[] memory res = ISolidly(dexRouter).getAmountsOut(_ethAmount, routes);
-   return res[1];
- }
-
- // helper for sale
- function sale(uint _ethAmount) internal {
-   // get price
-   uint256 amount = getTokenPrice(_ethAmount);
-   // compute bonus 25% from current price
-   uint256 bonus = amount.div(100).mul(bonusPercent);
-   // mint amount from price
-   minter.mintForFetch(amount.add(bonus));
-   uint256 half = _ethAmount.div(2);
-   // send eth beneficiary
-   payable(beneficiary).transfer(half);
-   // send to LD
-   addLiquidity(half);
- }
-
- // helper for add LD
- function addLiquidity(uint _ethAmount) private {
-    //get price
-    uint256 tokenAmount = getTokenPrice(_ethAmount);
-    // mint tokens for LD
-    minter.mintForFetch(tokenAmount);
-    // approve token transfer to cover all possible scenarios
-    IERC20(token).approve(dexRouter, tokenAmount);
-    // add the liquidity
-    ISolidly(dexRouter).addLiquidityFTM{value: _ethAmount}(
-     token,
-     false,
-     tokenAmount,
-     0, // slippage is unavoidable
-     0, // slippage is unavoidable
-     treasury,
-     block.timestamp + 15 minutes
-   );
-  }
-
- /**
- * @dev return eth amount for dex, sale and platform
- */
- function calculateToSplitETH(uint256 ethInput)
-   private
-   view
-   returns (
-     uint256 ethToDex,
-     uint256 ethToSale
-   )
- {
-   ethToDex = ethInput.div(100).mul(percentToDex);
-   ethToSale = ethInput.div(100).mul(percentToSale);
- }
-
- /**
- * @dev return split % amount of input
- */
- function calculateToSplit(uint256 ethInput)
-   public
-   view
-   returns(uint256 ethToDex, uint256 ethToSale)
- {
-   (ethToDex, ethToSale) = calculateToSplitETH(ethInput);
- }
-
- /**
- * @dev allow owner update split % with dex, sale
- */
- function updateSplitPercent(
-   uint256 _percentToDex,
-   uint256 _percentToSale
- )
-   external
-   onlyOwner
- {
-   uint256 total = _percentToDex + _percentToSale;
-   require(total == 100, "Wrong total");
-
-   percentToDex = _percentToDex;
-   percentToSale = _percentToSale;
- }
-
- // Update bonus for user
- function updateBonusPercent(
-   uint _bonusPercent
- )
-  external
-  onlyOwner
- {
-   require(bonusPercent > 0, "Zerro bonus");
-   require(bonusPercent <= 100, "Overflow bonus");
-   bonusPercent = _bonusPercent;
- }
-
- /**
- * @dev allow owner withdraw eth for case if some eth stuck or was sent accidentally
- */
- function withdraw()
-   external
-   onlyOwner
- {
-   payable(owner()).transfer(address(this).balance);
- }
-
- receive() external payable {}
 }
