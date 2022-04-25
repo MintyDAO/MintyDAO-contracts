@@ -1,5 +1,11 @@
 # yMeta-contracts
 
+# run
+```
+1) npm i
+2) npx hardhat test
+```
+
 # Updates
 ```
 1) Lock for 7 days after each vote

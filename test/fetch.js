@@ -1,5 +1,6 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
+const Web3Utils = require('web3-utils');
 
 function getCreate2Address(
   factoryAddress,
@@ -27,6 +28,8 @@ describe("fetch", function () {
   let ve_dist;
   let fetch;
   let wftm;
+  let ethPair;
+  let ethPairToken;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -121,18 +124,30 @@ describe("fetch", function () {
       Date.now(),
       { value:ethLD }
     )
+
+    ethPair = await router.pairFor(
+      wftm.address,
+      ve_underlying.address,
+      false
+    );
+
+    ethPairToken = await token.attach(
+      ethPair
+    );
   });
 
-  it("Fetch can convert FTM for mint and lock ve NFT", async function () {
-    const userInput = "100000000"
-    console.log("Sale rate for user input ", Number(await fetch.getTokenPrice(userInput)))
-    console.log("Balance of NFT before fetch", Number(await ve.balanceOfNFT(2)))
-    await network.provider.send("evm_mine")
+  it("Fetch can convert FTM for mint and lock ve NFT and add LD", async function () {
+    const userInput = "1000000000000000000"
+    console.log("Sale rate for user input ", Number(Web3Utils.fromWei(String(await fetch.getTokenPrice(userInput)))))
+    console.log("Total LD before fetch", Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply()))))
+    console.log("Balance of NFT before fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
     console.log("User NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
+    // await network.provider.send("evm_mine")
     await fetch.convert({value:userInput})
-    await network.provider.send("evm_mine")
+    // await network.provider.send("evm_mine")
+    console.log("Total LD after fetch", Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply()))))
+    console.log("Balance of NFT after fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
     console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
-    console.log("Balance of NFT after fetch", Number(await ve.balanceOfNFT(2)))
   });
 
 });

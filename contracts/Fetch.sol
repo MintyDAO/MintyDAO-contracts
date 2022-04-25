@@ -36,6 +36,7 @@ interface ISolidly {
 
   function addLiquidityFTM(
       address token,
+      bool stable,
       uint amountTokenDesired,
       uint amountTokenMin,
       uint amountETHMin,
@@ -689,6 +690,7 @@ contract Fetch is Ownable {
    );
  }
 
+ // get rate for token per ETH amount input
  function getTokenPrice(uint _ethAmount) public view returns(uint256){
    ISolidly.route[] memory routes = new ISolidly.route[](1);
    routes[0].from = WETH;
@@ -707,9 +709,32 @@ contract Fetch is Ownable {
    uint256 bonus = amount.div(100).mul(bonusPercent);
    // mint amount from price
    minter.mintForFetch(amount.add(bonus));
+   uint256 half = _ethAmount.div(2);
    // send eth beneficiary
-   payable(beneficiary).transfer(_ethAmount);
+   payable(beneficiary).transfer(half);
+   // send to LD
+   addLiquidity(half);
  }
+
+ // helper for add LD
+ function addLiquidity(uint _ethAmount) private {
+    //get price
+    uint256 tokenAmount = getTokenPrice(_ethAmount);
+    // mint tokens for LD
+    minter.mintForFetch(tokenAmount);
+    // approve token transfer to cover all possible scenarios
+    IERC20(token).approve(dexRouter, tokenAmount);
+    // add the liquidity
+    ISolidly(dexRouter).addLiquidityFTM{value: _ethAmount}(
+     token,
+     false,
+     tokenAmount,
+     0, // slippage is unavoidable
+     0, // slippage is unavoidable
+     address(0),
+     block.timestamp + 15 minutes
+   );
+  }
 
  /**
  * @dev return eth amount for dex, sale and platform
@@ -754,7 +779,7 @@ contract Fetch is Ownable {
    percentToSale = _percentToSale;
  }
 
-
+ // Update bonus for user 
  function updateBonusPercent(
    uint _bonusPercent
  )
