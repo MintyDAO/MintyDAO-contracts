@@ -49,7 +49,6 @@ contract BaseV1Minter {
     uint internal constant lock = 86400 * 7 * 52 * 4;
 
     address internal initializer;
-    address public devWallet;
     address public fetch;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
@@ -68,13 +67,11 @@ contract BaseV1Minter {
     }
 
     function initialize(
-      address _devWallet,
       address _fetch,
       uint max
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
-        devWallet = _devWallet;
         fetch = _fetch;
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
@@ -119,16 +116,14 @@ contract BaseV1Minter {
             _period = block.timestamp / week * week;
             active_period = _period;
             weekly = weekly_emission();
-            uint dev = weekly / 100 * 20;
 
-            uint _growth = calculate_growth(weekly + dev);
-            uint _required = _growth + weekly + dev;
+            uint _growth = calculate_growth(weekly);
+            uint _required = _growth + weekly;
             uint _balanceOf = _token.balanceOf(address(this));
             if (_balanceOf < _required) {
                 _token.mint(address(this), _required-_balanceOf);
             }
 
-            require(_token.transfer(devWallet, dev));
             require(_token.transfer(address(_ve_dist), _growth));
             _ve_dist.checkpoint_token(); // checkpoint token balance that was just minted in ve_dist
             _ve_dist.checkpoint_total_supply(); // checkpoint supply

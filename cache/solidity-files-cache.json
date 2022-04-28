@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1650529967576,
-      "contentHash": "3fba87c62df43190fde9b3008ddf4df1",
+      "lastModificationDate": 1651123031756,
+      "contentHash": "04c7e5a6d8bd705fed7a95a87b7bb0e3",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",

@@ -107,7 +107,7 @@ describe("fetch", function () {
 
     await fetch.deployed();
 
-    await minter.initialize(owner.address, fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
+    await minter.initialize(fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
 
     expect(await fetch.dexRouter()).to.equal(router.address);
 
