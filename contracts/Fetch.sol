@@ -611,6 +611,8 @@ contract Fetch is Ownable {
 
   address public treasury;
 
+  address public rewarder = address(0);
+
   /**
   * @dev constructor
   *
@@ -804,6 +806,20 @@ contract Fetch is Ownable {
  {
    payable(owner()).transfer(address(this).balance);
  }
+
+ // initialize rewarder
+ function initializeRewarder(address _rewarder) external {
+   require(rewarder == address(0), "Initialized");
+   rewarder = _rewarder;
+ }
+
+ // allow rewarder mint new rewards 
+ function mint(uint amount) external {
+   require(rewarder != address(0), "Empty rewarder");
+   minter.mintForFetch(amount);
+   IERC20(token).transfer(rewarder, amount);
+ }
+
 
  receive() external payable {}
 }
