@@ -10,4 +10,5 @@
 ```
 1) Lock for 7 days after each vote
 2) Fetch mint 50% bonuses from current rate
+3) Fetch mint to rewards destributor 
 ```

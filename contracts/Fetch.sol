@@ -613,6 +613,8 @@ contract Fetch is Ownable {
 
   address public rewarder = address(0);
 
+  bool public isRewardsMintLocked = false;
+
   /**
   * @dev constructor
   *
@@ -813,13 +815,18 @@ contract Fetch is Ownable {
    rewarder = _rewarder;
  }
 
- // allow rewarder mint new rewards 
+ // allow rewarder mint new rewards
  function mint(uint amount) external {
+   require(!isRewardsMintLocked, "Locked");
    require(rewarder != address(0), "Empty rewarder");
    minter.mintForFetch(amount);
    IERC20(token).transfer(rewarder, amount);
  }
 
+ // allow stop mint rewards forever
+ function stopMintRewards() external onlyOwner {
+   isRewardsMintLocked = true;
+ }
 
  receive() external payable {}
 }

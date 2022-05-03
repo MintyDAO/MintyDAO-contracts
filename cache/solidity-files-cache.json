@@ -1150,8 +1150,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1651562960289,
-      "contentHash": "c21c44bf242e47e040a16cef4421330b",
+      "lastModificationDate": 1651578502893,
+      "contentHash": "25da2cb7a1c449208137784473a120bb",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
