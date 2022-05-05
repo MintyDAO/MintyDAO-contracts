@@ -52,3 +52,12 @@ Voter
 0x16E0c11B31194AdA65cB2bc6766C177F9D0372b2
 
 ```
+
+
+# NOTE
+
+```
+Voter did not initialized
+
+More details in Fetch test.js under SKIPPED comments 
+```
