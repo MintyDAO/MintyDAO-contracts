@@ -51,6 +51,22 @@ Voter
 
 0x16E0c11B31194AdA65cB2bc6766C177F9D0372b2
 
+ve dist
+
+0xDA4472B161e854489e3724fFa44918a04b4Af9Cc
+
+Minter
+
+0x779d80c5438Cf21B8D7c6dE41025456484595Ad1
+
+LD Treasury
+
+0x5e31632b3Ee5e45C119C99cBaA7f052b38c1910c
+
+Fetch
+
+0x66CE1dAc8bf568372b203AB18252189c724918B9
+
 ```
 
 
@@ -59,5 +75,5 @@ Voter
 ```
 Voter did not initialized
 
-More details in Fetch test.js under SKIPPED comments 
+More details in Fetch test.js under SKIPPED comments
 ```
