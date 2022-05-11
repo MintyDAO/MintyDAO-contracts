@@ -5,6 +5,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.11;
 
+import "./interfaces/IPancakeRouter02.sol";
+import "./interfaces/IPancakeFactory.sol";
+import "./interfaces/IPancakePair.sol";
+
 /**
 @title Voting Escrow
 @author Curve Finance
@@ -401,6 +405,8 @@ contract ve is IERC721, IERC721Metadata {
     uint256 public constructTime;
     uint256 public maxX = 14 days;
     uint256 public maxY = 200 * 1000000 * 10 * 18;
+    address public routerAddress = 0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52;
+    address public usdcAddress = 0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83;
     mapping(uint256 => LockedBalance) public locked;
 
     mapping(uint256 => uint256) public ownership_change;
@@ -511,45 +517,62 @@ contract ve is IERC721, IERC721Metadata {
     }
 
     function getMaxTime() public view returns (uint256) {
-        if (block.timestamp - constructTime >= maxX || supply >= maxY)
+        address factory = IPancakeRouter02(routerAddress).factory();
+        address pair = IPancakeFactory(factory).getPair(token, usdcAddress);
+        (
+            uint256 reserveIn,
+            uint256 reserveOut,
+            uint256 timestamp
+        ) = IPancakePair(pair).getReserves();
+        uint256 supplyprice;
+        if (reserveIn != 0 && reserveOut != 0 && supply != 0)
+            supplyprice =
+                IPancakeRouter02(routerAddress).getAmountOut(
+                    supply,
+                    reserveIn,
+                    reserveOut
+                ) /
+                (10**6);
+
+        if (block.timestamp - constructTime >= maxX || supplyprice >= maxY)
             return 16 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 14 * 86400 ||
-            supply >= 100000 * 1000 * 10**18
+            supplyprice >= 100000 * 1000 * 10**18
         ) return 14 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 14 * 86400 ||
-            supply >= 30000 * 1000 * 10**18
+            supplyprice >= 30000 * 1000 * 10**18
         ) return 12 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 14 * 86400 ||
-            supply >= 10000 * 1000 * 10**18
+            supplyprice >= 10000 * 1000 * 10**18
         ) return 10 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 14 * 86400 ||
-            supply >= 4000 * 1000 * 10**18
+            supplyprice >= 4000 * 1000 * 10**18
         ) return 8 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 14 * 86400 ||
-            supply >= 2000 * 1000 * 10**18
+            supplyprice >= 2000 * 1000 * 10**18
         ) return 6 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 7 * 86400 ||
-            supply >= 1000 * 1000 * 10**18
+            supplyprice >= 1000 * 1000 * 10**18
         ) return 4 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 4 * 86400 ||
-            supply >= 400 * 1000 * 10**18
+            supplyprice >= 400 * 1000 * 10**18
         ) return 3 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 2 * 86400 ||
-            supply >= 200 * 1000 * 10**18
+            supplyprice >= 200 * 1000 * 10**18
         ) return 2 * 7 * 86400;
         if (
             block.timestamp - constructTime >= 1 * 86400 ||
-            supply >= 100 * 1000 * 10**18
+            supplyprice >= 100 * 1000 * 10**18
         ) return 1 * 7 * 86400;
-        return 60;
+        return 86400;
     }
 
     /// @notice Get the timestamp for checkpoint `_idx` for `_tokenId`
@@ -1198,7 +1221,7 @@ contract ve is IERC721, IERC721Metadata {
         );
         require(
             unlock_time <= block.timestamp + getMaxTime(),
-            "Voting lock can be 4 years max"
+            "Voting lock can be 16 weeks max"
         );
 
         ++tokenId;

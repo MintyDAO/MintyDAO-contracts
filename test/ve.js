@@ -17,11 +17,13 @@ describe("ve", function () {
     vecontract = await ethers.getContractFactory("contracts/ve.sol:ve");
     ve = await vecontract.deploy(ve_underlying.address);
     await ve.deployed();
+    await network.provider.send("evm_increaseTime", [3600 * 24 * 10]);
+    await network.provider.send("evm_mine")
   });
 
   it("create lock", async function () {
     await ve_underlying.approve(ve.address, ve_underlying_amount);
-    const lockDuration = 7 * 24 * 3600; // 1 week
+    const lockDuration = 7 * 24 * 3600; // 
 
     // Balance should be zero before and 1 after creating the lock
     expect(await ve.balanceOf(owner.address)).to.equal(0);
