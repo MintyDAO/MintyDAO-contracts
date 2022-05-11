@@ -512,43 +512,43 @@ contract ve is IERC721, IERC721Metadata {
 
     function getMaxTime() public view returns (uint256) {
         if (block.timestamp - constructTime >= maxX || supply >= maxY)
-            return 16 * 7 * 60;
+            return 16 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 14 * 60 ||
+            block.timestamp - constructTime >= 14 * 86400 ||
             supply >= 100000 * 1000 * 10**18
-        ) return 14 * 7 * 60;
+        ) return 14 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 14 * 60 ||
+            block.timestamp - constructTime >= 14 * 86400 ||
             supply >= 30000 * 1000 * 10**18
-        ) return 12 * 7 * 60;
+        ) return 12 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 14 * 60 ||
+            block.timestamp - constructTime >= 14 * 86400 ||
             supply >= 10000 * 1000 * 10**18
-        ) return 10 * 7 * 60;
+        ) return 10 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 14 * 60 ||
+            block.timestamp - constructTime >= 14 * 86400 ||
             supply >= 4000 * 1000 * 10**18
-        ) return 8 * 7 * 60;
+        ) return 8 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 14 * 60 ||
+            block.timestamp - constructTime >= 14 * 86400 ||
             supply >= 2000 * 1000 * 10**18
-        ) return 6 * 7 * 60;
+        ) return 6 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 7 * 60 ||
+            block.timestamp - constructTime >= 7 * 86400 ||
             supply >= 1000 * 1000 * 10**18
-        ) return 4 * 7 * 60;
+        ) return 4 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 4 * 60 ||
+            block.timestamp - constructTime >= 4 * 86400 ||
             supply >= 400 * 1000 * 10**18
-        ) return 3 * 7 * 60;
+        ) return 3 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 2 * 60 ||
+            block.timestamp - constructTime >= 2 * 86400 ||
             supply >= 200 * 1000 * 10**18
-        ) return 2 * 7 * 60;
+        ) return 2 * 7 * 86400;
         if (
-            block.timestamp - constructTime >= 1 * 60 ||
+            block.timestamp - constructTime >= 1 * 86400 ||
             supply >= 100 * 1000 * 10**18
-        ) return 1 * 7 * 60;
+        ) return 1 * 7 * 86400;
         return 60;
     }
 
