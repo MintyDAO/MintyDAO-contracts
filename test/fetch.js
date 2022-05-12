@@ -31,6 +31,7 @@ describe("fetch", function () {
   let ethPair;
   let ethPairToken;
   let treasury;
+  let gauge_address;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -38,8 +39,9 @@ describe("fetch", function () {
     basev1 = await ethers.getContractFactory("BaseV1");
 
     // SKIPPED
-    // mim = await token.deploy('MIM', 'MIM', 18, owner.address);
-    // await mim.mint(owner.address, ethers.BigNumber.from("1000000000000000000000000000000"));
+    mim = await token.deploy('MIM', 'MIM', 18, owner.address);
+    await mim.mint(owner.address, ethers.BigNumber.from("1000000000000000000000000000000"));
+    // SKIPPED
 
     ve_underlying = await basev1.deploy();
     vecontract = await ethers.getContractFactory("contracts/ve.sol:ve");
@@ -65,9 +67,10 @@ describe("fetch", function () {
     await voter_gauge_factory.deployed();
 
     // SKIPPED
-    // await voter_gauge_factory.initialize([mim.address, ve_underlying.address],owner.address);
-    // await ve_underlying.approve(ve.address, ethers.BigNumber.from("1000000000000000000"));
-    // await ve.create_lock(ethers.BigNumber.from("1000000000000000000"), 4 * 365 * 86400);
+    await voter_gauge_factory.initialize([mim.address, ve_underlying.address],owner.address);
+    await ve_underlying.approve(ve.address, ethers.BigNumber.from("1000000000000000000"));
+    await ve.create_lock(ethers.BigNumber.from("1000000000000000000"), 4 * 365 * 86400);
+    // SKIPPED
 
     const VeDist = await ethers.getContractFactory("contracts/ve_dist.sol:ve_dist");
     ve_dist = await VeDist.deploy(ve.address);
@@ -81,20 +84,23 @@ describe("fetch", function () {
     await ve_underlying.setMinter(minter.address);
 
     // SKIPPED
-    // const mim_1 = ethers.BigNumber.from("1000000000000000000");
-    // const ve_underlying_1 = ethers.BigNumber.from("1000000000000000000");
-    // await ve_underlying.approve(router.address, ve_underlying_1);
-    // await mim.approve(router.address, mim_1);
-    // await router.addLiquidity(mim.address, ve_underlying.address, false, mim_1, ve_underlying_1, 0, 0, owner.address, Date.now());
+    const mim_1 = ethers.BigNumber.from("1000000000000000000");
+    const ve_underlying_1 = ethers.BigNumber.from("1000000000000000000");
+    await ve_underlying.approve(router.address, ve_underlying_1);
+    await mim.approve(router.address, mim_1);
+    await router.addLiquidity(mim.address, ve_underlying.address, false, mim_1, ve_underlying_1, 0, 0, owner.address, Date.now());
 
-    // const pair = await router.pairFor(mim.address, ve_underlying.address, false);
+    const pair = await router.pairFor(mim.address, ve_underlying.address, false);
 
-    // await ve_underlying.approve(voter_gauge_factory.address, ethers.BigNumber.from("500000000000000000000000"));
-    // await voter_gauge_factory.createGauge(pair);
-    // expect(await ve.balanceOfNFT(1)).to.above(ethers.BigNumber.from("995063075414519385"));
-    // expect(await ve_underlying.balanceOf(ve.address)).to.be.equal(ethers.BigNumber.from("1000000000000000000"));
+    await ve_underlying.approve(voter_gauge_factory.address, ethers.BigNumber.from("500000000000000000000000"));
+    await voter_gauge_factory.createGauge(pair);
+    expect(await ve.balanceOfNFT(1)).to.above(ethers.BigNumber.from("995063075414519385"));
+    expect(await ve_underlying.balanceOf(ve.address)).to.be.equal(ethers.BigNumber.from("1000000000000000000"));
 
-    // await voter_gauge_factory.vote(1, [pair], [5000]);
+    await voter_gauge_factory.vote(1, [pair], [5000]);
+    gauge_address = await voter_gauge_factory.gauges(pair);
+    // SKIPPED
+
 
     const Treasury = await ethers.getContractFactory("Treasury");
     treasury = await Treasury.deploy()
@@ -113,7 +119,13 @@ describe("fetch", function () {
 
     await fetch.deployed();
 
-    await minter.initialize(fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
+    await minter.initialize(
+      fetch.address,
+      ethers.BigNumber.from("20000000000000000000000000"),
+      gauge_address,
+      gauge_address,
+      owner.address,
+    );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
 
@@ -167,6 +179,7 @@ describe("fetch", function () {
     console.log("Treasury LD after fetch", Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address)))))
   });
 
+  // SHOULD revert with (reverted with reason string 'Empty rewarder')
   // it("Fetch can not mint without rewarder", async function () {
   //   await fetch.mint("1000000000000000000")
   // });
@@ -176,6 +189,7 @@ describe("fetch", function () {
     await fetch.mint("1000000000000000000")
   });
 
+  // SHOULD revert with (reverted with reason string 'Initialized')
   // it("Fetch can NOT initialize rewarder TWICE", async function () {
   //   await fetch.initializeRewarder(owner.address)
   // });

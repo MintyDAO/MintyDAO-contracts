@@ -45,6 +45,7 @@ describe("core", function () {
   let staking;
   let owner2;
   let owner3;
+  let gauge_address;
 
   it("deploy base coins", async function () {
     [owner, owner2, owner3] = await ethers.getSigners(3);
@@ -380,7 +381,7 @@ describe("core", function () {
     sr = await ethers.getContractFactory("StakingRewards");
     staking = await sr.deploy(pair.address, ve_underlying.address);
 
-    const gauge_address = await gauge_factory.gauges(pair.address);
+    gauge_address = await gauge_factory.gauges(pair.address);
     const bribe_address = await gauge_factory.bribes(gauge_address);
 
     const gauge_address2 = await gauge_factory.gauges(pair2.address);
@@ -641,7 +642,13 @@ describe("core", function () {
   it("minter mint", async function () {
     console.log(await ve_dist.last_token_time());
     console.log(await ve_dist.timestamp());
-    await minter.initialize(owner.address, ethers.BigNumber.from("20000000000000000000000000"));
+    await minter.initialize(
+      owner.address,
+      ethers.BigNumber.from("20000000000000000000000000"),
+      gauge_address,
+      gauge_address,
+      owner.address,
+    );
     await minter.update_period();
     await gauge_factory.updateGauge(gauge.address);
     console.log(await ve_underlying.balanceOf(ve_dist.address));

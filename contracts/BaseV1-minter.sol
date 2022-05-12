@@ -7,6 +7,10 @@ library Math {
     }
 }
 
+interface IGauges {
+   function notifyRewardAmount(address token, uint amount) external;
+}
+
 interface ve {
     function token() external view returns (address);
     function totalSupply() external view returns (uint);
@@ -51,6 +55,10 @@ contract BaseV1Minter {
     address internal initializer;
     address public fetch;
 
+    address public USDC_USDT_gauge;
+    address public USDC_yMeta_gauge;
+    address public votersLock;
+
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
     constructor(
@@ -68,13 +76,19 @@ contract BaseV1Minter {
 
     function initialize(
       address _fetch,
-      uint max
+      uint max,
+      address _USDC_USDT_gauge,
+      address _USDC_yMeta_gauge,
+      address _votersLock
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
         fetch = _fetch;
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
+        USDC_USDT_gauge = _USDC_USDT_gauge;
+        USDC_yMeta_gauge = _USDC_yMeta_gauge;
+        votersLock = _votersLock;
     }
 
     // allow mint for fetch
@@ -128,8 +142,21 @@ contract BaseV1Minter {
             _ve_dist.checkpoint_token(); // checkpoint token balance that was just minted in ve_dist
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
 
-            _token.approve(address(_voter), weekly);
-            _voter.notifyRewardAmount(weekly);
+            // compute destribution
+            uint USDC_USDT_amount = (weekly / 100) * 10;
+            uint USDC_yMeta_amount = (weekly / 100) * 40;
+            uint votersLockAmount = (weekly / 100) * 50;
+
+            // 0.1% to USDC_USDT pool
+            _token.approve(USDC_USDT_gauge, USDC_USDT_amount);
+            IGauges(USDC_USDT_gauge).notifyRewardAmount(address(_token), USDC_USDT_amount);
+
+            // 0.4% to USDC_yMeta pool
+            _token.approve(USDC_yMeta_gauge, USDC_yMeta_amount);
+            IGauges(USDC_yMeta_gauge).notifyRewardAmount(address(_token), USDC_yMeta_amount);
+
+            // 0.5% to voters lock destributor
+            _token.transfer(votersLock, votersLockAmount);
 
             emit Mint(msg.sender, weekly, circulating_supply(), circulating_emission());
         }

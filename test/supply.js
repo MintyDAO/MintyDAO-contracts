@@ -18,7 +18,7 @@ function getCreate2Address(
   return getAddress(`0x${keccak256(sanitizedInputs).slice(-40)}`)
 }
 
-describe("fetch", function () {
+describe("supply", function () {
 
   let token;
   let ve_underlying;
@@ -31,6 +31,7 @@ describe("fetch", function () {
   let ethPair;
   let ethPairToken;
   let treasury;
+  let gauge_address;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -105,9 +106,17 @@ describe("fetch", function () {
       treasury.address
     );
 
+    gauge_address = await gauge_factory.gauges(pair);
+
     await fetch.deployed();
 
-    await minter.initialize(fetch.address, ethers.BigNumber.from("20000000000000000000000000"));
+    await minter.initialize(
+      fetch.address,
+      ethers.BigNumber.from("20000000000000000000000000"),
+      gauge_address,
+      gauge_address,
+      owner.address
+    );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
 

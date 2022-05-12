@@ -656,7 +656,7 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-gauges.sol": {
-      "lastModificationDate": 1649926824570,
+      "lastModificationDate": 1652336799175,
       "contentHash": "1d1145e227ea8c9aca047067f78f64f4",
       "sourceName": "contracts/BaseV1-gauges.sol",
       "solcConfig": {
@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1651123031756,
-      "contentHash": "04c7e5a6d8bd705fed7a95a87b7bb0e3",
+      "lastModificationDate": 1652336720760,
+      "contentHash": "4b39a39bca6daa0f2254de6a2fe928d5",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -731,6 +731,7 @@
       ],
       "artifacts": [
         "BaseV1Minter",
+        "IGauges",
         "Math",
         "underlying",
         "ve",
@@ -1268,6 +1269,39 @@
         "SafeERC20",
         "SafeMath",
         "Treasury"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
+      "lastModificationDate": 1652264831842,
+      "contentHash": "31fe7aedbc3d7bcd468dd409196b819e",
+      "sourceName": "contracts/VotersRewardsLock.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": [
+        "VotersRewardsLock"
       ]
     }
   }

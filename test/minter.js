@@ -25,6 +25,7 @@ describe("minter", function () {
   let owner;
   let minter;
   let ve_dist;
+  let gauge_address;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -80,10 +81,18 @@ describe("minter", function () {
     expect(await ve_underlying.balanceOf(ve.address)).to.be.equal(ethers.BigNumber.from("1000000000000000000"));
 
     await gauge_factory.vote(1, [pair], [5000]);
+
+    gauge_address = await gauge_factory.gauges(pair.address);
   });
 
   it("initialize veNFT", async function () {
-    await minter.initialize(owner.address, ethers.BigNumber.from("20000000000000000000000000"))
+    await minter.initialize(
+      owner.address,
+      ethers.BigNumber.from("20000000000000000000000000"),
+      gauge_address,
+      gauge_address,
+      owner.address
+    )
     expect(await ve.ownerOf(2)).to.equal(owner.address);
     expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
     await network.provider.send("evm_mine")
