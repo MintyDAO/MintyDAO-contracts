@@ -1272,8 +1272,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
-      "lastModificationDate": 1652264831842,
-      "contentHash": "31fe7aedbc3d7bcd468dd409196b819e",
+      "lastModificationDate": 1652356134611,
+      "contentHash": "443bff4d08cc23533a9ef003d74fde00",
       "sourceName": "contracts/VotersRewardsLock.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1299,9 +1299,53 @@
         }
       },
       "imports": [],
-      "versionPragmas": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
       "artifacts": [
+        "Context",
+        "IERC20",
+        "IFormula",
+        "IVoter",
+        "Ownable",
         "VotersRewardsLock"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
+      "lastModificationDate": 1652424654630,
+      "contentHash": "9329f64b2ede40d13ff1a2aca5bc5eee",
+      "sourceName": "contracts/VotersRewardsFormula.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "IERC20",
+        "SafeMath",
+        "VotersRewardsFormula"
       ]
     }
   }
