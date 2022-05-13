@@ -12,12 +12,15 @@
 1) Lock for 7 days after each vote
 2) Fetch mint 50% bonuses from current rate
 3) Fetch mint to rewards destributor
-4) Desrtribute 
+4) Desrtribute by this
+
 0.1% Pool 1 - USDC / USDT
 
-and
-
 0.4% Pool 2 - USDC / yMeta
+
+0.5% Locker for voters pool
+
+5) Add voter pool locker + formula
 ```
 
 
