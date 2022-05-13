@@ -1312,8 +1312,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1652424654630,
-      "contentHash": "9329f64b2ede40d13ff1a2aca5bc5eee",
+      "lastModificationDate": 1652430588591,
+      "contentHash": "a0358d0be4747ce2e8ff094161225849",
       "sourceName": "contracts/VotersRewardsFormula.sol",
       "solcConfig": {
         "version": "0.8.11",

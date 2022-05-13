@@ -134,7 +134,8 @@ describe("rewards-destribution", function () {
       pair,
       mim.address,
       rewardsLocker.address,
-      ve_underlying.address
+      ve_underlying.address,
+      "1000000000000000000000000"
     );
     rewardsFormula.deployed();
 

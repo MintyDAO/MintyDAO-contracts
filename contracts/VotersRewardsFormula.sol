@@ -184,15 +184,14 @@ contract VotersRewardsFormula{
   address public usdToken;
   address public rewardsLocker;
   address public rewardToken;
-
-  // 1.000.000 usd
-  uint public usdGoal = 1000000000000000000000000;
+  uint public usdGoal;
 
   constructor(
     address _usdPool,
     address _usdToken,
     address _rewardsLocker,
-    address _rewardToken
+    address _rewardToken,
+    uint _usdGoal
     )
     public
   {
@@ -200,6 +199,7 @@ contract VotersRewardsFormula{
     usdToken = _usdToken;
     rewardsLocker = _rewardsLocker;
     rewardToken = _rewardToken;
+    usdGoal = _usdGoal;
   }
 
   function computeRewards() public view returns(uint) {
