@@ -150,8 +150,7 @@ describe("rewards-destribution", function () {
   });
 
 
-
-  it("Test", async function () {
+  it("Test formula", async function () {
     console.log(
       "USD in pool",
       Number(Web3Utils.fromWei(String(await mim.balanceOf(pair)))),
@@ -170,6 +169,22 @@ describe("rewards-destribution", function () {
     console.log(
       "Can be withdrawed",
       Number(Web3Utils.fromWei(String(await rewardsFormula.computeRewards())))
+    )
+  });
+
+  it("Test locker", async function () {
+    const before = Number(Web3Utils.fromWei(String(await ve_underlying.balanceOf(rewardsLocker.address))))
+    await rewardsLocker.destributeRewards()
+    const after = Number(Web3Utils.fromWei(String(await ve_underlying.balanceOf(rewardsLocker.address))))
+
+    console.log(
+      "Withdrawed",
+      before - after
+    )
+
+    console.log(
+      "Remains",
+      Number(Web3Utils.fromWei(String(await ve_underlying.balanceOf(rewardsLocker.address))))
     )
   });
 });
