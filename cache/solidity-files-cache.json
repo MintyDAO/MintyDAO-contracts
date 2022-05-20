@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/rus/Projects/solidly/contracts/BaseV1-bribes.sol": {
-      "lastModificationDate": 1648793805680,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-bribes.sol": {
+      "lastModificationDate": 1653051888023,
       "contentHash": "98480e6e70ca51f414a379c8f7c31a03",
       "sourceName": "contracts/BaseV1-bribes.sol",
       "solcConfig": {
@@ -41,8 +41,8 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/solidly/contracts/BaseV1-core.sol": {
-      "lastModificationDate": 1648793805680,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-core.sol": {
+      "lastModificationDate": 1653051888023,
       "contentHash": "4a940d99490c3407ef653aec1c945874",
       "sourceName": "contracts/BaseV1-core.sol",
       "solcConfig": {
@@ -81,582 +81,8 @@
         "erc20"
       ]
     },
-    "/home/rus/Projects/solidly/contracts/BaseV1-gauges.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "49d4b87bd33b88bd009349d92ffd5cd6",
-      "sourceName": "contracts/BaseV1-gauges.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1GaugeFactory",
-        "Gauge",
-        "IBaseV1Core",
-        "IBaseV1Factory",
-        "IBribe",
-        "Math",
-        "Voter",
-        "erc20",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1649338539261,
-      "contentHash": "567797c63e826d4399822ebe904bbd80",
-      "sourceName": "contracts/BaseV1-minter.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1Minter",
-        "Math",
-        "underlying",
-        "ve",
-        "ve_dist",
-        "voter"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/BaseV1-periphery.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "65c9aca55536395b53498d61cf10fb54",
-      "sourceName": "contracts/BaseV1-periphery.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1Router01",
-        "IBaseV1Factory",
-        "IBaseV1Pair",
-        "IWFTM",
-        "Math",
-        "erc20"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/BaseV1-token.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "6bf0578d6021853da582af4726f28edc",
-      "sourceName": "contracts/BaseV1-token.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/BaseV1-voter.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "11497a73c7569c51e9a54bd8a1c14bc6",
-      "sourceName": "contracts/BaseV1-voter.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1Voter",
-        "IBaseV1BribeFactory",
-        "IBaseV1Core",
-        "IBaseV1Factory",
-        "IBaseV1GaugeFactory",
-        "IBribe",
-        "IGauge",
-        "IMinter",
-        "Math",
-        "erc20",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/calculations.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "d8e8a1cea2b484e1445916706b46b817",
-      "sourceName": "contracts/test/calculations.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.6"
-      ],
-      "artifacts": [
-        "Math",
-        "roots"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/StakingRewards.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "f4ecb5b7d97fe54f7600d53566bfd1b6",
-      "sourceName": "contracts/test/StakingRewards.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8"
-      ],
-      "artifacts": [
-        "IERC20",
-        "StakingRewards"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/Token.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "e4ece33c1d55552bd2c52692fabadb59",
-      "sourceName": "contracts/test/Token.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Token"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/ve_dist_test.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "c8f84d551c4661d281ae62ee3a462678",
-      "sourceName": "contracts/test/ve_dist_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_dist_test"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/ve_test.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "8aef363e7aa24afb980077e4ca96e6dd",
-      "sourceName": "contracts/test/ve_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_test"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/test/voter_test.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "fdd6359920a5be80dd5650f9c4dbe8a3",
-      "sourceName": "contracts/test/voter_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "voter_test"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/ve_dist.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "79ee098017eb4a5f9f6b35f2e9b51719",
-      "sourceName": "contracts/ve_dist.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Math",
-        "VotingEscrow",
-        "erc20",
-        "ve_dist"
-      ]
-    },
-    "/home/rus/Projects/solidly/contracts/ve.sol": {
-      "lastModificationDate": 1648793805680,
-      "contentHash": "be463043b305f9350470d1b392f86325",
-      "sourceName": "contracts/ve.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Base64",
-        "IERC165",
-        "IERC20",
-        "IERC721",
-        "IERC721Metadata",
-        "IERC721Receiver",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-bribes.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "98480e6e70ca51f414a379c8f7c31a03",
-      "sourceName": "contracts/BaseV1-bribes.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1BribeFactory",
-        "Bribe",
-        "IBaseV1Voter",
-        "Math",
-        "erc20",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-core.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "4a940d99490c3407ef653aec1c945874",
-      "sourceName": "contracts/BaseV1-core.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "BaseV1Factory",
-        "BaseV1Fees",
-        "BaseV1Pair",
-        "IBaseV1Callee",
-        "Math",
-        "erc20"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-gauges.sol": {
-      "lastModificationDate": 1652336799175,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-gauges.sol": {
+      "lastModificationDate": 1653051888024,
       "contentHash": "1d1145e227ea8c9aca047067f78f64f4",
       "sourceName": "contracts/BaseV1-gauges.sol",
       "solcConfig": {
@@ -698,9 +124,9 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1652336720760,
-      "contentHash": "4b39a39bca6daa0f2254de6a2fe928d5",
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-minter.sol": {
+      "lastModificationDate": 1653055352208,
+      "contentHash": "de53699e8867ee690d4400404b20cf79",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -739,8 +165,8 @@
         "voter"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-periphery.sol": {
-      "lastModificationDate": 1650617150545,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-periphery.sol": {
+      "lastModificationDate": 1653051888024,
       "contentHash": "4fa1606e71be50c642bfaac199986ce3",
       "sourceName": "contracts/BaseV1-periphery.sol",
       "solcConfig": {
@@ -779,8 +205,8 @@
         "erc20"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-token.sol": {
-      "lastModificationDate": 1651672228939,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-token.sol": {
+      "lastModificationDate": 1653051888025,
       "contentHash": "73b2bf6a41367c15d57cda3890fb0545",
       "sourceName": "contracts/BaseV1-token.sol",
       "solcConfig": {
@@ -814,8 +240,8 @@
         "BaseV1"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-voter.sol": {
-      "lastModificationDate": 1649662966289,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/BaseV1-voter.sol": {
+      "lastModificationDate": 1653051888025,
       "contentHash": "11497a73c7569c51e9a54bd8a1c14bc6",
       "sourceName": "contracts/BaseV1-voter.sol",
       "solcConfig": {
@@ -859,299 +285,8 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/calculations.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "d8e8a1cea2b484e1445916706b46b817",
-      "sourceName": "contracts/test/calculations.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.6"
-      ],
-      "artifacts": [
-        "Math",
-        "roots"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/StakingRewards.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "f4ecb5b7d97fe54f7600d53566bfd1b6",
-      "sourceName": "contracts/test/StakingRewards.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8"
-      ],
-      "artifacts": [
-        "IERC20",
-        "StakingRewards"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/Token.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "e4ece33c1d55552bd2c52692fabadb59",
-      "sourceName": "contracts/test/Token.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Token"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/ve_dist_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "c8f84d551c4661d281ae62ee3a462678",
-      "sourceName": "contracts/test/ve_dist_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_dist_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/ve_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "8aef363e7aa24afb980077e4ca96e6dd",
-      "sourceName": "contracts/test/ve_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/voter_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "fdd6359920a5be80dd5650f9c4dbe8a3",
-      "sourceName": "contracts/test/voter_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "voter_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/ve_dist.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "79ee098017eb4a5f9f6b35f2e9b51719",
-      "sourceName": "contracts/ve_dist.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Math",
-        "VotingEscrow",
-        "erc20",
-        "ve_dist"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/ve.sol": {
-      "lastModificationDate": 1651219182628,
-      "contentHash": "48628505cf575d4bd350e046b6c9acbb",
-      "sourceName": "contracts/ve.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Base64",
-        "IERC165",
-        "IERC20",
-        "IERC721",
-        "IERC721Metadata",
-        "IERC721Receiver",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1651578502893,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/Fetch.sol": {
+      "lastModificationDate": 1653051888026,
       "contentHash": "25da2cb7a1c449208137784473a120bb",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
@@ -1195,10 +330,10 @@
         "SafeMath"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/WETH9.sol": {
-      "lastModificationDate": 1650616310140,
-      "contentHash": "e12c1617d95732980e3c35379079090a",
-      "sourceName": "contracts/WETH9.sol",
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/calculations.sol": {
+      "lastModificationDate": 1653051888029,
+      "contentHash": "d8e8a1cea2b484e1445916706b46b817",
+      "sourceName": "contracts/test/calculations.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -1224,14 +359,191 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.11"
+        "^0.8.6"
       ],
       "artifacts": [
-        "WETH9"
+        "Math",
+        "roots"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/Treasury.sol": {
-      "lastModificationDate": 1650876317344,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/StakingRewards.sol": {
+      "lastModificationDate": 1653051888028,
+      "contentHash": "f4ecb5b7d97fe54f7600d53566bfd1b6",
+      "sourceName": "contracts/test/StakingRewards.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8"
+      ],
+      "artifacts": [
+        "IERC20",
+        "StakingRewards"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/Token.sol": {
+      "lastModificationDate": 1653051888029,
+      "contentHash": "e4ece33c1d55552bd2c52692fabadb59",
+      "sourceName": "contracts/test/Token.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "Token"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/ve_dist_test.sol": {
+      "lastModificationDate": 1653051888030,
+      "contentHash": "c8f84d551c4661d281ae62ee3a462678",
+      "sourceName": "contracts/test/ve_dist_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "ve_dist_test"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/ve_test.sol": {
+      "lastModificationDate": 1653051888030,
+      "contentHash": "8aef363e7aa24afb980077e4ca96e6dd",
+      "sourceName": "contracts/test/ve_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "ve_test"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/test/voter_test.sol": {
+      "lastModificationDate": 1653051888030,
+      "contentHash": "fdd6359920a5be80dd5650f9c4dbe8a3",
+      "sourceName": "contracts/test/voter_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "voter_test"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/Treasury.sol": {
+      "lastModificationDate": 1653051888026,
       "contentHash": "60aa4c654bc9b67ac472e9b3c3537716",
       "sourceName": "contracts/Treasury.sol",
       "solcConfig": {
@@ -1271,8 +583,124 @@
         "Treasury"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
-      "lastModificationDate": 1652356134611,
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/ve_dist.sol": {
+      "lastModificationDate": 1653051888031,
+      "contentHash": "79ee098017eb4a5f9f6b35f2e9b51719",
+      "sourceName": "contracts/ve_dist.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "Math",
+        "VotingEscrow",
+        "erc20",
+        "ve_dist"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/ve.sol": {
+      "lastModificationDate": 1653051888031,
+      "contentHash": "48628505cf575d4bd350e046b6c9acbb",
+      "sourceName": "contracts/ve.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "Base64",
+        "IERC165",
+        "IERC20",
+        "IERC721",
+        "IERC721Metadata",
+        "IERC721Receiver",
+        "ve"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
+      "lastModificationDate": 1653051888027,
+      "contentHash": "a0358d0be4747ce2e8ff094161225849",
+      "sourceName": "contracts/VotersRewardsFormula.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "IERC20",
+        "SafeMath",
+        "VotersRewardsFormula"
+      ]
+    },
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/VotersRewardsLock.sol": {
+      "lastModificationDate": 1653051888027,
       "contentHash": "443bff4d08cc23533a9ef003d74fde00",
       "sourceName": "contracts/VotersRewardsLock.sol",
       "solcConfig": {
@@ -1311,10 +739,10 @@
         "VotersRewardsLock"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1652430588591,
-      "contentHash": "a0358d0be4747ce2e8ff094161225849",
-      "sourceName": "contracts/VotersRewardsFormula.sol",
+    "/Users/gb/dev/repos/yMeta/yMeta-contracts/contracts/WETH9.sol": {
+      "lastModificationDate": 1653051888028,
+      "contentHash": "e12c1617d95732980e3c35379079090a",
+      "sourceName": "contracts/WETH9.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -1340,12 +768,10 @@
       },
       "imports": [],
       "versionPragmas": [
-        "0.8.11"
+        "^0.8.11"
       ],
       "artifacts": [
-        "IERC20",
-        "SafeMath",
-        "VotersRewardsFormula"
+        "WETH9"
       ]
     }
   }

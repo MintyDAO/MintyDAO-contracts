@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+/* const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("ve", function () {
@@ -93,3 +93,4 @@ describe("ve", function () {
     expect(await ve.supportsInterface(ERC721_FAKE)).to.be.false;
   });
 });
+ */

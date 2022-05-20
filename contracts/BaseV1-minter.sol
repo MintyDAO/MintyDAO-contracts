@@ -40,17 +40,20 @@ interface ve_dist {
 contract BaseV1Minter {
 
     uint internal constant week = 86400 * 7; // allows minting once per week (reset every Thursday 00:00 UTC)
-    uint internal constant emission = 98;
+    uint internal constant emission = 98;   // not actually used anymore
     uint internal constant tail_emission = 2;
     uint internal constant target_base = 100; // 2% per week target emission
     uint internal constant tail_base = 1000; // 0.2% per week target emission
+    uint internal constant SPERWEEK = 604800;
+
     underlying public immutable _token;
     voter public immutable _voter;
     ve public immutable _ve;
     ve_dist public immutable _ve_dist;
-    uint public weekly = 20000000e18;
+    uint public weekly = 10000000e18; // not actually used anymore
     uint public active_period;
     uint internal constant lock = 86400 * 7 * 52 * 4;
+    uint public block0;
 
     address internal initializer;
     address public fetch;
@@ -89,6 +92,7 @@ contract BaseV1Minter {
         USDC_USDT_gauge = _USDC_USDT_gauge;
         USDC_yMeta_gauge = _USDC_yMeta_gauge;
         votersLock = _votersLock;
+        block0 = block.timestamp;
     }
 
     // allow mint for fetch
@@ -110,7 +114,10 @@ contract BaseV1Minter {
 
     // weekly emission takes the max of calculated (aka target) emission versus circulating tail end emission
     function weekly_emission() public view returns (uint) {
-        return Math.max(calculate_emission(), circulating_emission());
+        // uint _week = (block0 - block.timestamp) / SPERWEEK;
+        // return _token.totalSupply()*7*(98**_week)/(100*100**_week); 
+        return _token.totalSupply()*7*(99**5)/(100*100**5); // week 5
+        // return 10000000e18;//Math.max(calculate_emission(), circulating_emission());
     }
 
     // calculates tail end (infinity) emissions as 0.2% of total supply

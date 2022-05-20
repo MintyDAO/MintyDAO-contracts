@@ -7,7 +7,7 @@ function getCreate2Address(
   [tokenA, tokenB],
   bytecode
 ) {
-  const [token0, token1] = tokenA < tokenB ? [tokenA, tokenB] : [tokenB, tokenA]
+  const [token0, token115] = tokenA < tokenB ? [tokenA, tokenB] : [tokenB, tokenA]
   const create2Inputs = [
     '0xff',
     factoryAddress,
@@ -112,7 +112,7 @@ describe("supply", function () {
 
     await minter.initialize(
       fetch.address,
-      ethers.BigNumber.from("20000000000000000000000000"),
+      ethers.BigNumber.from("10000000000000000000000000"),
       gauge_address,
       gauge_address,
       owner.address
@@ -155,7 +155,7 @@ describe("supply", function () {
 
     const week = 604800
 
-    for(let i = 0; i < 7; i++){
+    for(let i = 0; i < 10; i++){
       console.log(`Supply before ${i}`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
       // increase time
       await network.provider.send("evm_increaseTime", [week])
