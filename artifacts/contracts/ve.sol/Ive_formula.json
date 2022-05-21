@@ -1,0 +1,50 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Ive_formula",
+  "sourceName": "contracts/ve.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "supply",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "constructTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxX",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxY",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMaxTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

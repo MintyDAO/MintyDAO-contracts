@@ -365,8 +365,8 @@
       ]
     },
     "E:\\BlockChain\\ClientTask\\yMeta\\yMeta-contracts\\contracts\\ve.sol": {
-      "lastModificationDate": 1652276171438,
-      "contentHash": "3e779ee795c75a807345d2f48a33178e",
+      "lastModificationDate": 1653110548324,
+      "contentHash": "89e9b58bd827187b947455031aa838a8",
       "sourceName": "contracts/ve.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -392,9 +392,7 @@
         }
       },
       "imports": [
-        "./interfaces/IPancakeRouter02.sol",
-        "./interfaces/IPancakeFactory.sol",
-        "./interfaces/IPancakePair.sol"
+        "./ve_formula.sol"
       ],
       "versionPragmas": [
         "0.8.11"
@@ -406,6 +404,7 @@
         "IERC721",
         "IERC721Metadata",
         "IERC721Receiver",
+        "Ive_formula",
         "ve"
       ]
     },
@@ -881,6 +880,45 @@
       ],
       "artifacts": [
         "WETH9"
+      ]
+    },
+    "E:\\BlockChain\\ClientTask\\yMeta\\yMeta-contracts\\contracts\\ve_formula.sol": {
+      "lastModificationDate": 1653110465346,
+      "contentHash": "faaf9925b97b8194e7274ae414bcde9a",
+      "sourceName": "contracts/ve_formula.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IPancakeRouter01.sol",
+        "./interfaces/IPancakeFactory.sol",
+        "./interfaces/IPancakePair.sol"
+      ],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "ve_formula"
       ]
     }
   }

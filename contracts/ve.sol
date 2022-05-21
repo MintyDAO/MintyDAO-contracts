@@ -4,10 +4,7 @@
 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.11;
-
-import "./interfaces/IPancakeRouter02.sol";
-import "./interfaces/IPancakeFactory.sol";
-import "./interfaces/IPancakePair.sol";
+import "./ve_formula.sol";
 
 /**
 @title Voting Escrow
@@ -370,6 +367,16 @@ struct LockedBalance {
     uint256 lockedtime;
 }
 
+interface Ive_formula {
+    function getMaxTime(
+        address token,
+        uint256 supply,
+        uint256 constructTime,
+        uint256 maxX,
+        uint256 maxY
+    ) external view returns (uint256);
+}
+
 contract ve is IERC721, IERC721Metadata {
     enum DepositType {
         DEPOSIT_FOR_TYPE,
@@ -405,8 +412,8 @@ contract ve is IERC721, IERC721Metadata {
     uint256 public constructTime;
     uint256 public maxX = 14 days;
     uint256 public maxY = 200 * 1000000 * 10 * 18;
-    address public routerAddress = 0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52;
-    address public usdcAddress = 0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83;
+    address public formula;
+
     mapping(uint256 => LockedBalance) public locked;
 
     mapping(uint256 => uint256) public ownership_change;
@@ -477,7 +484,7 @@ contract ve is IERC721, IERC721Metadata {
 
     /// @notice Contract constructor
     /// @param token_addr `ERC20CRV` token address
-    constructor(address token_addr) {
+    constructor(address token_addr, address _formula) {
         token = token_addr;
         voter = msg.sender;
         point_history[0].blk = block.number;
@@ -487,6 +494,7 @@ contract ve is IERC721, IERC721Metadata {
         supportedInterfaces[ERC721_INTERFACE_ID] = true;
         supportedInterfaces[ERC721_METADATA_INTERFACE_ID] = true;
 
+        formula = _formula;
         constructTime = block.timestamp;
         // mint-ish
         emit Transfer(address(0), address(this), tokenId);
@@ -496,6 +504,7 @@ contract ve is IERC721, IERC721Metadata {
 
     /// @dev Interface identification is specified in ERC-165.
     /// @param _interfaceID Id of the interface
+
     function supportsInterface(bytes4 _interfaceID)
         external
         view
@@ -514,65 +523,6 @@ contract ve is IERC721, IERC721Metadata {
     {
         uint256 uepoch = user_point_epoch[_tokenId];
         return user_point_history[_tokenId][uepoch].slope;
-    }
-
-    function getMaxTime() public view returns (uint256) {
-        address factory = IPancakeRouter02(routerAddress).factory();
-        address pair = IPancakeFactory(factory).getPair(token, usdcAddress);
-        (
-            uint256 reserveIn,
-            uint256 reserveOut,
-            uint256 timestamp
-        ) = IPancakePair(pair).getReserves();
-        uint256 supplyprice;
-        if (reserveIn != 0 && reserveOut != 0 && supply != 0)
-            supplyprice =
-                IPancakeRouter02(routerAddress).getAmountOut(
-                    supply,
-                    reserveIn,
-                    reserveOut
-                ) /
-                (10**6);
-
-        if (block.timestamp - constructTime >= maxX || supplyprice >= maxY)
-            return 16 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 14 * 86400 ||
-            supplyprice >= 100000 * 1000 * 10**18
-        ) return 14 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 14 * 86400 ||
-            supplyprice >= 30000 * 1000 * 10**18
-        ) return 12 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 14 * 86400 ||
-            supplyprice >= 10000 * 1000 * 10**18
-        ) return 10 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 14 * 86400 ||
-            supplyprice >= 4000 * 1000 * 10**18
-        ) return 8 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 14 * 86400 ||
-            supplyprice >= 2000 * 1000 * 10**18
-        ) return 6 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 7 * 86400 ||
-            supplyprice >= 1000 * 1000 * 10**18
-        ) return 4 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 4 * 86400 ||
-            supplyprice >= 400 * 1000 * 10**18
-        ) return 3 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 2 * 86400 ||
-            supplyprice >= 200 * 1000 * 10**18
-        ) return 2 * 7 * 86400;
-        if (
-            block.timestamp - constructTime >= 1 * 86400 ||
-            supplyprice >= 100 * 1000 * 10**18
-        ) return 1 * 7 * 86400;
-        return 86400;
     }
 
     /// @notice Get the timestamp for checkpoint `_idx` for `_tokenId`
@@ -1220,7 +1170,15 @@ contract ve is IERC721, IERC721Metadata {
             "Can only lock until time in the future"
         );
         require(
-            unlock_time <= block.timestamp + getMaxTime(),
+            unlock_time <=
+                block.timestamp +
+                    ve_formula(formula).getMaxTime(
+                        token,
+                        supply,
+                        constructTime,
+                        maxX,
+                        maxY
+                    ),
             "Voting lock can be 16 weeks max"
         );
 
@@ -1303,7 +1261,15 @@ contract ve is IERC721, IERC721Metadata {
         require(_locked.amount > 0, "Nothing is locked");
         require(unlock_time > _locked.end, "Can only increase lock duration");
         require(
-            unlock_time <= block.timestamp + getMaxTime(),
+            unlock_time <=
+                block.timestamp +
+                    ve_formula(formula).getMaxTime(
+                        token,
+                        supply,
+                        constructTime,
+                        maxX,
+                        maxY
+                    ),
             "Voting lock can be 4 years max"
         );
 
@@ -1410,8 +1376,32 @@ contract ve is IERC721, IERC721Metadata {
         // maxBenefits * (myLockTime / MAXTIME)
         LockedBalance memory _locked = locked[_tokenId];
         uint256 time = _t - _locked.lockedtime;
-        if (time > getMaxTime()) time = getMaxTime();
-        return (uint256(int256(_locked.amount)) * time) / getMaxTime();
+        if (
+            time >
+            ve_formula(formula).getMaxTime(
+                token,
+                supply,
+                constructTime,
+                maxX,
+                maxY
+            )
+        )
+            time = ve_formula(formula).getMaxTime(
+                token,
+                supply,
+                constructTime,
+                maxX,
+                maxY
+            );
+        return
+            (uint256(int256(_locked.amount)) * time) /
+            ve_formula(formula).getMaxTime(
+                token,
+                supply,
+                constructTime,
+                maxX,
+                maxY
+            );
     }
 
     /// @dev Returns current token URI metadata
@@ -1689,5 +1679,9 @@ contract ve is IERC721, IERC721Metadata {
     function setMaxY(uint256 _y) external {
         require(msg.sender == voter, "Not Voter");
         maxY = _y;
+    }
+
+    function updateFormula(address _formula) external {
+        formula = _formula;
     }
 }
