@@ -89,7 +89,6 @@ contract BaseV1Minter {
         USDC_USDT_gauge = _USDC_USDT_gauge;
         USDC_yMeta_gauge = _USDC_yMeta_gauge;
         votersLock = _votersLock;
-        block0 = block.timestamp;
     }
 
     // allow mint for fetch
