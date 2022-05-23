@@ -69,6 +69,7 @@ contract yMetaPool is Ownable, ReentrancyGuard {
     uint256 public buyBackRate = 2500; // 25%
     uint256 public walletARate = 7500; // 75%
 
+    address public factory;
     address public walletA;
     address public buyBackAddress = 0x000000000000000000000000000000000000dEaD;
     address public buyBackWallet = 0x408c4aDa67aE1244dfeC7D609dea3c232843189A;
@@ -150,11 +151,13 @@ contract yMetaPool is Ownable, ReentrancyGuard {
         uint256 _rewardPerBlock,
         uint256 _depositFee,
         uint256 _withdrawFee,
+        uint256 _duration,
         address _uniRouter,
+        address _owner,
         address[] memory _earnedToStakedPath,
         address[] memory _reflectionToStakedPath,
         bool _hasDividend
-    ) external onlyOwner {
+    ) external {
         require(!isInitialized, "Already initialized");
 
         // Make this contract initialized
@@ -196,7 +199,17 @@ contract yMetaPool is Ownable, ReentrancyGuard {
         earnedToStakedPath = _earnedToStakedPath;
         reflectionToStakedPath = _reflectionToStakedPath;
 
+        require(_duration >= 30, "lower limit reached");
+
+        duration = _duration;
+        if (startBlock > 0) {
+            bonusEndBlock = startBlock.add(duration * 28800);
+            require(bonusEndBlock > block.number, "invalid duration");
+        }
+        emit DurationUpdated(_duration);
+
         _resetAllowances();
+        _transferOwnership(_owner);
     }
 
     /*

@@ -11,18 +11,18 @@ contract PoolFactory is Ownable, ReentrancyGuard {
 
     uint256 public poolCount;
     mapping(uint256 => address) public pools;
-    address public earnedToken;
 
-    function setEarnedToken(address _earnedToken) external onlyOwner {
-        earnedToken = _earnedToken;
-    }
+    event Create(address indexed pool);
 
     function create(
         address implementation,
         address stakingToken,
+        address earnedToken,
+        address dividendToken,
         uint256 _rewardPerBlock,
-        uint256 _depositFee,
-        uint256 _withdrawFee,
+        uint256[2] memory _fees,
+        uint256 _amount,
+        uint256 _duration,
         address _uniRouter,
         address[] memory _earnedToStakedPath,
         address[] memory _reflectionToStakedPath,
@@ -32,16 +32,24 @@ contract PoolFactory is Ownable, ReentrancyGuard {
         IPool(pool).initialize(
             IERC20(stakingToken),
             IERC20(earnedToken),
-            earnedToken,
+            dividendToken,
             _rewardPerBlock,
-            _depositFee,
-            _withdrawFee,
+            _fees[0],
+            _fees[1],
+            _duration,
             _uniRouter,
+            msg.sender,
             _earnedToStakedPath,
             _reflectionToStakedPath,
             _hasDividend
         );
+        uint256 beforeAmt = IERC20(earnedToken).balanceOf(address(this));
+        IERC20(earnedToken).transferFrom(msg.sender, address(this), _amount);
+        uint256 afterAmt = IERC20(earnedToken).balanceOf(address(this));
+        IERC20(earnedToken).approve(pool, afterAmt - beforeAmt);
+        IPool(pool).depositRewards(afterAmt - beforeAmt);
         pools[poolCount] = pool;
         poolCount++;
+        emit Create(pool);
     }
 }
