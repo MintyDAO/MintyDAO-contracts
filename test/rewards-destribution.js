@@ -146,7 +146,8 @@ describe("rewards-destribution", function () {
       ethers.BigNumber.from("20000000000000000000000000"),
       gauge_address,
       gauge_address,
-      rewardsLocker.address
+      rewardsLocker.address,
+      owner.address
     );
   });
 

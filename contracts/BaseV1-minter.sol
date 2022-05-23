@@ -58,6 +58,7 @@ contract BaseV1Minter {
     address public USDC_USDT_gauge;
     address public USDC_yMeta_gauge;
     address public votersLock;
+    address public teamWallet;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
@@ -79,7 +80,8 @@ contract BaseV1Minter {
       uint max,
       address _USDC_USDT_gauge,
       address _USDC_yMeta_gauge,
-      address _votersLock
+      address _votersLock,
+      address _teamWallet
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
@@ -89,6 +91,7 @@ contract BaseV1Minter {
         USDC_USDT_gauge = _USDC_USDT_gauge;
         USDC_yMeta_gauge = _USDC_yMeta_gauge;
         votersLock = _votersLock;
+        teamWallet = _teamWallet;
     }
 
     // allow mint for fetch
@@ -130,9 +133,9 @@ contract BaseV1Minter {
             _period = block.timestamp / week * week;
             active_period = _period;
             weekly = weekly_emission();
-
-            uint _growth = calculate_growth(weekly);
-            uint _required = _growth + weekly;
+            uint teamRewards = (weekly / 100) * 20;
+            uint _growth = calculate_growth(weekly + teamRewards);
+            uint _required = _growth + weekly + teamRewards;
             uint _balanceOf = _token.balanceOf(address(this));
             if (_balanceOf < _required) {
                 _token.mint(address(this), _required-_balanceOf);
@@ -147,18 +150,21 @@ contract BaseV1Minter {
             uint USDC_yMeta_amount = (weekly / 100) * 40;
             uint votersLockAmount = (weekly / 100) * 50;
 
-            // 0.1% to USDC_USDT pool
+            // 10% to USDC_USDT pool
             _token.approve(USDC_USDT_gauge, USDC_USDT_amount);
             IGauges(USDC_USDT_gauge).notifyRewardAmount(address(_token), USDC_USDT_amount);
 
-            // 0.4% to USDC_yMeta pool
+            // 40% to USDC_yMeta pool
             _token.approve(USDC_yMeta_gauge, USDC_yMeta_amount);
             IGauges(USDC_yMeta_gauge).notifyRewardAmount(address(_token), USDC_yMeta_amount);
 
-            // 0.5% to voters lock destributor
+            // 50% to voters lock destributor
             _token.transfer(votersLock, votersLockAmount);
 
-            emit Mint(msg.sender, weekly, circulating_supply(), circulating_emission());
+            // 20% bonus to team wallet
+            _token.transfer(teamWallet, teamRewards);
+
+            emit Mint(msg.sender, weekly + teamRewards, circulating_supply(), circulating_emission());
         }
         return _period;
     }

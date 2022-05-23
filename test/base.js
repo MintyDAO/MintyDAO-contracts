@@ -648,6 +648,7 @@ describe("core", function () {
       gauge_address,
       gauge_address,
       owner.address,
+      owner.address
     );
     await minter.update_period();
     await gauge_factory.updateGauge(gauge.address);

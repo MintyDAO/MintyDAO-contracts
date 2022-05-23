@@ -91,6 +91,7 @@ describe("minter", function () {
       ethers.BigNumber.from("20000000000000000000000000"),
       gauge_address,
       gauge_address,
+      owner.address,
       owner.address
     )
     expect(await ve.ownerOf(2)).to.equal(owner.address);

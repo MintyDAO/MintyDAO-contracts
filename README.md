@@ -21,6 +21,7 @@
 0.5% Locker for voters pool
 
 5) Add voter pool locker + formula
+6) Add 20% mint to team wallet from weekly 
 ```
 
 

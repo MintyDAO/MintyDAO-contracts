@@ -142,8 +142,9 @@ describe("fetch", function () {
       fetch.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       gauge_address, // Shouold be USDT/USDC gauge
-      gauge_address, // Shouold be USDT/yMeta gauge 
+      gauge_address, // Shouold be USDT/yMeta gauge
       rewardsLocker.address,
+      owner.address
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
