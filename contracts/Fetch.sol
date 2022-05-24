@@ -661,7 +661,7 @@ contract Fetch is Ownable {
 
     // lock tokens to VE
     IERC20(token).approve(address(VE), received);
-    VE.create_lock_for(received, 365 days * 4, receiver);
+    VE.create_lock_for(received, 16 weeks, receiver);
   }
 
 
