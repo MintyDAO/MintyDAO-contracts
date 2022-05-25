@@ -26,6 +26,7 @@ describe("fetch", function () {
   let owner;
   let minter;
   let ve_dist;
+  let fetch_formula;
   let fetch;
   let wftm;
   let ethPair;
@@ -106,6 +107,10 @@ describe("fetch", function () {
     treasury = await Treasury.deploy()
     await treasury.deployed()
 
+    const FetchFormula = await ethers.getContractFactory("FetchFormulaMock");
+    fetch_formula = await FetchFormula.deploy();
+    await fetch_formula.deployed();
+
     const Fetch = await ethers.getContractFactory("Fetch");
 
     fetch = await Fetch.deploy(
@@ -114,7 +119,8 @@ describe("fetch", function () {
       owner.address,
       minter.address,
       ve.address,
-      treasury.address
+      treasury.address,
+      fetch_formula.address
     );
 
     await fetch.deployed();
@@ -140,7 +146,7 @@ describe("fetch", function () {
 
     await minter.initialize(
       fetch.address,
-      ethers.BigNumber.from("20000000000000000000000000"),
+      ethers.BigNumber.from("10000000000000000000"),
       gauge_address, // Shouold be USDT/USDC gauge
       gauge_address, // Shouold be USDT/yMeta gauge
       rewardsLocker.address,
@@ -149,7 +155,7 @@ describe("fetch", function () {
 
     expect(await fetch.dexRouter()).to.equal(router.address);
 
-    const tokenLD = await ve_underlying.balanceOf(owner.address)
+    const tokenLD = "1000000000000000000"
     const ethLD = "1000000000000000000"
 
     // await network.provider.send("evm_mine")
@@ -197,6 +203,22 @@ describe("fetch", function () {
     console.log("Balance of NFT after fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
     console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
     console.log("Treasury LD after fetch", Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address)))))
+  });
+
+
+  it("Fetch can deposit with token", async function () {
+    const userInput = "100000000000000000"
+    console.log("Sale rate for user input ", Number(Web3Utils.fromWei(String(await fetch.getTokenPrice(userInput)))))
+    console.log("Before ___________________________________________________________________")
+    console.log("Balance of NFT before fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
+    console.log("User NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
+    // await network.provider.send("evm_mine")
+    await ve_underlying.approve(fetch.address, userInput);
+    await fetch.depositToken(userInput)
+    // await network.provider.send("evm_mine")
+    console.log("After ___________________________________________________________________")
+    console.log("Balance of NFT after fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
+    console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
   });
 
   // SHOULD revert with (reverted with reason string 'Empty rewarder')

@@ -2,6 +2,10 @@
 
 pragma solidity ^0.8.11;
 
+interface IFetchFormula {
+  function bonusPercent() external view returns(uint);
+}
+
 interface IWFTM {
   function deposit() external payable;
 }
@@ -603,8 +607,6 @@ contract Fetch is Ownable {
 
   uint256 public percentToSale = 50;
 
-  uint256 public bonusPercent = 100;
-
   address public beneficiary;
 
   IMinter public minter;
@@ -614,6 +616,8 @@ contract Fetch is Ownable {
   address public rewarder = address(0);
 
   bool public isRewardsMintLocked = false;
+
+  IFetchFormula public formula;
 
   /**
   * @dev constructor
@@ -627,7 +631,8 @@ contract Fetch is Ownable {
     address _beneficiary,
     address _minter,
     address _VE,
-    address _treasury
+    address _treasury,
+    address _formula
     )
   {
     dexRouter = _dexRouter;
@@ -637,6 +642,7 @@ contract Fetch is Ownable {
     minter = IMinter(_minter);
     VE = IVE(_VE);
     treasury = _treasury;
+    formula = IFetchFormula(_formula);
   }
 
   // convert for msg.sender
@@ -656,13 +662,47 @@ contract Fetch is Ownable {
     require(msg.value > 0, "zerro eth");
     // swap ETH to token
     swapETHInput(msg.value);
+
+    uint bonusPercent = formula.bonusPercent();
+    // mint bonus
+    if(bonusPercent > 0){
+      // get current price by amount
+      uint256 amount = getTokenPrice(msg.value);
+      // compute bonus 25% from current price
+      uint256 bonus = amount.div(100).mul(bonusPercent);
+      minter.mintForFetch(bonus);
+    }
+
+    // check received
     uint received = IERC20(token).balanceOf(address(this));
     require(received > 0, "not swapped");
 
     // lock tokens to VE
     IERC20(token).approve(address(VE), received);
     VE.create_lock_for(received, 16 weeks, receiver);
-  }
+ }
+
+
+ /**
+ * @dev allow deposit token to ve with bonus
+ */
+ function depositToken(uint _amount) public {
+   // transfer token
+   IERC20(token).transferFrom(msg.sender, address(this), _amount);
+   // check bonus
+   uint bonusPercent = formula.bonusPercent();
+   uint bonus = 0;
+   // mint bonus
+   if(bonusPercent > 0){
+     bonus =_amount.div(100).mul(bonusPercent);
+     minter.mintForFetch(bonus);
+   }
+   // lock ve
+   uint total = _amount.add(bonus);
+   // lock tokens to VE
+   IERC20(token).approve(address(VE), total);
+   VE.create_lock_for(total, 16 weeks, msg.sender);
+ }
 
 
  /**
@@ -711,16 +751,15 @@ contract Fetch is Ownable {
 
  // helper for sale
  function sale(uint _ethAmount) internal {
-   // get price
+   // get sale price
    uint256 amount = getTokenPrice(_ethAmount);
-   // compute bonus 25% from current price
-   uint256 bonus = amount.div(100).mul(bonusPercent);
    // mint amount from price
-   minter.mintForFetch(amount.add(bonus));
+   minter.mintForFetch(amount);
+
    uint256 half = _ethAmount.div(2);
-   // send eth beneficiary
+   // send half of eth to beneficiary
    payable(beneficiary).transfer(half);
-   // send to LD
+   // send half of eth to LD
    addLiquidity(half);
  }
 
@@ -787,17 +826,6 @@ contract Fetch is Ownable {
    percentToSale = _percentToSale;
  }
 
- // Update bonus for user
- function updateBonusPercent(
-   uint _bonusPercent
- )
-  external
-  onlyOwner
- {
-   require(bonusPercent > 0, "Zerro bonus");
-   require(bonusPercent <= 100, "Overflow bonus");
-   bonusPercent = _bonusPercent;
- }
 
  /**
  * @dev allow owner withdraw eth for case if some eth stuck or was sent accidentally

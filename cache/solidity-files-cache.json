@@ -1151,8 +1151,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1653374260619,
-      "contentHash": "3bfda195db34e1ed585a47138b54d5ad",
+      "lastModificationDate": 1653456052742,
+      "contentHash": "a6cd696429984702cfee40367c606320",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1186,6 +1186,7 @@
         "Context",
         "Fetch",
         "IERC20",
+        "IFetchFormula",
         "IMinter",
         "ISolidly",
         "IVE",
@@ -1346,6 +1347,41 @@
         "IERC20",
         "SafeMath",
         "VotersRewardsFormula"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/FetchFormulaMock.sol": {
+      "lastModificationDate": 1653454661982,
+      "contentHash": "860408f8b625bb3cefa304e0130de743",
+      "sourceName": "contracts/FetchFormulaMock.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "FetchFormulaMock"
       ]
     }
   }
