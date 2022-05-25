@@ -34,7 +34,7 @@ describe("fetch", function () {
   let treasury;
   let gauge_address;
 
-  it("deploy base", async function () {
+  it("deploy base fetch", async function () {
     [owner] = await ethers.getSigners(1);
     token = await ethers.getContractFactory("Token");
     basev1 = await ethers.getContractFactory("BaseV1");
@@ -220,20 +220,5 @@ describe("fetch", function () {
     console.log("Balance of NFT after fetch", Number(Web3Utils.fromWei(String(await ve.balanceOfNFT(2)))))
     console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
   });
-
-  // SHOULD revert with (reverted with reason string 'Empty rewarder')
-  // it("Fetch can not mint without rewarder", async function () {
-  //   await fetch.mint("1000000000000000000")
-  // });
-
-  it("Fetch can initialize rewarder and mint rewards", async function () {
-    await fetch.initializeRewarder(owner.address)
-    await fetch.mint("1000000000000000000")
-  });
-
-  // SHOULD revert with (reverted with reason string 'Initialized')
-  // it("Fetch can NOT initialize rewarder TWICE", async function () {
-  //   await fetch.initializeRewarder(owner.address)
-  // });
 
 });

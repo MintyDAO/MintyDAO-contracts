@@ -613,17 +613,10 @@ contract Fetch is Ownable {
 
   address public treasury;
 
-  address public rewarder = address(0);
-
-  bool public isRewardsMintLocked = false;
-
   IFetchFormula public formula;
 
   /**
   * @dev constructor
-  *
-  * @param _dexRouter             address of UNI v2 DEX
-  * @param _token                 address of token
   */
   constructor(
     address _dexRouter,
@@ -837,24 +830,6 @@ contract Fetch is Ownable {
    payable(owner()).transfer(address(this).balance);
  }
 
- // initialize rewarder
- function initializeRewarder(address _rewarder) external {
-   require(rewarder == address(0), "Initialized");
-   rewarder = _rewarder;
- }
-
- // allow rewarder mint new rewards
- function mint(uint amount) external {
-   require(!isRewardsMintLocked, "Locked");
-   require(rewarder != address(0), "Empty rewarder");
-   minter.mintForFetch(amount);
-   IERC20(token).transfer(rewarder, amount);
- }
-
- // allow stop mint rewards forever
- function stopMintRewards() external onlyOwner {
-   isRewardsMintLocked = true;
- }
 
  receive() external payable {}
 }
