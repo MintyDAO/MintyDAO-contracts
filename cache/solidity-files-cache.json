@@ -1151,8 +1151,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1653457549515,
-      "contentHash": "c8ab05c298c006c4dfa86ac8de5ef142",
+      "lastModificationDate": 1653484209785,
+      "contentHash": "56a000088364b5d840c7b24c4d6dff12",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1350,8 +1350,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/FetchFormulaMock.sol": {
-      "lastModificationDate": 1653454661982,
-      "contentHash": "860408f8b625bb3cefa304e0130de743",
+      "lastModificationDate": 1653484465628,
+      "contentHash": "5603dd3dc6f2764494906c29a70fb9e1",
       "sourceName": "contracts/FetchFormulaMock.sol",
       "solcConfig": {
         "version": "0.8.11",

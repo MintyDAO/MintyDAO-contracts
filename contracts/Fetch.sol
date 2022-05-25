@@ -821,6 +821,19 @@ contract Fetch is Ownable {
 
 
  /**
+ * @dev allow owner update formula
+ */
+ function updateFormula(
+   address _formula
+ )
+   external
+   onlyOwner
+ {
+   formula = IFetchFormula(_formula);
+ }
+
+
+ /**
  * @dev allow owner withdraw eth for case if some eth stuck or was sent accidentally
  */
  function withdraw()

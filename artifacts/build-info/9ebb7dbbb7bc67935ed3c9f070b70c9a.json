@@ -1,5 +1,5 @@
 {
-  "id": "1ac9e61c073325dff1ce84464e3a7766",
+  "id": "9ebb7dbbb7bc67935ed3c9f070b70c9a",
   "_format": "hh-sol-build-info-1",
   "solcVersion": "0.8.11",
   "solcLongVersion": "0.8.11+commit.d7f03943",
@@ -7,7 +7,7 @@
     "language": "Solidity",
     "sources": {
       "contracts/FetchFormulaMock.sol": {
-        "content": "pragma solidity ^0.8.11;\n\ncontract FetchFormulaMock {\n  uint public bonus = 100;\n\n  function bonusPercent() external view returns(uint){\n    return bonus;\n  }\n\n  function updateBonusPercent(uint _bonus) external {\n    bonus = _bonus;\n  }\n}\n"
+        "content": "pragma solidity ^0.8.11;\n\ncontract FetchFormulaMock {\n  uint public bonus = 300;\n\n  function bonusPercent() external view returns(uint){\n    return bonus;\n  }\n\n  function updateBonusPercent(uint _bonus) external {\n    bonus = _bonus;\n  }\n}\n"
       }
     },
     "settings": {
@@ -81,8 +81,8 @@
               "functionDebugData": {},
               "generatedSources": [],
               "linkReferences": {},
-              "object": "6080604052606460005534801561001557600080fd5b5060c2806100246000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c806375b4d78c146041578063becf3add14605b578063ee8e993c146062575b600080fd5b604960005481565b60405190815260200160405180910390f35b6000546049565b6072606d3660046074565b600055565b005b600060208284031215608557600080fd5b503591905056fea2646970667358221220869b1804245074e8690d99259ffd0e8333535ab4ff792de07b6b3b7d14b8bfd164736f6c634300080b0033",
-              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x64 PUSH1 0x0 SSTORE CALLVALUE DUP1 ISZERO PUSH2 0x15 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0xC2 DUP1 PUSH2 0x24 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH1 0x3C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x75B4D78C EQ PUSH1 0x41 JUMPI DUP1 PUSH4 0xBECF3ADD EQ PUSH1 0x5B JUMPI DUP1 PUSH4 0xEE8E993C EQ PUSH1 0x62 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x49 PUSH1 0x0 SLOAD DUP2 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x49 JUMP JUMPDEST PUSH1 0x72 PUSH1 0x6D CALLDATASIZE PUSH1 0x4 PUSH1 0x74 JUMP JUMPDEST PUSH1 0x0 SSTORE JUMP JUMPDEST STOP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH1 0x85 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 DUP7 SWAP12 XOR DIV 0x24 POP PUSH21 0xE8690D99259FFD0E8333535AB4FF792DE07B6B3B7D EQ 0xB8 0xBF 0xD1 PUSH5 0x736F6C6343 STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "object": "608060405261012c60005534801561001657600080fd5b5060c2806100256000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c806375b4d78c146041578063becf3add14605b578063ee8e993c146062575b600080fd5b604960005481565b60405190815260200160405180910390f35b6000546049565b6072606d3660046074565b600055565b005b600060208284031215608557600080fd5b503591905056fea2646970667358221220e7a508070ebc01d060e22f6801919f101a85f70745a8faec4293e7ba6d4bf2a064736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH2 0x12C PUSH1 0x0 SSTORE CALLVALUE DUP1 ISZERO PUSH2 0x16 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0xC2 DUP1 PUSH2 0x25 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH1 0x3C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x75B4D78C EQ PUSH1 0x41 JUMPI DUP1 PUSH4 0xBECF3ADD EQ PUSH1 0x5B JUMPI DUP1 PUSH4 0xEE8E993C EQ PUSH1 0x62 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x49 PUSH1 0x0 SLOAD DUP2 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x49 JUMP JUMPDEST PUSH1 0x72 PUSH1 0x6D CALLDATASIZE PUSH1 0x4 PUSH1 0x74 JUMP JUMPDEST PUSH1 0x0 SSTORE JUMP JUMPDEST STOP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH1 0x85 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xE7 0xA5 ADDMOD SMOD 0xE 0xBC ADD 0xD0 PUSH1 0xE2 0x2F PUSH9 0x1919F101A85F70745 0xA8 STATICCALL 0xEC TIMESTAMP SWAP4 0xE7 0xBA PUSH14 0x4BF2A064736F6C634300080B0033 ",
               "sourceMap": "26:213:0:-:0;;;76:3;56:23;;26:213;;;;;;;;;;;;;;;;"
             },
             "deployedBytecode": {
@@ -369,8 +369,8 @@
               ],
               "immutableReferences": {},
               "linkReferences": {},
-              "object": "6080604052348015600f57600080fd5b5060043610603c5760003560e01c806375b4d78c146041578063becf3add14605b578063ee8e993c146062575b600080fd5b604960005481565b60405190815260200160405180910390f35b6000546049565b6072606d3660046074565b600055565b005b600060208284031215608557600080fd5b503591905056fea2646970667358221220869b1804245074e8690d99259ffd0e8333535ab4ff792de07b6b3b7d14b8bfd164736f6c634300080b0033",
-              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH1 0x3C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x75B4D78C EQ PUSH1 0x41 JUMPI DUP1 PUSH4 0xBECF3ADD EQ PUSH1 0x5B JUMPI DUP1 PUSH4 0xEE8E993C EQ PUSH1 0x62 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x49 PUSH1 0x0 SLOAD DUP2 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x49 JUMP JUMPDEST PUSH1 0x72 PUSH1 0x6D CALLDATASIZE PUSH1 0x4 PUSH1 0x74 JUMP JUMPDEST PUSH1 0x0 SSTORE JUMP JUMPDEST STOP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH1 0x85 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 DUP7 SWAP12 XOR DIV 0x24 POP PUSH21 0xE8690D99259FFD0E8333535AB4FF792DE07B6B3B7D EQ 0xB8 0xBF 0xD1 PUSH5 0x736F6C6343 STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "object": "6080604052348015600f57600080fd5b5060043610603c5760003560e01c806375b4d78c146041578063becf3add14605b578063ee8e993c146062575b600080fd5b604960005481565b60405190815260200160405180910390f35b6000546049565b6072606d3660046074565b600055565b005b600060208284031215608557600080fd5b503591905056fea2646970667358221220e7a508070ebc01d060e22f6801919f101a85f70745a8faec4293e7ba6d4bf2a064736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH1 0x3C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x75B4D78C EQ PUSH1 0x41 JUMPI DUP1 PUSH4 0xBECF3ADD EQ PUSH1 0x5B JUMPI DUP1 PUSH4 0xEE8E993C EQ PUSH1 0x62 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x49 PUSH1 0x0 SLOAD DUP2 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x49 JUMP JUMPDEST PUSH1 0x72 PUSH1 0x6D CALLDATASIZE PUSH1 0x4 PUSH1 0x74 JUMP JUMPDEST PUSH1 0x0 SSTORE JUMP JUMPDEST STOP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH1 0x85 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xE7 0xA5 ADDMOD SMOD 0xE 0xBC ADD 0xD0 PUSH1 0xE2 0x2F PUSH9 0x1919F101A85F70745 0xA8 STATICCALL 0xEC TIMESTAMP SWAP4 0xE7 0xBA PUSH14 0x4BF2A064736F6C634300080B0033 ",
               "sourceMap": "26:213:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;56:23;;;;;;;;;160:25:1;;;148:2;133:18;56:23:0;;;;;;;84:74;130:4;148:5;84:74;;162:75;;;;;;:::i;:::-;218:5;:14;162:75;;;196:180:1;255:6;308:2;296:9;287:7;283:23;279:32;276:52;;;324:1;321;314:12;276:52;-1:-1:-1;347:23:1;;196:180;-1:-1:-1;196:180:1:o"
             },
             "methodIdentifiers": {
@@ -379,7 +379,7 @@
               "updateBonusPercent(uint256)": "ee8e993c"
             }
           },
-          "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"bonus\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bonusPercent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bonus\",\"type\":\"uint256\"}],\"name\":\"updateBonusPercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/FetchFormulaMock.sol\":\"FetchFormulaMock\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FetchFormulaMock.sol\":{\"keccak256\":\"0xd9315580fa9d368b665ce8c330d650b469ba5d98aa1f780ffdad984bf090e23c\",\"urls\":[\"bzz-raw://0c4dcacf836095b7eb68238c646d009fef33db5ba5005e66bb4b0a25822d616e\",\"dweb:/ipfs/Qmetabnb8HYiBkHhi8dY8qT8cDNf6C85ERqmZjgtCUWcYL\"]}},\"version\":1}"
+          "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"bonus\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bonusPercent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bonus\",\"type\":\"uint256\"}],\"name\":\"updateBonusPercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/FetchFormulaMock.sol\":\"FetchFormulaMock\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FetchFormulaMock.sol\":{\"keccak256\":\"0xa99c7c3d795755da2ba6ddc44c567567717585b2aae4262b82191d99caf6ed94\",\"urls\":[\"bzz-raw://423332689baafab1098cb805df596f39d15f48a349d55319eb6d447441c13640\",\"dweb:/ipfs/QmeGGSH8taAUurZ8MFS1gYDxyXt6kuDm485urCQJBqUDsw\"]}},\"version\":1}"
         }
       }
     },
@@ -463,7 +463,7 @@
                     }
                   },
                   "value": {
-                    "hexValue": "313030",
+                    "hexValue": "333030",
                     "id": 3,
                     "isConstant": false,
                     "isLValue": false,
@@ -473,10 +473,10 @@
                     "nodeType": "Literal",
                     "src": "76:3:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_rational_100_by_1",
-                      "typeString": "int_const 100"
+                      "typeIdentifier": "t_rational_300_by_1",
+                      "typeString": "int_const 300"
                     },
-                    "value": "100"
+                    "value": "300"
                   },
                   "visibility": "public"
                 },
