@@ -55,8 +55,7 @@ contract BaseV1Minter {
     address internal initializer;
     address public fetch;
 
-    address public USDC_USDT_gauge;
-    address public USDC_yMeta_gauge;
+    address public gaugeDestributor;
     address public votersLock;
     address public teamWallet;
 
@@ -78,8 +77,7 @@ contract BaseV1Minter {
     function initialize(
       address _fetch,
       uint max,
-      address _USDC_USDT_gauge,
-      address _USDC_yMeta_gauge,
+      address _gaugeDestributor,
       address _votersLock,
       address _teamWallet
     ) external {
@@ -88,8 +86,7 @@ contract BaseV1Minter {
         fetch = _fetch;
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
-        USDC_USDT_gauge = _USDC_USDT_gauge;
-        USDC_yMeta_gauge = _USDC_yMeta_gauge;
+        gaugeDestributor = _gaugeDestributor;
         votersLock = _votersLock;
         teamWallet = _teamWallet;
     }
@@ -133,9 +130,9 @@ contract BaseV1Minter {
             _period = block.timestamp / week * week;
             active_period = _period;
             weekly = weekly_emission();
-            uint teamRewards = (weekly / 100) * 20;
-            uint _growth = calculate_growth(weekly + teamRewards);
-            uint _required = _growth + weekly + teamRewards;
+
+            uint _growth = calculate_growth(weekly);
+            uint _required = _growth + weekly;
             uint _balanceOf = _token.balanceOf(address(this));
             if (_balanceOf < _required) {
                 _token.mint(address(this), _required-_balanceOf);
@@ -146,25 +143,20 @@ contract BaseV1Minter {
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
 
             // compute destribution
-            uint USDC_USDT_amount = (weekly / 100) * 10;
-            uint USDC_yMeta_amount = (weekly / 100) * 40;
-            uint votersLockAmount = (weekly / 100) * 50;
+            uint teamRewards = (weekly / 100) * 20;
+            uint gaugeDestributorAmount = (weekly / 100) * 40;
+            uint votersLockAmount = (weekly / 100) * 40;
 
-            // 10% to USDC_USDT pool
-            _token.approve(USDC_USDT_gauge, USDC_USDT_amount);
-            IGauges(USDC_USDT_gauge).notifyRewardAmount(address(_token), USDC_USDT_amount);
+            // 40% to platform pools gaugeDestributor
+            _token.transfer(gaugeDestributor, gaugeDestributorAmount);
 
-            // 40% to USDC_yMeta pool
-            _token.approve(USDC_yMeta_gauge, USDC_yMeta_amount);
-            IGauges(USDC_yMeta_gauge).notifyRewardAmount(address(_token), USDC_yMeta_amount);
-
-            // 50% to voters lock destributor
+            // 40% to voters lock destributor
             _token.transfer(votersLock, votersLockAmount);
 
             // 20% bonus to team wallet
             _token.transfer(teamWallet, teamRewards);
 
-            emit Mint(msg.sender, weekly + teamRewards, circulating_supply(), circulating_emission());
+            emit Mint(msg.sender, weekly, circulating_supply(), circulating_emission());
         }
         return _period;
     }

@@ -9,19 +9,23 @@
 # Updates
 ```
 0) No team pre mint ve
-1) Lock for 7 days after each vote
-2) Fetch mint 50% bonuses from current rate
-3) Fetch mint to rewards destributor
-4) Desrtribute by this
 
-0.1% Pool 1 - USDC / USDT
+1) Lock ve votes for 7 days after each vote
 
-0.4% Pool 2 - USDC / yMeta
+2) Fetch mint % bonuses by fetch formula
 
-0.5% Locker for voters pool
+3) User can convert ETH or deposit Token in fetch and get % bonuses
 
-5) Add voter pool locker + formula
-6) Add 20% mint to team wallet from weekly 
+4) Add GaugesRewardDestributor for send rewards to special pools like USDT/yMeta
+
+5) Add VotersRewardsLock for lock vote rewards and destribute by VotersRewardsFormula
+
+6) Minter desrtribution now (
+  20% to team,
+  40% to gauges reward destributor,
+  40% Locker for voters pool
+)
+
 ```
 
 
