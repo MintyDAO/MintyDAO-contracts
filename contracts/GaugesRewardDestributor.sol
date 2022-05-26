@@ -351,6 +351,8 @@ contract GaugesRewardDestributor is Ownable {
     gauges = _gauges;
     shares = _shares;
 
+    totalShares = 0;
+
     for(uint i = 0; i < _shares.length; i++){
       totalShares += _shares[i];
     }

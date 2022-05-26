@@ -1383,6 +1383,80 @@
       "artifacts": [
         "FetchFormulaMock"
       ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/GaugesRewardDestributor.sol": {
+      "lastModificationDate": 1653556141732,
+      "contentHash": "ad7c3c8bc8199be52af1a47afeb84430",
+      "sourceName": "contracts/GaugesRewardDestributor.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "GaugesRewardDestributor",
+        "IERC20",
+        "IGauges",
+        "Ownable",
+        "SafeMath"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/test/gauge_mock_transfer.sol": {
+      "lastModificationDate": 1653555886768,
+      "contentHash": "f8b9aebc06dcb4e923d6587c11fe08da",
+      "sourceName": "contracts/test/gauge_mock_transfer.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": [
+        "GaugeMockTransfer",
+        "erc20"
+      ]
     }
   }
 }
