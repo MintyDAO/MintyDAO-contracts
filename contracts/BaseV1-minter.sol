@@ -27,6 +27,7 @@ interface underlying {
 }
 
 interface voter {
+    function totalWeight() external view returns(uint);
     function notifyRewardAmount(uint amount) external;
 }
 
@@ -56,7 +57,7 @@ contract BaseV1Minter {
     address public fetch;
 
     address public gaugeDestributor;
-    address public votersLock;
+    address public votersPool;
     address public teamWallet;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
@@ -78,7 +79,6 @@ contract BaseV1Minter {
       address _fetch,
       uint max,
       address _gaugeDestributor,
-      address _votersLock,
       address _teamWallet
     ) external {
         require(initializer == msg.sender);
@@ -87,7 +87,6 @@ contract BaseV1Minter {
         initializer = address(0);
         active_period = (block.timestamp + week) / week * week;
         gaugeDestributor = _gaugeDestributor;
-        votersLock = _votersLock;
         teamWallet = _teamWallet;
     }
 
@@ -131,27 +130,44 @@ contract BaseV1Minter {
             active_period = _period;
             weekly = weekly_emission();
 
+            // compute destribution
+            uint teamRewards = (weekly / 100) * 20;
+            uint gaugeDestributorAmount = (weekly / 100) * 40;
+            uint votersAmount = (weekly / 100) * 40;
+
+            // mint bonus for voters
+            // should be 10x more than weekly for mint 100 of voters bonus
+            uint sendToVoters = votersAmount;
+            uint voteWeight = _voter.totalWeight();
+
+            if(voteWeight < votersAmount * 10){
+              sendToVoters = voteWeight / 10;
+              weekly = weekly - votersAmount + sendToVoters;
+            }
+
+            // compute grown
             uint _growth = calculate_growth(weekly);
             uint _required = _growth + weekly;
             uint _balanceOf = _token.balanceOf(address(this));
+
+            // mint
             if (_balanceOf < _required) {
                 _token.mint(address(this), _required-_balanceOf);
             }
 
+            // transfer to ve dist
             require(_token.transfer(address(_ve_dist), _growth));
             _ve_dist.checkpoint_token(); // checkpoint token balance that was just minted in ve_dist
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
-
-            // compute destribution
-            uint teamRewards = (weekly / 100) * 20;
-            uint gaugeDestributorAmount = (weekly / 100) * 40;
-            uint votersLockAmount = (weekly / 100) * 40;
 
             // 40% to platform pools gaugeDestributor
             _token.transfer(gaugeDestributor, gaugeDestributorAmount);
 
             // 40% to voters lock destributor
-            _token.transfer(votersLock, votersLockAmount);
+            if(sendToVoters > 0){
+              _token.approve(address(_voter), sendToVoters);
+              _voter.notifyRewardAmount(sendToVoters);
+            }
 
             // 20% bonus to team wallet
             _token.transfer(teamWallet, teamRewards);

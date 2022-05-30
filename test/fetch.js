@@ -126,24 +126,6 @@ describe("fetch", function () {
 
     await fetch.deployed();
 
-    const RewardsLocker = await ethers.getContractFactory("VotersRewardsLock");
-    rewardsLocker = await RewardsLocker.deploy(
-      voter_gauge_factory.address,
-      ve_underlying.address
-    );
-    rewardsLocker.deployed();
-
-    const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
-    rewardsFormula = await RewardsFormula.deploy(
-      pair,
-      mim.address,
-      rewardsLocker.address,
-      ve_underlying.address,
-      "1000000000000000000000000"
-    );
-    rewardsFormula.deployed();
-
-    rewardsLocker.updateFormula(rewardsFormula.address)
 
     GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
 
@@ -158,7 +140,6 @@ describe("fetch", function () {
       fetch.address,
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
-      rewardsLocker.address,
       owner.address
     );
 

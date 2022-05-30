@@ -129,7 +129,6 @@ describe("supply", function () {
       fetch.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
-      owner.address,
       owner.address
     );
 

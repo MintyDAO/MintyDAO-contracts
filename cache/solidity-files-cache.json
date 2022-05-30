@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1653560350747,
-      "contentHash": "a164ff48d1b64e9e240603dbb4b262e9",
+      "lastModificationDate": 1653917747718,
+      "contentHash": "a3a5f56f5e99125d787ec4340d0f6fbc",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1270,83 +1270,6 @@
         "SafeERC20",
         "SafeMath",
         "Treasury"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
-      "lastModificationDate": 1652356134611,
-      "contentHash": "443bff4d08cc23533a9ef003d74fde00",
-      "sourceName": "contracts/VotersRewardsLock.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Context",
-        "IERC20",
-        "IFormula",
-        "IVoter",
-        "Ownable",
-        "VotersRewardsLock"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1652430588591,
-      "contentHash": "a0358d0be4747ce2e8ff094161225849",
-      "sourceName": "contracts/VotersRewardsFormula.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "IERC20",
-        "SafeMath",
-        "VotersRewardsFormula"
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/FetchFormulaMock.sol": {
