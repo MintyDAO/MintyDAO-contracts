@@ -225,8 +225,8 @@ contract BaseV1Minter is Ownable {
             uint gaugeDestributorAmount = (weekly / 100) * 40;
             uint votersAmount = (weekly / 100) * 40;
 
-            // mint bonus for voters
-            // should be 10x more than weekly for mint 100 of voters bonus
+            // mint fewards for voters
+            // should be 10x more than weekly for mint 100% of voters rewards
             uint sendToVoters = votersAmount;
             uint voteWeight = _voter.totalWeight();
 

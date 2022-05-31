@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1653973683678,
-      "contentHash": "3458aa95ae3144b77bbf1142b5aefbc4",
+      "lastModificationDate": 1653974142291,
+      "contentHash": "5cb5a0eadf1cee48aa3b62a63e41ac59",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1153,8 +1153,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1653484209785,
-      "contentHash": "56a000088364b5d840c7b24c4d6dff12",
+      "lastModificationDate": 1653973821420,
+      "contentHash": "2c0bd7d4ecc95412eca661ac44bf9ece",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
