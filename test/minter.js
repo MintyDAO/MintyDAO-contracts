@@ -101,7 +101,7 @@ describe("minter", function () {
       owner.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
-      owner.address
+      destributor.address
     )
     expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
     await network.provider.send("evm_mine")
@@ -123,6 +123,7 @@ describe("minter", function () {
     console.log("weekly", await minter.weekly())
     console.log("vote pool amount ", await ve_underlying.balanceOf(gauge_factory.address))
     console.log("totalWeight ", await gauge_factory.totalWeight())
+    console.log("destributor + team wallet", await ve_underlying.balanceOf(destributor.address))
 
     const claimable = await ve_dist.claimable(1);
     const before = await ve.balanceOfNFT(1);

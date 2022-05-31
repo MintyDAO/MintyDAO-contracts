@@ -228,10 +228,10 @@ contract BaseV1Minter is Ownable {
             // mint fewards for voters
             // should be 10x more than weekly for mint 100% of voters rewards
             uint sendToVoters = votersAmount;
-            uint voteWeight = _voter.totalWeight();
+            uint votalWeight = _voter.totalWeight();
 
-            if(voteWeight < votersAmount * 10){
-              sendToVoters = voteWeight / 10;
+            if(votalWeight < votersAmount * 10){
+              sendToVoters = votalWeight / 10;
               weekly = weekly - votersAmount + sendToVoters;
             }
 
