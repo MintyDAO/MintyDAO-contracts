@@ -27,7 +27,7 @@
 6) Remove VotersRewardsLock and VotersRewardsFormula
 
 
-New logic is
+New logic for minter
 
 1. Total possible emissions is 1% per day
 
@@ -42,6 +42,10 @@ Example:
 if 100 tokens are emitted on week 50, 1000 ve is need to emit full 0.5% to voter pools.
 
 If only 200 ve votes then only 0.1% will be emitted for those voted pools
+
+
+
+7) Add migration for minter for case if issue will be found
 
 ```
 
