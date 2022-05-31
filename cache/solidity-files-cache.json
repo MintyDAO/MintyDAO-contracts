@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1653917747718,
-      "contentHash": "a3a5f56f5e99125d787ec4340d0f6fbc",
+      "lastModificationDate": 1653973683678,
+      "contentHash": "3458aa95ae3144b77bbf1142b5aefbc4",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -731,8 +731,10 @@
       ],
       "artifacts": [
         "BaseV1Minter",
+        "Context",
         "IGauges",
         "Math",
+        "Ownable",
         "underlying",
         "ve",
         "ve_dist",

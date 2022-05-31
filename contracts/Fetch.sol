@@ -833,6 +833,12 @@ contract Fetch is Ownable {
  }
 
 
+ // allow update minter 
+ function updateMinter(address _minter) external onlyOwner {
+   minter = IMinter(_minter);
+ }
+
+
  /**
  * @dev allow owner withdraw eth for case if some eth stuck or was sent accidentally
  */
