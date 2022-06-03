@@ -100,8 +100,9 @@ describe("minter", function () {
       owner.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
-      owner.address,
-      owner.address
+      owner.address, // should be team wallet
+      owner.address, // should be vote locker
+      owner.address  // should be dao treasury
     )
     expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
     await network.provider.send("evm_mine")

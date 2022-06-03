@@ -653,11 +653,12 @@ describe("core", function () {
     console.log(await ve_dist.last_token_time());
     console.log(await ve_dist.timestamp());
     await minter.initialize(
-      owner.address,
+      owner.address, // should be fetch
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
-      owner.address,
-      owner.address
+      owner.address, // should be voters locker
+      owner.address, // should be team wallet
+      owner.address  // should be dao treasury
     );
     await minter.update_period();
     await gauge_factory.updateGauge(gauge.address);

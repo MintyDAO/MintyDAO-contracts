@@ -131,8 +131,9 @@ describe("supply", function () {
       fetch.address,
       0,
       destributor.address,
-      owner.address,
-      owner.address
+      owner.address, // should be team wallet
+      owner.address, // should be vote locker
+      owner.address  // should be dao treasury 
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
