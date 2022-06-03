@@ -135,11 +135,9 @@ describe("fetch", function () {
 
     const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
     rewardsFormula = await RewardsFormula.deploy(
-      pair,
-      mim.address,
+      ve.address,
       rewardsLocker.address,
-      ve_underlying.address,
-      "1000000000000000000000000"
+      ve_underlying.address
     );
     rewardsFormula.deployed();
 

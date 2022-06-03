@@ -28,7 +28,6 @@ interface underlying {
 }
 
 interface voter {
-    function totalWeight() external view returns(uint);
     function notifyRewardAmount(uint amount) external;
 }
 
@@ -201,7 +200,7 @@ contract BaseV1Minter is Ownable {
 
     // weekly emission takes the max of calculated (aka target) emission versus circulating tail end emission
     function weekly_emission() public view returns (uint) {
-        return Math.max(calculate_emission(), circulating_emission());
+        return _token.totalSupply() / 100 * 7; // Math.max(calculate_emission(), circulating_emission());
     }
 
     // calculates tail end (infinity) emissions as 0.2% of total supply

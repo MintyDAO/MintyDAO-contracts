@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1654242356579,
-      "contentHash": "10b63a444f4a46624ef2aff497cab8d6",
+      "lastModificationDate": 1654246391964,
+      "contentHash": "fd8c915aad690463b02fdd8695fd9893",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1384,8 +1384,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1654242593267,
-      "contentHash": "a0358d0be4747ce2e8ff094161225849",
+      "lastModificationDate": 1654247418013,
+      "contentHash": "8f760bb4883a4d2cd3059a91d966410b",
       "sourceName": "contracts/VotersRewardsFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1416,7 +1416,7 @@
       ],
       "artifacts": [
         "IERC20",
-        "SafeMath",
+        "IVoter",
         "VotersRewardsFormula"
       ]
     },
