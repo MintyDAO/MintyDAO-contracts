@@ -699,8 +699,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1653991971189,
-      "contentHash": "95244e19955c05435a4432d9334049e5",
+      "lastModificationDate": 1654242356579,
+      "contentHash": "10b63a444f4a46624ef2aff497cab8d6",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1381,6 +1381,83 @@
       "artifacts": [
         "GaugeMockTransfer",
         "erc20"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
+      "lastModificationDate": 1654242593267,
+      "contentHash": "a0358d0be4747ce2e8ff094161225849",
+      "sourceName": "contracts/VotersRewardsFormula.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "IERC20",
+        "SafeMath",
+        "VotersRewardsFormula"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
+      "lastModificationDate": 1654242627335,
+      "contentHash": "443bff4d08cc23533a9ef003d74fde00",
+      "sourceName": "contracts/VotersRewardsLock.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "IFormula",
+        "IVoter",
+        "Ownable",
+        "VotersRewardsLock"
       ]
     }
   }

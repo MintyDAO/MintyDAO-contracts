@@ -18,13 +18,14 @@
 
 4) Add GaugesRewardDestributor for send rewards to special pools like USDT/yMeta
 
-5) Minter desrtribution now (
+5) Add VotersRewardsLock for lock vote rewards and destribute by VotersRewardsFormula
+
+6) Minter desrtribution now (
   20% to team,
   40% to gauges reward destributor,
   40% Locker for voters pool
 )
 
-6) Remove VotersRewardsLock and VotersRewardsFormula
 
 
 New logic for minter

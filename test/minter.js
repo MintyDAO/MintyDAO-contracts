@@ -27,7 +27,6 @@ describe("minter", function () {
   let ve_dist;
   let gauge_address;
   let destributor;
-  let gauge_factory;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -52,7 +51,7 @@ describe("minter", function () {
     const bribe_factory = await BaseV1BribeFactory.deploy();
     await bribe_factory.deployed();
     const BaseV1Voter = await ethers.getContractFactory("BaseV1Voter");
-    gauge_factory = await BaseV1Voter.deploy(ve.address, factory.address, gauges_factory.address, bribe_factory.address);
+    const gauge_factory = await BaseV1Voter.deploy(ve.address, factory.address, gauges_factory.address, bribe_factory.address);
     await gauge_factory.deployed();
 
     await gauge_factory.initialize([mim.address, ve_underlying.address],owner.address);
@@ -101,11 +100,12 @@ describe("minter", function () {
       owner.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
-      destributor.address
+      owner.address,
+      owner.address
     )
     expect(await ve.ownerOf(3)).to.equal("0x0000000000000000000000000000000000000000");
     await network.provider.send("evm_mine")
-    expect(await ve_underlying.balanceOf(minter.address)).to.equal(ethers.BigNumber.from("20000000000000000000000000"));
+    expect(await ve_underlying.balanceOf(minter.address)).to.equal(ethers.BigNumber.from("19000000000000000000000000"));
   });
 
   it("minter weekly distribute", async function () {
@@ -119,13 +119,8 @@ describe("minter", function () {
     await network.provider.send("evm_increaseTime", [86400 * 7])
     await network.provider.send("evm_mine")
     await minter.update_period();
-
-    console.log("weekly", await minter.weekly())
-    console.log("vote pool amount ", await ve_underlying.balanceOf(gauge_factory.address))
-    console.log("totalWeight ", await gauge_factory.totalWeight())
-    console.log("destributor + team wallet", await ve_underlying.balanceOf(destributor.address))
-
     const claimable = await ve_dist.claimable(1);
+    expect(claimable).to.be.above(ethers.BigNumber.from("200039145118808654"));
     const before = await ve.balanceOfNFT(1);
     await ve_dist.claim(1);
     const after = await ve.balanceOfNFT(1);

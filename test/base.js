@@ -656,6 +656,7 @@ describe("core", function () {
       owner.address,
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
+      owner.address,
       owner.address
     );
     await minter.update_period();

@@ -34,6 +34,8 @@ describe("supply", function () {
   let gauge_address;
   let destributor;
 
+  const ve_initial = ethers.BigNumber.from("1000000000000000000000");
+
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
     token = await ethers.getContractFactory("Token");
@@ -43,7 +45,7 @@ describe("supply", function () {
     ve_underlying = await basev1.deploy();
     vecontract = await ethers.getContractFactory("contracts/ve.sol:ve");
     ve = await vecontract.deploy(ve_underlying.address);
-    await ve_underlying.mint(owner.address, ethers.BigNumber.from("10000000000000000000000000"));
+    await ve_underlying.mint(owner.address, ve_initial);
     const BaseV1Factory = await ethers.getContractFactory("BaseV1Factory");
     factory = await BaseV1Factory.deploy();
     await factory.deployed();
@@ -127,8 +129,9 @@ describe("supply", function () {
 
     await minter.initialize(
       fetch.address,
-      ethers.BigNumber.from("20000000000000000000000000"),
+      0,
       destributor.address,
+      owner.address,
       owner.address
     );
 
@@ -169,15 +172,22 @@ describe("supply", function () {
 
     const week = 604800
 
+    console.log("Supply before tests", Web3Utils.fromWei(String(await ve_underlying.totalSupply())))
+
     for(let i = 0; i < 7; i++){
-      console.log(`Supply before ${i}`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
+      console.log(`Week ${i + 1}`,"_______________________________________________________________________________________")
+      console.log(`Supply before`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
       // increase time
       await network.provider.send("evm_increaseTime", [week])
       await network.provider.send("evm_mine")
+      // console.log(`Weekly emmision`, Number(Web3Utils.fromWei(String(await minter.weekly_emission()))))
       // trigger minter
       await minter.update_period()
-      console.log(`Supply after ${i}`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
+      console.log(`Supply after`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
+      console.log("_______________________________________________________________________________________")
     }
+
+    console.log("Supply after tests", Web3Utils.fromWei(String(await ve_underlying.totalSupply())))
   });
 
 });
