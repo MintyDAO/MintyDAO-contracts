@@ -543,7 +543,7 @@ library SafeERC20 {
 contract Treasury is Ownable {
   using SafeERC20 for IERC20;
 
-  function manage(uint256 _amount, address _token) external onlyOwner {
-    IERC20(_token).safeTransfer(msg.sender, _amount);
+  function manage(uint256 _amount, address _token, address _to) external onlyOwner {
+    IERC20(_token).safeTransfer(_to, _amount);
   }
 }
