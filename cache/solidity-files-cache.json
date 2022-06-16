@@ -1234,8 +1234,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Treasury.sol": {
-      "lastModificationDate": 1650876317344,
-      "contentHash": "60aa4c654bc9b67ac472e9b3c3537716",
+      "lastModificationDate": 1654499085451,
+      "contentHash": "dc54106497e3a17c157812789a5cafd6",
       "sourceName": "contracts/Treasury.sol",
       "solcConfig": {
         "version": "0.8.11",

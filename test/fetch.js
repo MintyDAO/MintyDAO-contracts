@@ -222,5 +222,4 @@ describe("fetch", function () {
   it("Owner can update formula ", async function () {
     await fetch.updateFormula(fetch.address)
   });
-
 });
