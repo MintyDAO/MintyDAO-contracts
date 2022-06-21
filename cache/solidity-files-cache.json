@@ -1459,6 +1459,43 @@
         "Ownable",
         "VotersRewardsLock"
       ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/solidly_library.sol": {
+      "lastModificationDate": 1655738804013,
+      "contentHash": "191ce7b7e3142d6f042f009698f8d0b8",
+      "sourceName": "contracts/solidly_library.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "solidly_library",
+        "solidly_pair",
+        "solidly_router"
+      ]
     }
   }
 }
