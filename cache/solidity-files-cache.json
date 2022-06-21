@@ -1496,6 +1496,41 @@
         "solidly_pair",
         "solidly_router"
       ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/PaintMulticall.sol": {
+      "lastModificationDate": 1655795657834,
+      "contentHash": "6ff531ccaefb3b826b5ba4ed8233e2a6",
+      "sourceName": "contracts/PaintMulticall.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "PaintMulticall"
+      ]
     }
   }
 }

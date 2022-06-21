@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const owner = process.env.ADMIN_ADDRESS
-const initialYMeta = "10000000000000000000"
+const initialYMeta = "1000000000000000000000"
 
 async function main() {
   const Token = await ethers.getContractFactory("BaseV1");
