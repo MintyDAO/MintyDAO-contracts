@@ -119,6 +119,7 @@ async function main() {
   const pair = await router.pairFor(token.address, weth.address, false);
   console.log("pair ", pair)
 
+  // CAN CRASH HERE
   await voter.createGauge(pair);
 
   // await voter.vote(1, [pair], [5000]);
