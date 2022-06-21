@@ -21,6 +21,7 @@ async function main() {
   const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
   const GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
   const Library = await ethers.getContractFactory("solidly_library")
+  const TeamWallet = await ethers.getContractFactory("TeamWallet")
 
   console.log("Admin ", owner)
 
@@ -131,12 +132,19 @@ async function main() {
     [100]
   )
 
+  const teamWallet = await TeamWallet.deploy(
+    token.address
+  )
+  await teamWallet.deployed();
+  console.log("teamWallet", teamWallet.address)
+
+  // STOPED HERE
   await minter.initialize(
     fetch.address,
     initialYMeta,
     destributor.address,
     rewardsLocker.address,
-    rewardsLocker.address,
+    teamWallet.address,
     treasury.address
   );
 }

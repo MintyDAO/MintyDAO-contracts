@@ -1531,6 +1531,45 @@
       "artifacts": [
         "PaintMulticall"
       ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/TeamWallet.sol": {
+      "lastModificationDate": 1655801322569,
+      "contentHash": "b9d561c939342b755af083ed2aabed30",
+      "sourceName": "contracts/TeamWallet.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "Ownable",
+        "SafeMath",
+        "TeamWallet"
+      ]
     }
   }
 }
