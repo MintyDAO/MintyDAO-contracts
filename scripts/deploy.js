@@ -1,9 +1,14 @@
-require('dotenv').config();
+const { ethers } = require("hardhat");
 
-const owner = process.env.ADMIN_ADDRESS
 const initialYMeta = "1000000000000000000000"
+const ldYmeta = "10000000000000000000"
+const ldETH = "100000000000000000"
+
 
 async function main() {
+  const [_owner] = await ethers.getSigners(1);
+  const owner = _owner.address;
+
   const Token = await ethers.getContractFactory("BaseV1");
   const Gauges = await ethers.getContractFactory("BaseV1GaugeFactory");
   const Bribes = await ethers.getContractFactory("BaseV1BribeFactory");
@@ -20,14 +25,17 @@ async function main() {
   const RewardsLocker = await ethers.getContractFactory("VotersRewardsLock");
   const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
   const GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
-  const Library = await ethers.getContractFactory("solidly_library")
-  const TeamWallet = await ethers.getContractFactory("TeamWallet")
+  const Library = await ethers.getContractFactory("solidly_library");
+  const TeamWallet = await ethers.getContractFactory("TeamWallet");
 
   console.log("Admin ", owner)
 
   const token = await Token.deploy();
   await token.deployed();
   console.log("yMeta ", token.address)
+
+  // pre mint some for add LD to yMeta/ETH pool
+  await token.mint(owner, ldYmeta);
 
   const gauges = await Gauges.deploy();
   await gauges.deployed();
@@ -138,7 +146,6 @@ async function main() {
   await teamWallet.deployed();
   console.log("teamWallet", teamWallet.address)
 
-  // STOPED HERE
   await minter.initialize(
     fetch.address,
     initialYMeta,
@@ -147,6 +154,19 @@ async function main() {
     teamWallet.address,
     treasury.address
   );
+
+  // ADD SOME LD
+  await token.approve(router.address, ldYmeta)
+  await router.addLiquidityFTM(
+    token.address,
+    false,
+    ldYmeta,
+    1,
+    1,
+    owner,
+    Date.now(),
+    { value:ldETH }
+  )
 }
 
 main()

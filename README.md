@@ -4,7 +4,6 @@
 
 ```
 PRIVATE_KEY=
-ADMIN_ADDRESS=
 ```
 
 # Deploy
