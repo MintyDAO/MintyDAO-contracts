@@ -78,6 +78,8 @@ async function main() {
   await minter.deployed();
   console.log("minter ", minter.address)
 
+  // FAILED HERE 21.06.22 
+
   await token.setMinter(minter.address);
   await ve.setVoter(voter.address);
   await ve_dist.setDepositor(minter.address);
