@@ -135,11 +135,13 @@ async function main() {
   // await voter.vote(1, [pair], [5000]);
   gauge_address = await voter.gauges(pair);
   console.log("gauge_address ", gauge_address)
-
+  
   const destributor = await GaugesRewardDestributor.deploy(
     [gauge_address],
     [100]
   )
+  await destributor.deployed();
+  console.log("destributor", destributor.address)
 
   const teamWallet = await TeamWallet.deploy(
     token.address
