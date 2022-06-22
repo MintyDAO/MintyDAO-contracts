@@ -39,6 +39,8 @@ yarn hardhat run scripts/deploy.js --network ftm
   40% Locker for voters pool
 )
 
+7) Add percentReduce for reduce weekly mint percent 
+
 
 
 New logic for minter

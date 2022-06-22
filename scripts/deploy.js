@@ -78,7 +78,7 @@ async function main() {
   await minter.deployed();
   console.log("minter ", minter.address)
 
-  // FAILED HERE 21.06.22 
+  // FAILED HERE 21.06.22
 
   await token.setMinter(minter.address);
   await ve.setVoter(voter.address);
@@ -130,7 +130,6 @@ async function main() {
   const pair = await router.pairFor(token.address, weth.address, false);
   console.log("pair ", pair)
 
-  // CAN CRASH HERE
   await voter.createGauge(pair);
 
   // await voter.vote(1, [pair], [5000]);

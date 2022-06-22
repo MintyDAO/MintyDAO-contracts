@@ -150,6 +150,9 @@ contract BaseV1Minter is Ownable {
     address public teamWallet;
     address public DAOTreasury;
 
+    uint internal constant totalPercentReduce = 100000;
+    uint public percentReduce = 7000;
+
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
     constructor(
@@ -203,7 +206,7 @@ contract BaseV1Minter is Ownable {
 
     // weekly emission takes the max of calculated (aka target) emission versus circulating tail end emission
     function weekly_emission() public view returns (uint) {
-        return _token.totalSupply() / 100 * 7; // Math.max(calculate_emission(), circulating_emission());
+        return _token.totalSupply() / totalPercentReduce * percentReduce; // Math.max(calculate_emission(), circulating_emission());
     }
 
     // calculates tail end (infinity) emissions as 0.2% of total supply
@@ -221,6 +224,13 @@ contract BaseV1Minter is Ownable {
     function update_period() external returns (uint) {
         uint _period = active_period;
         if (block.timestamp >= _period + week && initializer == address(0)) { // only trigger if new week
+
+            if(percentReduce > 100){
+              percentReduce -= (percentReduce / 100) * 2;
+            }else{
+              percentReduce = 2;
+            }
+
             _period = block.timestamp / week * week;
             active_period = _period;
             weekly = weekly_emission();
