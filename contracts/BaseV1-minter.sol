@@ -151,7 +151,7 @@ contract BaseV1Minter is Ownable {
     address public DAOTreasury;
 
     uint internal constant totalPercentReduce = 100000;
-    uint public percentReduce = 7000;
+    uint public percentReduce = 14000;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
