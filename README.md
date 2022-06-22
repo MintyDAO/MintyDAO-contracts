@@ -39,13 +39,10 @@ yarn hardhat run scripts/deploy.js --network ftm
   40% Locker for voters pool
 )
 
-7) Add percentReduce for reduce weekly mint percent
-
-
 
 New logic for minter
 
-1. Total possible emissions is 1% per day
+1. Total possible emissions is 2% per day (14% per week)
 
 2. 50% (0.5%) is set by team to important
  pools
@@ -60,7 +57,10 @@ if 100 tokens are emitted on week 50, 1000 ve is need to emit full 0.5% to voter
 If only 200 ve votes then only 0.1% will be emitted for those voted pools
 
 
-7) Add migration for minter for case if issue will be found
+7) Add percentReduce for reduce weekly mint percent
+
+
+8) Add migration for minter for case if issue will be found
 
 ```
 
