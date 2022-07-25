@@ -657,8 +657,8 @@ describe("core", function () {
       ethers.BigNumber.from("20000000000000000000000000"),
       destributor.address,
       owner.address, // should be voters locker
-      owner.address, // should be team wallet
-      owner.address  // should be dao treasury
+      owner.address // should be team wallet
+
     );
     await minter.update_period();
     await gauge_factory.updateGauge(gauge.address);
