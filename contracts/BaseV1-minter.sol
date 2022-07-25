@@ -148,10 +148,11 @@ contract BaseV1Minter is Ownable {
     address public gaugeDestributor;
     address public votersLock;
     address public teamWallet;
-    address public DAOTreasury;
 
     uint internal constant totalPercentReduce = 100000;
     uint public percentReduce = 14000;
+
+    uint public teamUnlockDate;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
@@ -166,6 +167,7 @@ contract BaseV1Minter is Ownable {
         _ve = ve(__ve);
         _ve_dist = ve_dist(__ve_dist);
         active_period = (block.timestamp + (2*week)) / week * week;
+        teamUnlockDate = block.timestamp + 180 days;
     }
 
     function initialize(
@@ -173,8 +175,7 @@ contract BaseV1Minter is Ownable {
       uint max,
       address _gaugeDestributor,
       address _votersLock,
-      address _teamWallet,
-      address _DAOTreasury
+      address _teamWallet
     ) external {
         require(initializer == msg.sender);
         _token.mint(address(this), max);
@@ -184,7 +185,6 @@ contract BaseV1Minter is Ownable {
         gaugeDestributor = _gaugeDestributor;
         votersLock = _votersLock;
         teamWallet = _teamWallet;
-        DAOTreasury = _DAOTreasury;
     }
 
     // allow mint for fetch
@@ -247,10 +247,9 @@ contract BaseV1Minter is Ownable {
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
 
             // compute destribution
-            uint teamRewards = (weekly / 100) * 10;
+            uint teamRewards = (weekly / 100) * 20;
             uint gaugeDestributorAmount = (weekly / 100) * 40;
             uint votersLockAmount = (weekly / 100) * 40;
-            uint treasuryAmount = (weekly / 100) * 10;
 
             // 40% to platform pools gaugeDestributor
             _token.transfer(gaugeDestributor, gaugeDestributorAmount);
@@ -258,11 +257,12 @@ contract BaseV1Minter is Ownable {
             // 40% to voters lock destributor
             _token.transfer(votersLock, votersLockAmount);
 
-            // 10% bonus to team wallet
-            _token.transfer(teamWallet, teamRewards);
+            // 20% bonus to team wallet (burn if less than 6 month)
+             address _team = block.timestamp > teamUnlockDate
+             ? teamWallet
+             : address(0);
 
-            // 10% for DAO Treasury DAOTreasury
-            _token.transfer(DAOTreasury, treasuryAmount);
+            _token.transfer(_team, teamRewards);
 
             emit Mint(msg.sender, weekly, circulating_supply(), circulating_emission());
         }

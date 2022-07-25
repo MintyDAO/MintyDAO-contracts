@@ -157,8 +157,7 @@ describe("fetch", function () {
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
       rewardsLocker.address,
-      owner.address, // should be vote locker
-      owner.address  // should be dao treasury
+      owner.address // should be team wallet
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);

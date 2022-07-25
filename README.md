@@ -62,6 +62,16 @@ If only 200 ve votes then only 0.1% will be emitted for those voted pools
 
 8) Add migration for minter for case if issue will be found
 
+9) Burn team rewards
+
+if now < unlock time
+
+send to 0x address
+
+else
+
+send to team
+
 ```
 
 
