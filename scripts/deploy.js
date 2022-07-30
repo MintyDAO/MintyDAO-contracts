@@ -3,11 +3,12 @@ const { ethers } = require("hardhat");
 const initialYMeta = "1000000000000000000000"
 const ldYmeta = "10000000000000000000"
 const ldETH = "100000000000000000"
-
+const WRAPPED_ETH = null
 
 async function main() {
   const [_owner] = await ethers.getSigners(1);
   const owner = _owner.address;
+  let wrappedETH
 
   const Token = await ethers.getContractFactory("BaseV1");
   const Gauges = await ethers.getContractFactory("BaseV1GaugeFactory");
@@ -49,11 +50,17 @@ async function main() {
   await core.deployed();
   console.log("factory ", core.address)
 
-  const weth = await WETH9.deploy();
-  await weth.deployed();
-  console.log("weth ", weth.address)
+  if(!WRAPPED_ETH){
+    const weth = await WETH9.deploy();
+    await weth.deployed();
+    wrappedETH = weth.address
+  }else{
+    wrappedETH = WRAPPED_ETH
+  }
+  console.log("weth ", wrappedETH)
 
-  const router = await Router.deploy(core.address, weth.address);
+
+  const router = await Router.deploy(core.address, wrappedETH);
   await router.deployed();
   console.log("router ", router.address)
 
@@ -84,7 +91,7 @@ async function main() {
   await ve.setVoter(voter.address);
   await ve_dist.setDepositor(minter.address);
 
-  await voter.initialize([weth.address, token.address], owner);
+  await voter.initialize([wrappedETH, token.address], owner);
 
   const treasury = await Treasury.deploy();
   await treasury.deployed();
@@ -125,9 +132,9 @@ async function main() {
 
   await rewardsLocker.updateFormula(rewardsFormula.address);
 
-  await core.createPair(weth.address, token.address, false)
+  await core.createPair(wrappedETH, token.address, false)
 
-  const pair = await router.pairFor(token.address, weth.address, false);
+  const pair = await router.pairFor(token.address, wrappedETH, false);
   console.log("pair ", pair)
 
   await voter.createGauge(pair);
@@ -135,7 +142,7 @@ async function main() {
   // await voter.vote(1, [pair], [5000]);
   gauge_address = await voter.gauges(pair);
   console.log("gauge_address ", gauge_address)
-  
+
   const destributor = await GaugesRewardDestributor.deploy(
     [gauge_address],
     [100]
