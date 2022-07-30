@@ -962,7 +962,7 @@ contract ve is IERC721, IERC721Metadata {
     function abstain(uint _tokenId) external {
         require(msg.sender == voter);
         // check deadline for unvote
-        require(block.timestamp > idPerDeadLine[_tokenId], "Deadline not finished");
+        require(block.timestamp > idPerDeadLine[_tokenId], "lock period not finished");
         voted[_tokenId] = false;
     }
 

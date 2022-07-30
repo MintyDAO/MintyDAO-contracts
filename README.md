@@ -23,7 +23,7 @@ yarn hardhat run scripts/deploy.js --network ftm
 ```
 0) No team pre mint ve
 
-1) Lock ve votes for 7 days after each vote
+1) Lock ve votes for 7 days after each vote in ve.abstain()
 
 2) Fetch mint % bonuses by fetch formula
 
