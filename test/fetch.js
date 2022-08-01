@@ -206,26 +206,39 @@ describe("fetch", function () {
 
   it("Fetch can convert FTM for mint and lock ve NFT and add LD", async function () {
     const userInput = "100000000000000000"
-    console.log("Total LD before fetch", Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply()))))
-    console.log("User NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
-    console.log("Treasury LD before fetch", Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address)))))
-    // await network.provider.send("evm_mine")
+
+    const totalLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
+    const userNFTBefore = Number(await ve.balanceOf(owner.address))
+    const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+
     await fetch.convert({value:userInput})
-    // await network.provider.send("evm_mine")
-    console.log("Total LD after fetch", Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply()))))
-    console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
-    console.log("Treasury LD after fetch", Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address)))))
+
+    const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
+    const userNFTAfter = Number(await ve.balanceOf(owner.address))
+    const treasuryLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+
+    console.log("Total LD before fetch: ", totalLDBefore, "and after: ", totalLDAfter)
+    console.log("User NFT balance before fetch: ", userNFTBefore, "and after: ", userNFTAfter)
+    console.log("Treasury LD before fetch: ", treasuryLDBefore, "and after: ", treasuryLDAfter)
+
+    expect(totalLDAfter).to.above(totalLDBefore);
+    expect(userNFTAfter).to.above(userNFTBefore);
+    expect(treasuryLDAfter).to.above(treasuryLDBefore);
   });
 
 
   it("Fetch can deposit with token", async function () {
     const userInput = "100000000000000000"
-    console.log("User NFT balance before fetch", Number(await ve.balanceOf(owner.address)))
-    // await network.provider.send("evm_mine")
+
+    const nftBefore = Number(await ve.balanceOf(owner.address))
+
     await ve_underlying.approve(fetch.address, userInput);
     await fetch.depositToken(userInput)
-    // await network.provider.send("evm_mine")
-    console.log("User NFT balance after fetch", Number(await ve.balanceOf(owner.address)))
+
+    const nftAfter = Number(await ve.balanceOf(owner.address))
+    console.log("User NFT balance before fetch: ", nftBefore, "and after: ", nftAfter)
+
+    expect(nftAfter).to.above(nftBefore);
   });
 
   it("Owner can update formula ", async function () {
