@@ -34,6 +34,7 @@ describe("fetch", function () {
   let treasury;
   let gauge_address;
   let destributor;
+  let teamWallet;
 
   it("deploy base fetch", async function () {
     [owner] = await ethers.getSigners(1);
@@ -112,12 +113,16 @@ describe("fetch", function () {
     fetch_formula = await FetchFormula.deploy();
     await fetch_formula.deployed();
 
+    const TeamWallet = await ethers.getContractFactory("TeamWallet");
+    teamWallet = await TeamWallet.deploy(ve_underlying.address);
+    await teamWallet.deployed();
+
     const Fetch = await ethers.getContractFactory("Fetch");
 
     fetch = await Fetch.deploy(
       router.address,
       ve_underlying.address,
-      owner.address,
+      teamWallet.address,
       minter.address,
       ve.address,
       treasury.address,
@@ -157,7 +162,7 @@ describe("fetch", function () {
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
       rewardsLocker.address,
-      owner.address // should be team wallet
+      teamWallet.address
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
