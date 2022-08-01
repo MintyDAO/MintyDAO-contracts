@@ -159,7 +159,8 @@ contract BaseV1Minter is Ownable {
     constructor(
         address __voter, // the voting & distribution system
         address  __ve, // the ve(3,3) system that will be locked into
-        address __ve_dist // the distribution system that ensures users aren't diluted
+        address __ve_dist, // the distribution system that ensures users aren't diluted
+        uint __teamUnlockTime // UNIX time 
     ) {
         initializer = msg.sender;
         _token = underlying(ve(__ve).token());
@@ -167,7 +168,7 @@ contract BaseV1Minter is Ownable {
         _ve = ve(__ve);
         _ve_dist = ve_dist(__ve_dist);
         active_period = (block.timestamp + (2*week)) / week * week;
-        teamUnlockDate = block.timestamp + 180 days;
+        teamUnlockDate = block.timestamp + __teamUnlockTime;
     }
 
     function initialize(

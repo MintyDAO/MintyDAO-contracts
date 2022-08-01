@@ -364,7 +364,12 @@ describe("core", function () {
     await ve_dist.deployed();
 
     const BaseV1Minter = await ethers.getContractFactory("BaseV1Minter");
-    minter = await BaseV1Minter.deploy(gauge_factory.address, ve.address, ve_dist.address);
+    minter = await BaseV1Minter.deploy(
+      gauge_factory.address,
+      ve.address,
+      ve_dist.address,
+      10368000 // 120 days in seconds
+    );
     await minter.deployed();
     await ve_dist.setDepositor(minter.address);
     await gauge_factory.initialize([ust.address, mim.address, dai.address, ve_underlying.address],minter.address);
