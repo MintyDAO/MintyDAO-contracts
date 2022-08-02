@@ -833,7 +833,7 @@ contract Fetch is Ownable {
  }
 
 
- // allow update minter 
+ // allow update minter
  function updateMinter(address _minter) external onlyOwner {
    minter = IMinter(_minter);
  }

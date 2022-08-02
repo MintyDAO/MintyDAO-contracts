@@ -160,7 +160,7 @@ contract BaseV1Minter is Ownable {
         address __voter, // the voting & distribution system
         address  __ve, // the ve(3,3) system that will be locked into
         address __ve_dist, // the distribution system that ensures users aren't diluted
-        uint __teamUnlockTime // UNIX time 
+        uint __teamUnlockTime // UNIX time
     ) {
         initializer = msg.sender;
         _token = underlying(ve(__ve).token());
