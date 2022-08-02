@@ -465,8 +465,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/test/voter_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "fdd6359920a5be80dd5650f9c4dbe8a3",
+      "lastModificationDate": 1659430222725,
+      "contentHash": "e1136c4510eac372a24600cc33399b67",
       "sourceName": "contracts/test/voter_test.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -847,8 +847,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
-      "lastModificationDate": 1654242627335,
-      "contentHash": "443bff4d08cc23533a9ef003d74fde00",
+      "lastModificationDate": 1659430774672,
+      "contentHash": "819523d3ab328235d0a523f7deac7035",
       "sourceName": "contracts/VotersRewardsLock.sol",
       "solcConfig": {
         "version": "0.8.11",

@@ -114,7 +114,12 @@ contract VotersRewardsLock is Ownable {
   address public formula;
   uint public claimTimeLock;
 
-  constructor(address _voterPool, address _token) public {
+  constructor(
+    address _voterPool, // BaseV1Voter
+    address _token
+    )
+    public
+  {
     voterPool = _voterPool;
     token = _token;
   }
