@@ -603,9 +603,9 @@ contract Fetch is Ownable {
 
   address public token;
 
-  uint256 public percentToDex = 50;
+  uint256 public percentToDex = 33;
 
-  uint256 public percentToSale = 50;
+  uint256 public percentToSale = 67;
 
   address public beneficiary;
 

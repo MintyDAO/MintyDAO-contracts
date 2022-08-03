@@ -1,5 +1,6 @@
 const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { ethers, waffle } = require("hardhat");
+const provider = waffle.provider;
 const Web3Utils = require('web3-utils');
 
 function getCreate2Address(
@@ -210,20 +211,24 @@ describe("fetch", function () {
     const totalLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTBefore = Number(await ve.balanceOf(owner.address))
     const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+    const teamWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
 
     await fetch.convert({value:userInput})
 
     const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTAfter = Number(await ve.balanceOf(owner.address))
     const treasuryLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+    const teamWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
 
     console.log("Total LD before fetch: ", totalLDBefore, "and after: ", totalLDAfter)
     console.log("User NFT balance before fetch: ", userNFTBefore, "and after: ", userNFTAfter)
     console.log("Treasury LD before fetch: ", treasuryLDBefore, "and after: ", treasuryLDAfter)
+    console.log("Team wallet ETH before fetch: ", teamWalletETHBefore, "and after: ", teamWalletETHAfter)
 
     expect(totalLDAfter).to.above(totalLDBefore);
     expect(userNFTAfter).to.above(userNFTBefore);
     expect(treasuryLDAfter).to.above(treasuryLDBefore);
+    expect(teamWalletETHAfter).to.above(teamWalletETHBefore);
   });
 
 
