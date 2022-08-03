@@ -92,7 +92,7 @@ async function main() {
   await ve.setVoter(voter.address);
   await ve_dist.setDepositor(minter.address);
 
-  await voter.initialize([wrappedETH, token.address], owner);
+  await voter.initialize([wrappedETH, token.address], minter.address);
 
   const treasury = await Treasury.deploy();
   await treasury.deployed();
