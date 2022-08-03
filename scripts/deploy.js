@@ -4,6 +4,7 @@ const initialYMeta = "1000000000000000000000"
 const ldYmeta = "10000000000000000000"
 const ldETH = "100000000000000000"
 const WRAPPED_ETH = null
+const teamLockTime = 10368000 // 120 days in seconds
 
 async function main() {
   const [_owner] = await ethers.getSigners(1);
@@ -81,7 +82,7 @@ async function main() {
   console.log("voter ", voter.address)
 
 
-  const minter = await BaseV1Minter.deploy(voter.address, ve.address, ve_dist.address);
+  const minter = await BaseV1Minter.deploy(voter.address, ve.address, ve_dist.address, teamLockTime);
   await minter.deployed();
   console.log("minter ", minter.address)
 
@@ -161,8 +162,7 @@ async function main() {
     initialYMeta,
     destributor.address,
     rewardsLocker.address,
-    teamWallet.address,
-    treasury.address
+    teamWallet.address
   );
 
   // ADD SOME LD
