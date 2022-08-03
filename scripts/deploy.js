@@ -92,12 +92,12 @@ async function main() {
   await ve.setVoter(voter.address);
   await ve_dist.setDepositor(minter.address);
 
-  await voter.initialize([wrappedETH, token.address], minter.address);
+  await voter.initialize([token.address, wrappedETH], minter.address);
 
   const treasury = await Treasury.deploy();
   await treasury.deployed();
   console.log("treasury ", treasury.address)
-  
+
   const teamWallet = await TeamWallet.deploy(
     token.address
   )
@@ -138,8 +138,8 @@ async function main() {
   console.log("rewardsFormula ", rewardsFormula.address)
 
   await rewardsLocker.updateFormula(rewardsFormula.address);
-
-  await core.createPair(wrappedETH, token.address, false)
+  
+  await core.createPair(token.address, wrappedETH, false)
 
   const pair = await router.pairFor(token.address, wrappedETH, false);
   console.log("pair ", pair)
