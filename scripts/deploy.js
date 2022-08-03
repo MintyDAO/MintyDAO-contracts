@@ -93,10 +93,16 @@ async function main() {
   await ve_dist.setDepositor(minter.address);
 
   await voter.initialize([wrappedETH, token.address], minter.address);
-
+  
   const treasury = await Treasury.deploy();
   await treasury.deployed();
   console.log("treasury ", treasury.address)
+
+  const teamWallet = await TeamWallet.deploy(
+    token.address
+  )
+  await teamWallet.deployed();
+  console.log("teamWallet", teamWallet.address)
 
   const fetch_formula = await FetchFormula.deploy();
   await fetch_formula.deployed();
@@ -105,7 +111,7 @@ async function main() {
   const fetch = await Fetch.deploy(
     router.address,
     token.address,
-    owner,
+    teamWallet.address,
     minter.address,
     ve.address,
     treasury.address,
@@ -150,12 +156,6 @@ async function main() {
   )
   await destributor.deployed();
   console.log("destributor", destributor.address)
-
-  const teamWallet = await TeamWallet.deploy(
-    token.address
-  )
-  await teamWallet.deployed();
-  console.log("teamWallet", teamWallet.address)
 
   await minter.initialize(
     fetch.address,
