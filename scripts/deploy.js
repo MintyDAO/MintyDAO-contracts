@@ -93,11 +93,11 @@ async function main() {
   await ve_dist.setDepositor(minter.address);
 
   await voter.initialize([wrappedETH, token.address], minter.address);
-  
+
   const treasury = await Treasury.deploy();
   await treasury.deployed();
   console.log("treasury ", treasury.address)
-
+  
   const teamWallet = await TeamWallet.deploy(
     token.address
   )

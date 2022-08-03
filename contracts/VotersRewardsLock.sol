@@ -109,18 +109,18 @@ abstract contract Ownable is Context {
 }
 
 contract VotersRewardsLock is Ownable {
-  address public voterPool;
+  address public voter;
   address public token;
   address public formula;
   uint public claimTimeLock;
 
   constructor(
-    address _voterPool, // BaseV1Voter
+    address _voter, // BaseV1Voter
     address _token
     )
     public
   {
-    voterPool = _voterPool;
+    voter = _voter;
     token = _token;
   }
 
@@ -138,8 +138,8 @@ contract VotersRewardsLock is Ownable {
     require(block.timestamp >= claimTimeLock, "Locked yet");
     uint rewards = computeRewards();
     require(rewards > 0, "Zerro rewards");
-    IERC20(token).approve(voterPool, rewards);
-    IVoter(voterPool).notifyRewardAmount(rewards);
+    IERC20(token).approve(voter, rewards);
+    IVoter(voter).notifyRewardAmount(rewards);
     claimTimeLock = block.timestamp + 7 days;
   }
 }
