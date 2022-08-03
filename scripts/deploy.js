@@ -34,7 +34,7 @@ async function main() {
 
   const token = await Token.deploy();
   await token.deployed();
-  console.log("yMeta ", token.address)
+  console.log("MintyDAO ", token.address)
 
   // pre mint some for add LD to yMeta/ETH pool
   await token.mint(owner, ldYmeta);
@@ -138,7 +138,7 @@ async function main() {
   console.log("rewardsFormula ", rewardsFormula.address)
 
   await rewardsLocker.updateFormula(rewardsFormula.address);
-  
+
   await core.createPair(token.address, wrappedETH, false)
 
   const pair = await router.pairFor(token.address, wrappedETH, false);
