@@ -214,7 +214,7 @@ describe("fetch", function () {
     const teamWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
 
     await fetch.convert(
-      31536000, // 365 days lock 
+      31536000, // 365 days lock
       {value:userInput}
     )
 

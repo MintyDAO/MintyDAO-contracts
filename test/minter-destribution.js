@@ -35,7 +35,7 @@ describe("Minter destribution", function () {
   let destributor;
   let teamWallet;
 
-  it("Minter destribution deploy", async function () {
+  it("deploy core ", async function () {
     [owner] = await ethers.getSigners(1);
     token = await ethers.getContractFactory("Token");
     basev1 = await ethers.getContractFactory("BaseV1");

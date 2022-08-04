@@ -125,8 +125,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1659443247604,
-      "contentHash": "0be0b903db5d173d54a65958c608ce35",
+      "lastModificationDate": 1659611784051,
+      "contentHash": "cf523e8325238533348bfe0869f8019e",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -243,8 +243,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-voter.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "11497a73c7569c51e9a54bd8a1c14bc6",
+      "lastModificationDate": 1659611676911,
+      "contentHash": "2c4897fe56c57e1b523a418e3b7ea0d7",
       "sourceName": "contracts/BaseV1-voter.sol",
       "solcConfig": {
         "version": "0.8.11",

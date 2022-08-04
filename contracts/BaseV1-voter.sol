@@ -391,4 +391,9 @@ contract BaseV1Voter {
         token.call(abi.encodeWithSelector(erc20.transferFrom.selector, from, to, value));
         require(success && (data.length == 0 || abi.decode(data, (bool))));
     }
+
+    function updateMinter(address _newMinter) external {
+      require(msg.sender == minter, "Not a minter");
+      minter = _newMinter;
+    }
 }

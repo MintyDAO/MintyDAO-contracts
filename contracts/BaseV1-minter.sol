@@ -28,6 +28,7 @@ interface underlying {
 }
 
 interface voter {
+    function updateMinter(address) external;
     function notifyRewardAmount(uint amount) external;
 }
 
@@ -274,5 +275,6 @@ contract BaseV1Minter is Ownable {
     function migrate(address _newMinter) external onlyOwner {
       _token.setMinter(_newMinter);
       _ve_dist.setDepositor(_newMinter);
+      _voter.updateMinter(_newMinter);
     }
 }
