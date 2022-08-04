@@ -115,7 +115,7 @@ describe("fetch", function () {
     treasury = await Treasury.deploy()
     await treasury.deployed()
 
-    const FetchFormula = await ethers.getContractFactory("FetchFormulaMock");
+    const FetchFormula = await ethers.getContractFactory("FetchFormula");
     fetch_formula = await FetchFormula.deploy();
     await fetch_formula.deployed();
 
@@ -213,7 +213,10 @@ describe("fetch", function () {
     const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
     const teamWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
 
-    await fetch.convert({value:userInput})
+    await fetch.convert(
+      31536000, // 365 days lock 
+      {value:userInput}
+    )
 
     const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTAfter = Number(await ve.balanceOf(owner.address))
@@ -238,7 +241,10 @@ describe("fetch", function () {
     const nftBefore = Number(await ve.balanceOf(owner.address))
 
     await ve_underlying.approve(fetch.address, userInput);
-    await fetch.depositToken(userInput)
+    await fetch.depositToken(
+      userInput,
+      31536000 // 365 days lock
+    )
 
     const nftAfter = Number(await ve.balanceOf(owner.address))
     console.log("User NFT balance before fetch: ", nftBefore, "and after: ", nftAfter)

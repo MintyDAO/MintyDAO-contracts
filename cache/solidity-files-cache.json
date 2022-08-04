@@ -208,8 +208,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-token.sol": {
-      "lastModificationDate": 1651672228939,
-      "contentHash": "73b2bf6a41367c15d57cda3890fb0545",
+      "lastModificationDate": 1659609936100,
+      "contentHash": "36fa4f30556199a75676ae42304a1f3d",
       "sourceName": "contracts/BaseV1-token.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -579,8 +579,8 @@
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1659443633946,
-      "contentHash": "ca69f96c3d9fecf36bb7018e28bdd630",
+      "lastModificationDate": 1659610435798,
+      "contentHash": "1fc37cb01ecc13f330d3081238b2c454",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -698,41 +698,6 @@
         "SafeERC20",
         "SafeMath",
         "Treasury"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/FetchFormulaMock.sol": {
-      "lastModificationDate": 1653484465628,
-      "contentHash": "5603dd3dc6f2764494906c29a70fb9e1",
-      "sourceName": "contracts/FetchFormulaMock.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.11"
-      ],
-      "artifacts": [
-        "FetchFormulaMock"
       ]
     },
     "/home/rus/Projects/yMeta-contracts/contracts/GaugesRewardDestributor.sol": {
@@ -995,6 +960,41 @@
         "Ownable",
         "SafeMath",
         "TeamWallet"
+      ]
+    },
+    "/home/rus/Projects/yMeta-contracts/contracts/FetchFormula.sol": {
+      "lastModificationDate": 1659610435798,
+      "contentHash": "16fce2383d141c8731ffe40f87b74c78",
+      "sourceName": "contracts/FetchFormula.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "FetchFormula"
       ]
     }
   }

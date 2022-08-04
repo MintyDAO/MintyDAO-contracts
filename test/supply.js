@@ -103,7 +103,7 @@ describe("supply", function () {
     treasury = await Treasury.deploy();
     await treasury.deployed();
 
-    const FetchFormula = await ethers.getContractFactory("FetchFormulaMock");
+    const FetchFormula = await ethers.getContractFactory("FetchFormula");
     fetch_formula = await FetchFormula.deploy();
     await fetch_formula.deployed();
 

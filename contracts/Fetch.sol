@@ -3,7 +3,7 @@
 pragma solidity ^0.8.11;
 
 interface IFetchFormula {
-  function bonusPercent() external view returns(uint);
+  function bonusPercent(uint _lockTime) external view returns(uint);
 }
 
 interface IWFTM {
@@ -639,24 +639,24 @@ contract Fetch is Ownable {
   }
 
   // convert for msg.sender
-  function convert() external payable {
-    _convertFor(msg.sender);
+  function convert(uint _lockTime) external payable {
+    _convertFor(msg.sender, _lockTime);
   }
 
   // convert for receiver
-  function convertFor(address receiver) external payable {
-    _convertFor(receiver);
+  function convertFor(address receiver, uint _lockTime) external payable {
+    _convertFor(receiver, _lockTime);
   }
 
   /**
   * @dev spit ETH input with DEX and Sale
   */
-  function _convertFor(address receiver) internal {
+  function _convertFor(address receiver, uint _lockTime) internal {
     require(msg.value > 0, "zerro eth");
     // swap ETH to token
     swapETHInput(msg.value);
 
-    uint bonusPercent = formula.bonusPercent();
+    uint bonusPercent = formula.bonusPercent(_lockTime);
     // mint bonus
     if(bonusPercent > 0){
       // get current price by amount
@@ -679,11 +679,11 @@ contract Fetch is Ownable {
  /**
  * @dev allow deposit token to ve with bonus
  */
- function depositToken(uint _amount) public {
+ function depositToken(uint _amount, uint _lockTime) public {
    // transfer token
    IERC20(token).transferFrom(msg.sender, address(this), _amount);
    // check bonus
-   uint bonusPercent = formula.bonusPercent();
+   uint bonusPercent = formula.bonusPercent(_lockTime);
    uint bonus = 0;
    // mint bonus
    if(bonusPercent > 0){

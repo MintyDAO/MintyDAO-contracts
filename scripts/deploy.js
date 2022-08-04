@@ -22,7 +22,7 @@ async function main() {
   const BaseV1Voter = await ethers.getContractFactory("BaseV1Voter");
   const BaseV1Minter = await ethers.getContractFactory("BaseV1Minter");
   const Treasury = await ethers.getContractFactory("Treasury");
-  const FetchFormula = await ethers.getContractFactory("FetchFormulaMock");
+  const FetchFormula = await ethers.getContractFactory("FetchFormula");
   const Fetch = await ethers.getContractFactory("Fetch");
   const RewardsLocker = await ethers.getContractFactory("VotersRewardsLock");
   const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");

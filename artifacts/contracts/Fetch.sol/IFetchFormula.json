@@ -4,7 +4,13 @@
   "sourceName": "contracts/Fetch.sol",
   "abi": [
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_lockTime",
+          "type": "uint256"
+        }
+      ],
       "name": "bonusPercent",
       "outputs": [
         {

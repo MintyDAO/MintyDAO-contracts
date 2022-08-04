@@ -3,7 +3,7 @@ pragma solidity 0.8.11;
 
 contract BaseV1 {
 
-    string public constant symbol = "MintyDAO";
+    string public constant symbol = "MINTS";
     string public constant name = "Minty DAO";
     uint8 public constant decimals = 18;
     uint public totalSupply = 0;
