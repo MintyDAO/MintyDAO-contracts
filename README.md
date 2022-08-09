@@ -84,7 +84,7 @@ Mint now bonuses by this formula
 6m 60% bonus // default FETCH option
 1y 140% bonus
 2y 300% bonus
-4y 800% bonus 
+4y 800% bonus
 
 ```
 
@@ -133,6 +133,12 @@ pair 0x99535fE670D8FC8F2139f1F643888eECEDd33B9B
 gauge_address 0xC71eca67a8e8dC05D4f5A7a4F868E9b0B62163A7
 
 destributor 0xE454145A3a218eccFec0CFc533d55fB2CB2e8b27
+
+dao voter 0x4d989E38A0dd7F7088B02d015941e9E76a2a4ae0
+
+dao treasury 0x9b3434150eFa474e2556c652039830fD0682b5a4
+
+dao converter 0xbC35f41e3b38B6e5ece09cDa31C17C5C0DC79045
 ```
 
 
