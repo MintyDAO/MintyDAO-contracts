@@ -77,14 +77,13 @@ send to team
 
 Mint now bonuses by this formula
 
-1w 1% bonus
-2w 2% bonus (& * 2 VP // default solidly VP function)
-1m 5% bonus  (& * 2VP = * 4 VP)
-3m 20% bonus
-6m 60% bonus // default FETCH option
-1y 140% bonus
-2y 300% bonus
-4y 800% bonus
+1m 5%
+2m 15%
+3m 50%
+6m 125%
+1y 200%
+2y 350%
+4y 800%
 
 ```
 

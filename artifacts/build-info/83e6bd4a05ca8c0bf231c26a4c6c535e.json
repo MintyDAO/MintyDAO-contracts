@@ -1,5 +1,5 @@
 {
-  "id": "c13ec24b98e24d10814bd754f45945a0",
+  "id": "83e6bd4a05ca8c0bf231c26a4c6c535e",
   "_format": "hh-sol-build-info-1",
   "solcVersion": "0.8.11",
   "solcLongVersion": "0.8.11+commit.d7f03943",
@@ -7,7 +7,7 @@
     "language": "Solidity",
     "sources": {
       "contracts/FetchFormula.sol": {
-        "content": "pragma solidity ^0.8.11;\n\ncontract FetchFormula {\n  function bonusPercent(uint _lockTime) external view returns(uint){\n    if(_lockTime >= 7 days && _lockTime < 14 days){\n      return 1;\n    }\n    else if(_lockTime >= 14 days && _lockTime < 30 days){\n      return 2;\n    }\n    else if(_lockTime >= 30 days && _lockTime < 90 days){\n      return 5;\n    }\n    else if(_lockTime >= 90 days && _lockTime < 180 days){\n      return 20;\n    }\n    else if(_lockTime >= 180 days && _lockTime < 365 days){\n      return 60;\n    }\n    else if(_lockTime >= 365 days && _lockTime < 730 days){\n      return 140;\n    }\n    else if(_lockTime >= 730 days && _lockTime < 1460 days){\n      return 300;\n    }\n    else if(_lockTime >= 1460 days){\n      return 800;\n    }\n    else{\n      return 0;\n    }\n  }\n}\n"
+        "content": "pragma solidity ^0.8.11;\n\n/*\n1m 5%\n2m 15%\n3m 50%\n6m 125%\n1y 200%\n2y 350%\n4y 800%\n*/\n\ncontract FetchFormula {\n  function bonusPercent(uint _lockTime) external view returns(uint){\n    if(_lockTime >= 30 days && _lockTime < 60 days){\n      return 5;\n    }\n    else if(_lockTime >= 60 days && _lockTime < 90 days){\n      return 15;\n    }\n    else if(_lockTime >= 90 days && _lockTime < 180 days){\n      return 50;\n    }\n    else if(_lockTime >= 180 days && _lockTime < 365 days){\n      return 125;\n    }\n    else if(_lockTime >= 365 days && _lockTime < 730 days){\n      return 200;\n    }\n    else if(_lockTime >= 700 days && _lockTime < 1460 days){\n      return 350;\n    }\n    else if(_lockTime >= 1460 days){\n      return 800;\n    }\n    else{\n      return 0;\n    }\n  }\n}\n"
       }
     },
     "settings": {
@@ -61,20 +61,20 @@
               "functionDebugData": {},
               "generatedSources": [],
               "linkReferences": {},
-              "object": "608060405234801561001057600080fd5b506101b6806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610167565b610055565b60405190815260200160405180910390f35b600062093a80821015801561006c57506212750082105b1561007957506001919050565b62127500821015801561008e575062278d0082105b1561009b57506002919050565b62278d0082101580156100b057506276a70082105b156100bd57506005919050565b6276a70082101580156100d2575062ed4e0082105b156100df57506014919050565b62ed4e0082101580156100f557506301e1338082105b156101025750603c919050565b6301e13380821015801561011957506303c2670082105b156101265750608c919050565b6303c26700821015801561013d5750630784ce0082105b1561014b575061012c919050565b630784ce00821061015f5750610320919050565b506000919050565b60006020828403121561017957600080fd5b503591905056fea2646970667358221220dbe9a5f902ca83b102e7c49fdedaa601ffe78ca7e0f5d24f07724730cbeb618c64736f6c634300080b0033",
-              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH2 0x1B6 DUP1 PUSH2 0x20 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x167 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x93A80 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0x127500 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x1 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x127500 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8E JUMPI POP PUSH3 0x278D00 DUP3 LT JUMPDEST ISZERO PUSH2 0x9B JUMPI POP PUSH1 0x2 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x278D00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB0 JUMPI POP PUSH3 0x76A700 DUP3 LT JUMPDEST ISZERO PUSH2 0xBD JUMPI POP PUSH1 0x5 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD2 JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0xDF JUMPI POP PUSH1 0x14 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xF5 JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0x102 JUMPI POP PUSH1 0x3C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x119 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0x126 JUMPI POP PUSH1 0x8C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x3C26700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x13D JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x14B JUMPI POP PUSH2 0x12C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x15F JUMPI POP PUSH2 0x320 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x179 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xDB 0xE9 0xA5 0xF9 MUL 0xCA DUP4 0xB1 MUL 0xE7 0xC4 SWAP16 0xDE 0xDA 0xA6 ADD SELFDESTRUCT 0xE7 DUP13 0xA7 0xE0 CREATE2 0xD2 0x4F SMOD PUSH19 0x4730CBEB618C64736F6C634300080B00330000 ",
-              "sourceMap": "26:759:0:-:0;;;;;;;;;;;;;;;;;;;"
+              "object": "608060405234801561001057600080fd5b50610194806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610145565b610055565b60405190815260200160405180910390f35b600062278d00821015801561006c5750624f1a0082105b1561007957506005919050565b624f1a00821015801561008e57506276a70082105b1561009b5750600f919050565b6276a70082101580156100b0575062ed4e0082105b156100bd57506032919050565b62ed4e0082101580156100d357506301e1338082105b156100e05750607d919050565b6301e1338082101580156100f757506303c2670082105b15610104575060c8919050565b63039ada00821015801561011b5750630784ce0082105b15610129575061015e919050565b630784ce00821061013d5750610320919050565b506000919050565b60006020828403121561015757600080fd5b503591905056fea2646970667358221220b0ae64034bdd39e4d2cb5992510fa7801bd71fabab3e29d3b26ae026c1d2da7b64736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH2 0x194 DUP1 PUSH2 0x20 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x145 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x278D00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0x4F1A00 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x5 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x4F1A00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8E JUMPI POP PUSH3 0x76A700 DUP3 LT JUMPDEST ISZERO PUSH2 0x9B JUMPI POP PUSH1 0xF SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB0 JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0xBD JUMPI POP PUSH1 0x32 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD3 JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0xE0 JUMPI POP PUSH1 0x7D SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xF7 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0x104 JUMPI POP PUSH1 0xC8 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x39ADA00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x11B JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x129 JUMPI POP PUSH2 0x15E SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x13D JUMPI POP PUSH2 0x320 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x157 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xB0 0xAE PUSH5 0x34BDD39E4 0xD2 0xCB MSIZE SWAP3 MLOAD 0xF 0xA7 DUP1 SHL 0xD7 0x1F 0xAB 0xAB RETURNDATACOPY 0x29 0xD3 0xB2 PUSH11 0xE026C1D2DA7B64736F6C63 NUMBER STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "sourceMap": "85:682:0:-:0;;;;;;;;;;;;;;;;;;;"
             },
             "deployedBytecode": {
               "functionDebugData": {
-                "@bonusPercent_96": {
+                "@bonusPercent_85": {
                   "entryPoint": 85,
-                  "id": 96,
+                  "id": 85,
                   "parameterSlots": 1,
                   "returnSlots": 1
                 },
                 "abi_decode_tuple_t_uint256": {
-                  "entryPoint": 359,
+                  "entryPoint": 325,
                   "id": null,
                   "parameterSlots": 2,
                   "returnSlots": 1
@@ -337,15 +337,15 @@
               ],
               "immutableReferences": {},
               "linkReferences": {},
-              "object": "608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610167565b610055565b60405190815260200160405180910390f35b600062093a80821015801561006c57506212750082105b1561007957506001919050565b62127500821015801561008e575062278d0082105b1561009b57506002919050565b62278d0082101580156100b057506276a70082105b156100bd57506005919050565b6276a70082101580156100d2575062ed4e0082105b156100df57506014919050565b62ed4e0082101580156100f557506301e1338082105b156101025750603c919050565b6301e13380821015801561011957506303c2670082105b156101265750608c919050565b6303c26700821015801561013d5750630784ce0082105b1561014b575061012c919050565b630784ce00821061015f5750610320919050565b506000919050565b60006020828403121561017957600080fd5b503591905056fea2646970667358221220dbe9a5f902ca83b102e7c49fdedaa601ffe78ca7e0f5d24f07724730cbeb618c64736f6c634300080b0033",
-              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x167 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x93A80 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0x127500 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x1 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x127500 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8E JUMPI POP PUSH3 0x278D00 DUP3 LT JUMPDEST ISZERO PUSH2 0x9B JUMPI POP PUSH1 0x2 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x278D00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB0 JUMPI POP PUSH3 0x76A700 DUP3 LT JUMPDEST ISZERO PUSH2 0xBD JUMPI POP PUSH1 0x5 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD2 JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0xDF JUMPI POP PUSH1 0x14 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xF5 JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0x102 JUMPI POP PUSH1 0x3C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x119 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0x126 JUMPI POP PUSH1 0x8C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x3C26700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x13D JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x14B JUMPI POP PUSH2 0x12C SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x15F JUMPI POP PUSH2 0x320 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x179 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xDB 0xE9 0xA5 0xF9 MUL 0xCA DUP4 0xB1 MUL 0xE7 0xC4 SWAP16 0xDE 0xDA 0xA6 ADD SELFDESTRUCT 0xE7 DUP13 0xA7 0xE0 CREATE2 0xD2 0x4F SMOD PUSH19 0x4730CBEB618C64736F6C634300080B00330000 ",
-              "sourceMap": "26:759:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;52:731;;;;;;:::i;:::-;;:::i;:::-;;;345:25:1;;;333:2;318:18;52:731:0;;;;;;;;112:4;139:6;126:9;:19;;:42;;;;;161:7;149:9;:19;126:42;123:656;;;-1:-1:-1;184:1:0;;52:731;-1:-1:-1;52:731:0:o;123:656::-;218:7;205:9;:20;;:43;;;;;241:7;229:9;:19;205:43;202:577;;;-1:-1:-1;264:1:0;;52:731;-1:-1:-1;52:731:0:o;202:577::-;298:7;285:9;:20;;:43;;;;;321:7;309:9;:19;285:43;282:497;;;-1:-1:-1;344:1:0;;52:731;-1:-1:-1;52:731:0:o;282:497::-;378:7;365:9;:20;;:44;;;;;401:8;389:9;:20;365:44;362:417;;;-1:-1:-1;425:2:0;;52:731;-1:-1:-1;52:731:0:o;362:417::-;460:8;447:9;:21;;:45;;;;;484:8;472:9;:20;447:45;444:335;;;-1:-1:-1;508:2:0;;52:731;-1:-1:-1;52:731:0:o;444:335::-;543:8;530:9;:21;;:45;;;;;567:8;555:9;:20;530:45;527:252;;;-1:-1:-1;591:3:0;;52:731;-1:-1:-1;52:731:0:o;527:252::-;627:8;614:9;:21;;:46;;;;;651:9;639;:21;614:46;611:168;;;-1:-1:-1;676:3:0;;52:731;-1:-1:-1;52:731:0:o;611:168::-;712:9;699;:22;696:83;;-1:-1:-1;737:3:0;;52:731;-1:-1:-1;52:731:0:o;696:83::-;-1:-1:-1;771:1:0;;52:731;-1:-1:-1;52:731:0:o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:1;;14:180;-1:-1:-1;14:180:1:o"
+              "object": "608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610145565b610055565b60405190815260200160405180910390f35b600062278d00821015801561006c5750624f1a0082105b1561007957506005919050565b624f1a00821015801561008e57506276a70082105b1561009b5750600f919050565b6276a70082101580156100b0575062ed4e0082105b156100bd57506032919050565b62ed4e0082101580156100d357506301e1338082105b156100e05750607d919050565b6301e1338082101580156100f757506303c2670082105b15610104575060c8919050565b63039ada00821015801561011b5750630784ce0082105b15610129575061015e919050565b630784ce00821061013d5750610320919050565b506000919050565b60006020828403121561015757600080fd5b503591905056fea2646970667358221220b0ae64034bdd39e4d2cb5992510fa7801bd71fabab3e29d3b26ae026c1d2da7b64736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x145 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x278D00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0x4F1A00 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x5 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x4F1A00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8E JUMPI POP PUSH3 0x76A700 DUP3 LT JUMPDEST ISZERO PUSH2 0x9B JUMPI POP PUSH1 0xF SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB0 JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0xBD JUMPI POP PUSH1 0x32 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD3 JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0xE0 JUMPI POP PUSH1 0x7D SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xF7 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0x104 JUMPI POP PUSH1 0xC8 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x39ADA00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x11B JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x129 JUMPI POP PUSH2 0x15E SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x13D JUMPI POP PUSH2 0x320 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x157 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xB0 0xAE PUSH5 0x34BDD39E4 0xD2 0xCB MSIZE SWAP3 MLOAD 0xF 0xA7 DUP1 SHL 0xD7 0x1F 0xAB 0xAB RETURNDATACOPY 0x29 0xD3 0xB2 PUSH11 0xE026C1D2DA7B64736F6C63 NUMBER STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "sourceMap": "85:682:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;111:654;;;;;;:::i;:::-;;:::i;:::-;;;345:25:1;;;333:2;318:18;111:654:0;;;;;;;;171:4;198:7;185:9;:20;;:43;;;;;221:7;209:9;:19;185:43;182:579;;;-1:-1:-1;244:1:0;;111:654;-1:-1:-1;111:654:0:o;182:579::-;278:7;265:9;:20;;:43;;;;;301:7;289:9;:19;265:43;262:499;;;-1:-1:-1;324:2:0;;111:654;-1:-1:-1;111:654:0:o;262:499::-;359:7;346:9;:20;;:44;;;;;382:8;370:9;:20;346:44;343:418;;;-1:-1:-1;406:2:0;;111:654;-1:-1:-1;111:654:0:o;343:418::-;441:8;428:9;:21;;:45;;;;;465:8;453:9;:20;428:45;425:336;;;-1:-1:-1;489:3:0;;111:654;-1:-1:-1;111:654:0:o;425:336::-;525:8;512:9;:21;;:45;;;;;549:8;537:9;:20;512:45;509:252;;;-1:-1:-1;573:3:0;;111:654;-1:-1:-1;111:654:0:o;509:252::-;609:8;596:9;:21;;:46;;;;;633:9;621;:21;596:46;593:168;;;-1:-1:-1;658:3:0;;111:654;-1:-1:-1;111:654:0:o;593:168::-;694:9;681;:22;678:83;;-1:-1:-1;719:3:0;;111:654;-1:-1:-1;111:654:0:o;678:83::-;-1:-1:-1;753:1:0;;111:654;-1:-1:-1;111:654:0:o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:1;;14:180;-1:-1:-1;14:180:1:o"
             },
             "methodIdentifiers": {
               "bonusPercent(uint256)": "faf1ebfd"
             }
           },
-          "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_lockTime\",\"type\":\"uint256\"}],\"name\":\"bonusPercent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/FetchFormula.sol\":\"FetchFormula\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FetchFormula.sol\":{\"keccak256\":\"0x7aab0ba05c2a76d2bac53b2c143b1bc0ba29f50d908660d21d324a04db560c5c\",\"urls\":[\"bzz-raw://1ecacae39ad90265956b34cca74f578aa74e59165c309c94ab1efb361ec5ed90\",\"dweb:/ipfs/QmZJ1gB8Yw9SseLoo5wqkVAQBnrd6dajS5wvVQUDHnNZMD\"]}},\"version\":1}"
+          "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_lockTime\",\"type\":\"uint256\"}],\"name\":\"bonusPercent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/FetchFormula.sol\":\"FetchFormula\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FetchFormula.sol\":{\"keccak256\":\"0x4f389fb621a627186f35ae720f5c57849c4a0aac48bb57c42868e3e7fb1bd114\",\"urls\":[\"bzz-raw://c8fbede65ab24e7780c848cc958bcd6ee6fee9cfcedf668b233a21455f023f6e\",\"dweb:/ipfs/QmVfKvPXJefzpSHjeW1kNYKvrHaReiAuAWN35r7dxGpn4s\"]}},\"version\":1}"
         }
       }
     },
@@ -366,13 +366,13 @@
       {
         "component": "general",
         "errorCode": "2018",
-        "formattedMessage": "Warning: Function state mutability can be restricted to pure\n --> contracts/FetchFormula.sol:4:3:\n  |\n4 |   function bonusPercent(uint _lockTime) external view returns(uint){\n  |   ^ (Relevant source part starts here and spans across multiple lines).\n\n",
+        "formattedMessage": "Warning: Function state mutability can be restricted to pure\n  --> contracts/FetchFormula.sol:14:3:\n   |\n14 |   function bonusPercent(uint _lockTime) external view returns(uint){\n   |   ^ (Relevant source part starts here and spans across multiple lines).\n\n",
         "message": "Function state mutability can be restricted to pure",
         "severity": "warning",
         "sourceLocation": {
-          "end": 783,
+          "end": 765,
           "file": "contracts/FetchFormula.sol",
-          "start": 52
+          "start": 111
         },
         "type": "Warning"
       }
@@ -383,10 +383,10 @@
           "absolutePath": "contracts/FetchFormula.sol",
           "exportedSymbols": {
             "FetchFormula": [
-              97
+              86
             ]
           },
-          "id": 98,
+          "id": 87,
           "nodeType": "SourceUnit",
           "nodes": [
             {
@@ -407,19 +407,19 @@
               "contractDependencies": [],
               "contractKind": "contract",
               "fullyImplemented": true,
-              "id": 97,
+              "id": 86,
               "linearizedBaseContracts": [
-                97
+                86
               ],
               "name": "FetchFormula",
-              "nameLocation": "35:12:0",
+              "nameLocation": "94:12:0",
               "nodeType": "ContractDefinition",
               "nodes": [
                 {
                   "body": {
-                    "id": 95,
+                    "id": 84,
                     "nodeType": "Block",
-                    "src": "117:666:0",
+                    "src": "176:589:0",
                     "statements": [
                       {
                         "condition": {
@@ -448,7 +448,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 3,
-                              "src": "126:9:0",
+                              "src": "185:9:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -457,7 +457,7 @@
                             "nodeType": "BinaryOperation",
                             "operator": ">=",
                             "rightExpression": {
-                              "hexValue": "37",
+                              "hexValue": "3330",
                               "id": 9,
                               "isConstant": false,
                               "isLValue": false,
@@ -465,15 +465,15 @@
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "139:6:0",
+                              "src": "198:7:0",
                               "subdenomination": "days",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_rational_604800_by_1",
-                                "typeString": "int_const 604800"
+                                "typeIdentifier": "t_rational_2592000_by_1",
+                                "typeString": "int_const 2592000"
                               },
-                              "value": "7"
+                              "value": "30"
                             },
-                            "src": "126:19:0",
+                            "src": "185:20:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
@@ -497,7 +497,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 3,
-                              "src": "149:9:0",
+                              "src": "209:9:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -506,7 +506,7 @@
                             "nodeType": "BinaryOperation",
                             "operator": "<",
                             "rightExpression": {
-                              "hexValue": "3134",
+                              "hexValue": "3630",
                               "id": 12,
                               "isConstant": false,
                               "isLValue": false,
@@ -514,21 +514,21 @@
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "161:7:0",
+                              "src": "221:7:0",
                               "subdenomination": "days",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_rational_1209600_by_1",
-                                "typeString": "int_const 1209600"
+                                "typeIdentifier": "t_rational_5184000_by_1",
+                                "typeString": "int_const 5184000"
                               },
-                              "value": "14"
+                              "value": "60"
                             },
-                            "src": "149:19:0",
+                            "src": "209:19:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
                             }
                           },
-                          "src": "126:42:0",
+                          "src": "185:43:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -561,7 +561,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 3,
-                                "src": "205:9:0",
+                                "src": "265:9:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -570,7 +570,7 @@
                               "nodeType": "BinaryOperation",
                               "operator": ">=",
                               "rightExpression": {
-                                "hexValue": "3134",
+                                "hexValue": "3630",
                                 "id": 19,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -578,15 +578,15 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "218:7:0",
+                                "src": "278:7:0",
                                 "subdenomination": "days",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_1209600_by_1",
-                                  "typeString": "int_const 1209600"
+                                  "typeIdentifier": "t_rational_5184000_by_1",
+                                  "typeString": "int_const 5184000"
                                 },
-                                "value": "14"
+                                "value": "60"
                               },
-                              "src": "205:20:0",
+                              "src": "265:20:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
@@ -610,7 +610,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 3,
-                                "src": "229:9:0",
+                                "src": "289:9:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -619,7 +619,7 @@
                               "nodeType": "BinaryOperation",
                               "operator": "<",
                               "rightExpression": {
-                                "hexValue": "3330",
+                                "hexValue": "3930",
                                 "id": 22,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -627,21 +627,21 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "241:7:0",
+                                "src": "301:7:0",
                                 "subdenomination": "days",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_2592000_by_1",
-                                  "typeString": "int_const 2592000"
+                                  "typeIdentifier": "t_rational_7776000_by_1",
+                                  "typeString": "int_const 7776000"
                                 },
-                                "value": "30"
+                                "value": "90"
                               },
-                              "src": "229:19:0",
+                              "src": "289:19:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
                               }
                             },
-                            "src": "205:43:0",
+                            "src": "265:43:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
@@ -674,7 +674,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 3,
-                                  "src": "285:9:0",
+                                  "src": "346:9:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
@@ -683,7 +683,7 @@
                                 "nodeType": "BinaryOperation",
                                 "operator": ">=",
                                 "rightExpression": {
-                                  "hexValue": "3330",
+                                  "hexValue": "3930",
                                   "id": 29,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -691,15 +691,15 @@
                                   "kind": "number",
                                   "lValueRequested": false,
                                   "nodeType": "Literal",
-                                  "src": "298:7:0",
+                                  "src": "359:7:0",
                                   "subdenomination": "days",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_2592000_by_1",
-                                    "typeString": "int_const 2592000"
+                                    "typeIdentifier": "t_rational_7776000_by_1",
+                                    "typeString": "int_const 7776000"
                                   },
-                                  "value": "30"
+                                  "value": "90"
                                 },
-                                "src": "285:20:0",
+                                "src": "346:20:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bool",
                                   "typeString": "bool"
@@ -723,7 +723,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 3,
-                                  "src": "309:9:0",
+                                  "src": "370:9:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
@@ -732,7 +732,7 @@
                                 "nodeType": "BinaryOperation",
                                 "operator": "<",
                                 "rightExpression": {
-                                  "hexValue": "3930",
+                                  "hexValue": "313830",
                                   "id": 32,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -740,21 +740,21 @@
                                   "kind": "number",
                                   "lValueRequested": false,
                                   "nodeType": "Literal",
-                                  "src": "321:7:0",
+                                  "src": "382:8:0",
                                   "subdenomination": "days",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_7776000_by_1",
-                                    "typeString": "int_const 7776000"
+                                    "typeIdentifier": "t_rational_15552000_by_1",
+                                    "typeString": "int_const 15552000"
                                   },
-                                  "value": "90"
+                                  "value": "180"
                                 },
-                                "src": "309:19:0",
+                                "src": "370:20:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bool",
                                   "typeString": "bool"
                                 }
                               },
-                              "src": "285:43:0",
+                              "src": "346:44:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
@@ -787,7 +787,7 @@
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 3,
-                                    "src": "365:9:0",
+                                    "src": "428:9:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -796,7 +796,7 @@
                                   "nodeType": "BinaryOperation",
                                   "operator": ">=",
                                   "rightExpression": {
-                                    "hexValue": "3930",
+                                    "hexValue": "313830",
                                     "id": 39,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -804,15 +804,15 @@
                                     "kind": "number",
                                     "lValueRequested": false,
                                     "nodeType": "Literal",
-                                    "src": "378:7:0",
+                                    "src": "441:8:0",
                                     "subdenomination": "days",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_7776000_by_1",
-                                      "typeString": "int_const 7776000"
+                                      "typeIdentifier": "t_rational_15552000_by_1",
+                                      "typeString": "int_const 15552000"
                                     },
-                                    "value": "90"
+                                    "value": "180"
                                   },
-                                  "src": "365:20:0",
+                                  "src": "428:21:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
                                     "typeString": "bool"
@@ -836,7 +836,7 @@
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 3,
-                                    "src": "389:9:0",
+                                    "src": "453:9:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -845,7 +845,7 @@
                                   "nodeType": "BinaryOperation",
                                   "operator": "<",
                                   "rightExpression": {
-                                    "hexValue": "313830",
+                                    "hexValue": "333635",
                                     "id": 42,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -853,21 +853,21 @@
                                     "kind": "number",
                                     "lValueRequested": false,
                                     "nodeType": "Literal",
-                                    "src": "401:8:0",
+                                    "src": "465:8:0",
                                     "subdenomination": "days",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_15552000_by_1",
-                                      "typeString": "int_const 15552000"
+                                      "typeIdentifier": "t_rational_31536000_by_1",
+                                      "typeString": "int_const 31536000"
                                     },
-                                    "value": "180"
+                                    "value": "365"
                                   },
-                                  "src": "389:20:0",
+                                  "src": "453:20:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
                                     "typeString": "bool"
                                   }
                                 },
-                                "src": "365:44:0",
+                                "src": "428:45:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bool",
                                   "typeString": "bool"
@@ -900,7 +900,7 @@
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
                                       "referencedDeclaration": 3,
-                                      "src": "447:9:0",
+                                      "src": "512:9:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -909,7 +909,7 @@
                                     "nodeType": "BinaryOperation",
                                     "operator": ">=",
                                     "rightExpression": {
-                                      "hexValue": "313830",
+                                      "hexValue": "333635",
                                       "id": 49,
                                       "isConstant": false,
                                       "isLValue": false,
@@ -917,15 +917,15 @@
                                       "kind": "number",
                                       "lValueRequested": false,
                                       "nodeType": "Literal",
-                                      "src": "460:8:0",
+                                      "src": "525:8:0",
                                       "subdenomination": "days",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_rational_15552000_by_1",
-                                        "typeString": "int_const 15552000"
+                                        "typeIdentifier": "t_rational_31536000_by_1",
+                                        "typeString": "int_const 31536000"
                                       },
-                                      "value": "180"
+                                      "value": "365"
                                     },
-                                    "src": "447:21:0",
+                                    "src": "512:21:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_bool",
                                       "typeString": "bool"
@@ -949,7 +949,7 @@
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
                                       "referencedDeclaration": 3,
-                                      "src": "472:9:0",
+                                      "src": "537:9:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -958,7 +958,7 @@
                                     "nodeType": "BinaryOperation",
                                     "operator": "<",
                                     "rightExpression": {
-                                      "hexValue": "333635",
+                                      "hexValue": "373330",
                                       "id": 52,
                                       "isConstant": false,
                                       "isLValue": false,
@@ -966,21 +966,21 @@
                                       "kind": "number",
                                       "lValueRequested": false,
                                       "nodeType": "Literal",
-                                      "src": "484:8:0",
+                                      "src": "549:8:0",
                                       "subdenomination": "days",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_rational_31536000_by_1",
-                                        "typeString": "int_const 31536000"
+                                        "typeIdentifier": "t_rational_63072000_by_1",
+                                        "typeString": "int_const 63072000"
                                       },
-                                      "value": "365"
+                                      "value": "730"
                                     },
-                                    "src": "472:20:0",
+                                    "src": "537:20:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_bool",
                                       "typeString": "bool"
                                     }
                                   },
-                                  "src": "447:45:0",
+                                  "src": "512:45:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
                                     "typeString": "bool"
@@ -1013,7 +1013,7 @@
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
                                         "referencedDeclaration": 3,
-                                        "src": "530:9:0",
+                                        "src": "596:9:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_uint256",
                                           "typeString": "uint256"
@@ -1022,7 +1022,7 @@
                                       "nodeType": "BinaryOperation",
                                       "operator": ">=",
                                       "rightExpression": {
-                                        "hexValue": "333635",
+                                        "hexValue": "373030",
                                         "id": 59,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -1030,15 +1030,15 @@
                                         "kind": "number",
                                         "lValueRequested": false,
                                         "nodeType": "Literal",
-                                        "src": "543:8:0",
+                                        "src": "609:8:0",
                                         "subdenomination": "days",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_31536000_by_1",
-                                          "typeString": "int_const 31536000"
+                                          "typeIdentifier": "t_rational_60480000_by_1",
+                                          "typeString": "int_const 60480000"
                                         },
-                                        "value": "365"
+                                        "value": "700"
                                       },
-                                      "src": "530:21:0",
+                                      "src": "596:21:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_bool",
                                         "typeString": "bool"
@@ -1062,7 +1062,7 @@
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
                                         "referencedDeclaration": 3,
-                                        "src": "555:9:0",
+                                        "src": "621:9:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_uint256",
                                           "typeString": "uint256"
@@ -1071,7 +1071,7 @@
                                       "nodeType": "BinaryOperation",
                                       "operator": "<",
                                       "rightExpression": {
-                                        "hexValue": "373330",
+                                        "hexValue": "31343630",
                                         "id": 62,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -1079,21 +1079,21 @@
                                         "kind": "number",
                                         "lValueRequested": false,
                                         "nodeType": "Literal",
-                                        "src": "567:8:0",
+                                        "src": "633:9:0",
                                         "subdenomination": "days",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_63072000_by_1",
-                                          "typeString": "int_const 63072000"
+                                          "typeIdentifier": "t_rational_126144000_by_1",
+                                          "typeString": "int_const 126144000"
                                         },
-                                        "value": "730"
+                                        "value": "1460"
                                       },
-                                      "src": "555:20:0",
+                                      "src": "621:21:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_bool",
                                         "typeString": "bool"
                                       }
                                     },
-                                    "src": "530:45:0",
+                                    "src": "596:46:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_bool",
                                       "typeString": "bool"
@@ -1102,270 +1102,124 @@
                                   "falseBody": {
                                     "condition": {
                                       "commonType": {
-                                        "typeIdentifier": "t_bool",
-                                        "typeString": "bool"
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
                                       },
-                                      "id": 74,
+                                      "id": 70,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "leftExpression": {
-                                        "commonType": {
+                                        "id": 68,
+                                        "name": "_lockTime",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 3,
+                                        "src": "681:9:0",
+                                        "typeDescriptions": {
                                           "typeIdentifier": "t_uint256",
                                           "typeString": "uint256"
-                                        },
-                                        "id": 70,
-                                        "isConstant": false,
-                                        "isLValue": false,
-                                        "isPure": false,
-                                        "lValueRequested": false,
-                                        "leftExpression": {
-                                          "id": 68,
-                                          "name": "_lockTime",
-                                          "nodeType": "Identifier",
-                                          "overloadedDeclarations": [],
-                                          "referencedDeclaration": 3,
-                                          "src": "614:9:0",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_uint256",
-                                            "typeString": "uint256"
-                                          }
-                                        },
-                                        "nodeType": "BinaryOperation",
-                                        "operator": ">=",
-                                        "rightExpression": {
-                                          "hexValue": "373330",
-                                          "id": 69,
-                                          "isConstant": false,
-                                          "isLValue": false,
-                                          "isPure": true,
-                                          "kind": "number",
-                                          "lValueRequested": false,
-                                          "nodeType": "Literal",
-                                          "src": "627:8:0",
-                                          "subdenomination": "days",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_rational_63072000_by_1",
-                                            "typeString": "int_const 63072000"
-                                          },
-                                          "value": "730"
-                                        },
-                                        "src": "614:21:0",
-                                        "typeDescriptions": {
-                                          "typeIdentifier": "t_bool",
-                                          "typeString": "bool"
                                         }
                                       },
                                       "nodeType": "BinaryOperation",
-                                      "operator": "&&",
+                                      "operator": ">=",
                                       "rightExpression": {
-                                        "commonType": {
-                                          "typeIdentifier": "t_uint256",
-                                          "typeString": "uint256"
-                                        },
-                                        "id": 73,
+                                        "hexValue": "31343630",
+                                        "id": 69,
                                         "isConstant": false,
                                         "isLValue": false,
-                                        "isPure": false,
+                                        "isPure": true,
+                                        "kind": "number",
                                         "lValueRequested": false,
-                                        "leftExpression": {
-                                          "id": 71,
-                                          "name": "_lockTime",
-                                          "nodeType": "Identifier",
-                                          "overloadedDeclarations": [],
-                                          "referencedDeclaration": 3,
-                                          "src": "639:9:0",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_uint256",
-                                            "typeString": "uint256"
-                                          }
-                                        },
-                                        "nodeType": "BinaryOperation",
-                                        "operator": "<",
-                                        "rightExpression": {
-                                          "hexValue": "31343630",
-                                          "id": 72,
-                                          "isConstant": false,
-                                          "isLValue": false,
-                                          "isPure": true,
-                                          "kind": "number",
-                                          "lValueRequested": false,
-                                          "nodeType": "Literal",
-                                          "src": "651:9:0",
-                                          "subdenomination": "days",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_rational_126144000_by_1",
-                                            "typeString": "int_const 126144000"
-                                          },
-                                          "value": "1460"
-                                        },
-                                        "src": "639:21:0",
+                                        "nodeType": "Literal",
+                                        "src": "694:9:0",
+                                        "subdenomination": "days",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_bool",
-                                          "typeString": "bool"
-                                        }
+                                          "typeIdentifier": "t_rational_126144000_by_1",
+                                          "typeString": "int_const 126144000"
+                                        },
+                                        "value": "1460"
                                       },
-                                      "src": "614:46:0",
+                                      "src": "681:22:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_bool",
                                         "typeString": "bool"
                                       }
                                     },
                                     "falseBody": {
-                                      "condition": {
-                                        "commonType": {
-                                          "typeIdentifier": "t_uint256",
-                                          "typeString": "uint256"
-                                        },
-                                        "id": 80,
-                                        "isConstant": false,
-                                        "isLValue": false,
-                                        "isPure": false,
-                                        "lValueRequested": false,
-                                        "leftExpression": {
-                                          "id": 78,
-                                          "name": "_lockTime",
-                                          "nodeType": "Identifier",
-                                          "overloadedDeclarations": [],
-                                          "referencedDeclaration": 3,
-                                          "src": "699:9:0",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_uint256",
-                                            "typeString": "uint256"
-                                          }
-                                        },
-                                        "nodeType": "BinaryOperation",
-                                        "operator": ">=",
-                                        "rightExpression": {
-                                          "hexValue": "31343630",
-                                          "id": 79,
-                                          "isConstant": false,
-                                          "isLValue": false,
-                                          "isPure": true,
-                                          "kind": "number",
-                                          "lValueRequested": false,
-                                          "nodeType": "Literal",
-                                          "src": "712:9:0",
-                                          "subdenomination": "days",
-                                          "typeDescriptions": {
-                                            "typeIdentifier": "t_rational_126144000_by_1",
-                                            "typeString": "int_const 126144000"
-                                          },
-                                          "value": "1460"
-                                        },
-                                        "src": "699:22:0",
-                                        "typeDescriptions": {
-                                          "typeIdentifier": "t_bool",
-                                          "typeString": "bool"
-                                        }
-                                      },
-                                      "falseBody": {
-                                        "id": 86,
-                                        "nodeType": "Block",
-                                        "src": "756:23:0",
-                                        "statements": [
-                                          {
-                                            "expression": {
-                                              "hexValue": "30",
-                                              "id": 84,
-                                              "isConstant": false,
-                                              "isLValue": false,
-                                              "isPure": true,
-                                              "kind": "number",
-                                              "lValueRequested": false,
-                                              "nodeType": "Literal",
-                                              "src": "771:1:0",
-                                              "typeDescriptions": {
-                                                "typeIdentifier": "t_rational_0_by_1",
-                                                "typeString": "int_const 0"
-                                              },
-                                              "value": "0"
-                                            },
-                                            "functionReturnParameters": 7,
-                                            "id": 85,
-                                            "nodeType": "Return",
-                                            "src": "764:8:0"
-                                          }
-                                        ]
-                                      },
-                                      "id": 87,
-                                      "nodeType": "IfStatement",
-                                      "src": "696:83:0",
-                                      "trueBody": {
-                                        "id": 83,
-                                        "nodeType": "Block",
-                                        "src": "722:25:0",
-                                        "statements": [
-                                          {
-                                            "expression": {
-                                              "hexValue": "383030",
-                                              "id": 81,
-                                              "isConstant": false,
-                                              "isLValue": false,
-                                              "isPure": true,
-                                              "kind": "number",
-                                              "lValueRequested": false,
-                                              "nodeType": "Literal",
-                                              "src": "737:3:0",
-                                              "typeDescriptions": {
-                                                "typeIdentifier": "t_rational_800_by_1",
-                                                "typeString": "int_const 800"
-                                              },
-                                              "value": "800"
-                                            },
-                                            "functionReturnParameters": 7,
-                                            "id": 82,
-                                            "nodeType": "Return",
-                                            "src": "730:10:0"
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    "id": 88,
-                                    "nodeType": "IfStatement",
-                                    "src": "611:168:0",
-                                    "trueBody": {
-                                      "id": 77,
+                                      "id": 76,
                                       "nodeType": "Block",
-                                      "src": "661:25:0",
+                                      "src": "738:23:0",
                                       "statements": [
                                         {
                                           "expression": {
-                                            "hexValue": "333030",
-                                            "id": 75,
+                                            "hexValue": "30",
+                                            "id": 74,
                                             "isConstant": false,
                                             "isLValue": false,
                                             "isPure": true,
                                             "kind": "number",
                                             "lValueRequested": false,
                                             "nodeType": "Literal",
-                                            "src": "676:3:0",
+                                            "src": "753:1:0",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_rational_300_by_1",
-                                              "typeString": "int_const 300"
+                                              "typeIdentifier": "t_rational_0_by_1",
+                                              "typeString": "int_const 0"
                                             },
-                                            "value": "300"
+                                            "value": "0"
                                           },
                                           "functionReturnParameters": 7,
-                                          "id": 76,
+                                          "id": 75,
                                           "nodeType": "Return",
-                                          "src": "669:10:0"
+                                          "src": "746:8:0"
+                                        }
+                                      ]
+                                    },
+                                    "id": 77,
+                                    "nodeType": "IfStatement",
+                                    "src": "678:83:0",
+                                    "trueBody": {
+                                      "id": 73,
+                                      "nodeType": "Block",
+                                      "src": "704:25:0",
+                                      "statements": [
+                                        {
+                                          "expression": {
+                                            "hexValue": "383030",
+                                            "id": 71,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "719:3:0",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_rational_800_by_1",
+                                              "typeString": "int_const 800"
+                                            },
+                                            "value": "800"
+                                          },
+                                          "functionReturnParameters": 7,
+                                          "id": 72,
+                                          "nodeType": "Return",
+                                          "src": "712:10:0"
                                         }
                                       ]
                                     }
                                   },
-                                  "id": 89,
+                                  "id": 78,
                                   "nodeType": "IfStatement",
-                                  "src": "527:252:0",
+                                  "src": "593:168:0",
                                   "trueBody": {
                                     "id": 67,
                                     "nodeType": "Block",
-                                    "src": "576:25:0",
+                                    "src": "643:25:0",
                                     "statements": [
                                       {
                                         "expression": {
-                                          "hexValue": "313430",
+                                          "hexValue": "333530",
                                           "id": 65,
                                           "isConstant": false,
                                           "isLValue": false,
@@ -1373,32 +1227,32 @@
                                           "kind": "number",
                                           "lValueRequested": false,
                                           "nodeType": "Literal",
-                                          "src": "591:3:0",
+                                          "src": "658:3:0",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_rational_140_by_1",
-                                            "typeString": "int_const 140"
+                                            "typeIdentifier": "t_rational_350_by_1",
+                                            "typeString": "int_const 350"
                                           },
-                                          "value": "140"
+                                          "value": "350"
                                         },
                                         "functionReturnParameters": 7,
                                         "id": 66,
                                         "nodeType": "Return",
-                                        "src": "584:10:0"
+                                        "src": "651:10:0"
                                       }
                                     ]
                                   }
                                 },
-                                "id": 90,
+                                "id": 79,
                                 "nodeType": "IfStatement",
-                                "src": "444:335:0",
+                                "src": "509:252:0",
                                 "trueBody": {
                                   "id": 57,
                                   "nodeType": "Block",
-                                  "src": "493:24:0",
+                                  "src": "558:25:0",
                                   "statements": [
                                     {
                                       "expression": {
-                                        "hexValue": "3630",
+                                        "hexValue": "323030",
                                         "id": 55,
                                         "isConstant": false,
                                         "isLValue": false,
@@ -1406,32 +1260,32 @@
                                         "kind": "number",
                                         "lValueRequested": false,
                                         "nodeType": "Literal",
-                                        "src": "508:2:0",
+                                        "src": "573:3:0",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_rational_60_by_1",
-                                          "typeString": "int_const 60"
+                                          "typeIdentifier": "t_rational_200_by_1",
+                                          "typeString": "int_const 200"
                                         },
-                                        "value": "60"
+                                        "value": "200"
                                       },
                                       "functionReturnParameters": 7,
                                       "id": 56,
                                       "nodeType": "Return",
-                                      "src": "501:9:0"
+                                      "src": "566:10:0"
                                     }
                                   ]
                                 }
                               },
-                              "id": 91,
+                              "id": 80,
                               "nodeType": "IfStatement",
-                              "src": "362:417:0",
+                              "src": "425:336:0",
                               "trueBody": {
                                 "id": 47,
                                 "nodeType": "Block",
-                                "src": "410:24:0",
+                                "src": "474:25:0",
                                 "statements": [
                                   {
                                     "expression": {
-                                      "hexValue": "3230",
+                                      "hexValue": "313235",
                                       "id": 45,
                                       "isConstant": false,
                                       "isLValue": false,
@@ -1439,32 +1293,32 @@
                                       "kind": "number",
                                       "lValueRequested": false,
                                       "nodeType": "Literal",
-                                      "src": "425:2:0",
+                                      "src": "489:3:0",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_rational_20_by_1",
-                                        "typeString": "int_const 20"
+                                        "typeIdentifier": "t_rational_125_by_1",
+                                        "typeString": "int_const 125"
                                       },
-                                      "value": "20"
+                                      "value": "125"
                                     },
                                     "functionReturnParameters": 7,
                                     "id": 46,
                                     "nodeType": "Return",
-                                    "src": "418:9:0"
+                                    "src": "482:10:0"
                                   }
                                 ]
                               }
                             },
-                            "id": 92,
+                            "id": 81,
                             "nodeType": "IfStatement",
-                            "src": "282:497:0",
+                            "src": "343:418:0",
                             "trueBody": {
                               "id": 37,
                               "nodeType": "Block",
-                              "src": "329:23:0",
+                              "src": "391:24:0",
                               "statements": [
                                 {
                                   "expression": {
-                                    "hexValue": "35",
+                                    "hexValue": "3530",
                                     "id": 35,
                                     "isConstant": false,
                                     "isLValue": false,
@@ -1472,32 +1326,32 @@
                                     "kind": "number",
                                     "lValueRequested": false,
                                     "nodeType": "Literal",
-                                    "src": "344:1:0",
+                                    "src": "406:2:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_rational_5_by_1",
-                                      "typeString": "int_const 5"
+                                      "typeIdentifier": "t_rational_50_by_1",
+                                      "typeString": "int_const 50"
                                     },
-                                    "value": "5"
+                                    "value": "50"
                                   },
                                   "functionReturnParameters": 7,
                                   "id": 36,
                                   "nodeType": "Return",
-                                  "src": "337:8:0"
+                                  "src": "399:9:0"
                                 }
                               ]
                             }
                           },
-                          "id": 93,
+                          "id": 82,
                           "nodeType": "IfStatement",
-                          "src": "202:577:0",
+                          "src": "262:499:0",
                           "trueBody": {
                             "id": 27,
                             "nodeType": "Block",
-                            "src": "249:23:0",
+                            "src": "309:24:0",
                             "statements": [
                               {
                                 "expression": {
-                                  "hexValue": "32",
+                                  "hexValue": "3135",
                                   "id": 25,
                                   "isConstant": false,
                                   "isLValue": false,
@@ -1505,32 +1359,32 @@
                                   "kind": "number",
                                   "lValueRequested": false,
                                   "nodeType": "Literal",
-                                  "src": "264:1:0",
+                                  "src": "324:2:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_rational_2_by_1",
-                                    "typeString": "int_const 2"
+                                    "typeIdentifier": "t_rational_15_by_1",
+                                    "typeString": "int_const 15"
                                   },
-                                  "value": "2"
+                                  "value": "15"
                                 },
                                 "functionReturnParameters": 7,
                                 "id": 26,
                                 "nodeType": "Return",
-                                "src": "257:8:0"
+                                "src": "317:9:0"
                               }
                             ]
                           }
                         },
-                        "id": 94,
+                        "id": 83,
                         "nodeType": "IfStatement",
-                        "src": "123:656:0",
+                        "src": "182:579:0",
                         "trueBody": {
                           "id": 17,
                           "nodeType": "Block",
-                          "src": "169:23:0",
+                          "src": "229:23:0",
                           "statements": [
                             {
                               "expression": {
-                                "hexValue": "31",
+                                "hexValue": "35",
                                 "id": 15,
                                 "isConstant": false,
                                 "isLValue": false,
@@ -1538,17 +1392,17 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "184:1:0",
+                                "src": "244:1:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_rational_1_by_1",
-                                  "typeString": "int_const 1"
+                                  "typeIdentifier": "t_rational_5_by_1",
+                                  "typeString": "int_const 5"
                                 },
-                                "value": "1"
+                                "value": "5"
                               },
                               "functionReturnParameters": 7,
                               "id": 16,
                               "nodeType": "Return",
-                              "src": "177:8:0"
+                              "src": "237:8:0"
                             }
                           ]
                         }
@@ -1556,12 +1410,12 @@
                     ]
                   },
                   "functionSelector": "faf1ebfd",
-                  "id": 96,
+                  "id": 85,
                   "implemented": true,
                   "kind": "function",
                   "modifiers": [],
                   "name": "bonusPercent",
-                  "nameLocation": "61:12:0",
+                  "nameLocation": "120:12:0",
                   "nodeType": "FunctionDefinition",
                   "parameters": {
                     "id": 4,
@@ -1572,10 +1426,10 @@
                         "id": 3,
                         "mutability": "mutable",
                         "name": "_lockTime",
-                        "nameLocation": "79:9:0",
+                        "nameLocation": "138:9:0",
                         "nodeType": "VariableDeclaration",
-                        "scope": 96,
-                        "src": "74:14:0",
+                        "scope": 85,
+                        "src": "133:14:0",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -1586,7 +1440,7 @@
                           "id": 2,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "74:4:0",
+                          "src": "133:4:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1595,7 +1449,7 @@
                         "visibility": "internal"
                       }
                     ],
-                    "src": "73:16:0"
+                    "src": "132:16:0"
                   },
                   "returnParameters": {
                     "id": 7,
@@ -1608,8 +1462,8 @@
                         "name": "",
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "VariableDeclaration",
-                        "scope": 96,
-                        "src": "112:4:0",
+                        "scope": 85,
+                        "src": "171:4:0",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -1620,7 +1474,7 @@
                           "id": 5,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "112:4:0",
+                          "src": "171:4:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1629,21 +1483,21 @@
                         "visibility": "internal"
                       }
                     ],
-                    "src": "111:6:0"
+                    "src": "170:6:0"
                   },
-                  "scope": 97,
-                  "src": "52:731:0",
+                  "scope": 86,
+                  "src": "111:654:0",
                   "stateMutability": "view",
                   "virtual": false,
                   "visibility": "external"
                 }
               ],
-              "scope": 98,
-              "src": "26:759:0",
+              "scope": 87,
+              "src": "85:682:0",
               "usedErrors": []
             }
           ],
-          "src": "0:786:0"
+          "src": "0:768:0"
         },
         "id": 0
       }
