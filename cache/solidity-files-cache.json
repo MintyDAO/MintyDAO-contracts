@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-bribes.sol": {
-      "lastModificationDate": 1649662966289,
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-bribes.sol": {
+      "lastModificationDate": 1659443237691,
       "contentHash": "98480e6e70ca51f414a379c8f7c31a03",
       "sourceName": "contracts/BaseV1-bribes.sol",
       "solcConfig": {
@@ -41,8 +41,8 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-core.sol": {
-      "lastModificationDate": 1649662966289,
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-core.sol": {
+      "lastModificationDate": 1659443236083,
       "contentHash": "4a940d99490c3407ef653aec1c945874",
       "sourceName": "contracts/BaseV1-core.sol",
       "solcConfig": {
@@ -81,8 +81,8 @@
         "erc20"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-gauges.sol": {
-      "lastModificationDate": 1652336799175,
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-gauges.sol": {
+      "lastModificationDate": 1659443220807,
       "contentHash": "1d1145e227ea8c9aca047067f78f64f4",
       "sourceName": "contracts/BaseV1-gauges.sol",
       "solcConfig": {
@@ -124,7 +124,7 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-minter.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-minter.sol": {
       "lastModificationDate": 1659611784051,
       "contentHash": "cf523e8325238533348bfe0869f8019e",
       "sourceName": "contracts/BaseV1-minter.sol",
@@ -167,8 +167,8 @@
         "voter"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-periphery.sol": {
-      "lastModificationDate": 1650617150545,
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-periphery.sol": {
+      "lastModificationDate": 1659443217356,
       "contentHash": "4fa1606e71be50c642bfaac199986ce3",
       "sourceName": "contracts/BaseV1-periphery.sol",
       "solcConfig": {
@@ -207,7 +207,7 @@
         "erc20"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-token.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-token.sol": {
       "lastModificationDate": 1659609936100,
       "contentHash": "36fa4f30556199a75676ae42304a1f3d",
       "sourceName": "contracts/BaseV1-token.sol",
@@ -242,7 +242,7 @@
         "BaseV1"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/BaseV1-voter.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-voter.sol": {
       "lastModificationDate": 1659611676911,
       "contentHash": "2c4897fe56c57e1b523a418e3b7ea0d7",
       "sourceName": "contracts/BaseV1-voter.sol",
@@ -287,300 +287,9 @@
         "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/calculations.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "d8e8a1cea2b484e1445916706b46b817",
-      "sourceName": "contracts/test/calculations.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.6"
-      ],
-      "artifacts": [
-        "Math",
-        "roots"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/StakingRewards.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "f4ecb5b7d97fe54f7600d53566bfd1b6",
-      "sourceName": "contracts/test/StakingRewards.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8"
-      ],
-      "artifacts": [
-        "IERC20",
-        "StakingRewards"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/Token.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "e4ece33c1d55552bd2c52692fabadb59",
-      "sourceName": "contracts/test/Token.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Token"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/ve_dist_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "c8f84d551c4661d281ae62ee3a462678",
-      "sourceName": "contracts/test/ve_dist_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_dist_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/ve_test.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "8aef363e7aa24afb980077e4ca96e6dd",
-      "sourceName": "contracts/test/ve_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "ve_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/voter_test.sol": {
-      "lastModificationDate": 1659430222725,
-      "contentHash": "e1136c4510eac372a24600cc33399b67",
-      "sourceName": "contracts/test/voter_test.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "voter_test"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/ve_dist.sol": {
-      "lastModificationDate": 1649662966289,
-      "contentHash": "79ee098017eb4a5f9f6b35f2e9b51719",
-      "sourceName": "contracts/ve_dist.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Math",
-        "VotingEscrow",
-        "erc20",
-        "ve_dist"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/ve.sol": {
-      "lastModificationDate": 1659196831908,
-      "contentHash": "ddf0a719df6ea297f8eb0528f8758a25",
-      "sourceName": "contracts/ve.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "Base64",
-        "IERC165",
-        "IERC20",
-        "IERC721",
-        "IERC721Metadata",
-        "IERC721Receiver",
-        "ve"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1659610435798,
-      "contentHash": "1fc37cb01ecc13f330d3081238b2c454",
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/Fetch.sol": {
+      "lastModificationDate": 1660216853956,
+      "contentHash": "9e75b6c4636988c05a02959603b6cdfe",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -624,10 +333,10 @@
         "SafeMath"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/WETH9.sol": {
-      "lastModificationDate": 1650616310140,
-      "contentHash": "e12c1617d95732980e3c35379079090a",
-      "sourceName": "contracts/WETH9.sol",
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/FetchFormula.sol": {
+      "lastModificationDate": 1659610435798,
+      "contentHash": "16fce2383d141c8731ffe40f87b74c78",
+      "sourceName": "contracts/FetchFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -656,10 +365,407 @@
         "^0.8.11"
       ],
       "artifacts": [
-        "WETH9"
+        "FetchFormula"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/Treasury.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/GaugesRewardDestributor.sol": {
+      "lastModificationDate": 1659443210852,
+      "contentHash": "ad7c3c8bc8199be52af1a47afeb84430",
+      "sourceName": "contracts/GaugesRewardDestributor.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "GaugesRewardDestributor",
+        "IERC20",
+        "IGauges",
+        "Ownable",
+        "SafeMath"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/PaintMulticall.sol": {
+      "lastModificationDate": 1659443208788,
+      "contentHash": "6ff531ccaefb3b826b5ba4ed8233e2a6",
+      "sourceName": "contracts/PaintMulticall.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "PaintMulticall"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/solidly_library.sol": {
+      "lastModificationDate": 1659443204825,
+      "contentHash": "191ce7b7e3142d6f042f009698f8d0b8",
+      "sourceName": "contracts/solidly_library.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "solidly_library",
+        "solidly_pair",
+        "solidly_router"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/TeamWallet.sol": {
+      "lastModificationDate": 1655801322569,
+      "contentHash": "b9d561c939342b755af083ed2aabed30",
+      "sourceName": "contracts/TeamWallet.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "Ownable",
+        "SafeMath",
+        "TeamWallet"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/calculations.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "d8e8a1cea2b484e1445916706b46b817",
+      "sourceName": "contracts/test/calculations.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.6"
+      ],
+      "artifacts": [
+        "Math",
+        "roots"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/gauge_mock_transfer.sol": {
+      "lastModificationDate": 1653555886768,
+      "contentHash": "f8b9aebc06dcb4e923d6587c11fe08da",
+      "sourceName": "contracts/test/gauge_mock_transfer.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": [
+        "GaugeMockTransfer",
+        "erc20"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/StakingRewards.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "f4ecb5b7d97fe54f7600d53566bfd1b6",
+      "sourceName": "contracts/test/StakingRewards.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8"
+      ],
+      "artifacts": [
+        "IERC20",
+        "StakingRewards"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/Token.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "e4ece33c1d55552bd2c52692fabadb59",
+      "sourceName": "contracts/test/Token.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "Token"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/ve_dist_test.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "c8f84d551c4661d281ae62ee3a462678",
+      "sourceName": "contracts/test/ve_dist_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "ve_dist_test"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/ve_test.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "8aef363e7aa24afb980077e4ca96e6dd",
+      "sourceName": "contracts/test/ve_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "ve_test"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/voter_test.sol": {
+      "lastModificationDate": 1659430222725,
+      "contentHash": "e1136c4510eac372a24600cc33399b67",
+      "sourceName": "contracts/test/voter_test.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "voter_test"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/Treasury.sol": {
       "lastModificationDate": 1654499085451,
       "contentHash": "dc54106497e3a17c157812789a5cafd6",
       "sourceName": "contracts/Treasury.sol",
@@ -700,10 +806,10 @@
         "Treasury"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/GaugesRewardDestributor.sol": {
-      "lastModificationDate": 1653556141732,
-      "contentHash": "ad7c3c8bc8199be52af1a47afeb84430",
-      "sourceName": "contracts/GaugesRewardDestributor.sol",
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/ve_dist.sol": {
+      "lastModificationDate": 1649662966289,
+      "contentHash": "79ee098017eb4a5f9f6b35f2e9b51719",
+      "sourceName": "contracts/ve_dist.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -729,21 +835,19 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.11"
+        "0.8.11"
       ],
       "artifacts": [
-        "Context",
-        "GaugesRewardDestributor",
-        "IERC20",
-        "IGauges",
-        "Ownable",
-        "SafeMath"
+        "Math",
+        "VotingEscrow",
+        "erc20",
+        "ve_dist"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/test/gauge_mock_transfer.sol": {
-      "lastModificationDate": 1653555886768,
-      "contentHash": "f8b9aebc06dcb4e923d6587c11fe08da",
-      "sourceName": "contracts/test/gauge_mock_transfer.sol",
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/ve.sol": {
+      "lastModificationDate": 1659196831908,
+      "contentHash": "ddf0a719df6ea297f8eb0528f8758a25",
+      "sourceName": "contracts/ve.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -768,13 +872,20 @@
         }
       },
       "imports": [],
-      "versionPragmas": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
       "artifacts": [
-        "GaugeMockTransfer",
-        "erc20"
+        "Base64",
+        "IERC165",
+        "IERC20",
+        "IERC721",
+        "IERC721Metadata",
+        "IERC721Receiver",
+        "ve"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsFormula.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/VotersRewardsFormula.sol": {
       "lastModificationDate": 1654247418013,
       "contentHash": "8f760bb4883a4d2cd3059a91d966410b",
       "sourceName": "contracts/VotersRewardsFormula.sol",
@@ -811,7 +922,7 @@
         "VotersRewardsFormula"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/VotersRewardsLock.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/VotersRewardsLock.sol": {
       "lastModificationDate": 1659519631614,
       "contentHash": "355045c463a2c89baadacfdc391e75d8",
       "sourceName": "contracts/VotersRewardsLock.sol",
@@ -851,47 +962,10 @@
         "VotersRewardsLock"
       ]
     },
-    "/home/rus/Projects/yMeta-contracts/contracts/solidly_library.sol": {
-      "lastModificationDate": 1655738804013,
-      "contentHash": "191ce7b7e3142d6f042f009698f8d0b8",
-      "sourceName": "contracts/solidly_library.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.11"
-      ],
-      "artifacts": [
-        "solidly_library",
-        "solidly_pair",
-        "solidly_router"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/PaintMulticall.sol": {
-      "lastModificationDate": 1655795657834,
-      "contentHash": "6ff531ccaefb3b826b5ba4ed8233e2a6",
-      "sourceName": "contracts/PaintMulticall.sol",
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/WETH9.sol": {
+      "lastModificationDate": 1650616310140,
+      "contentHash": "e12c1617d95732980e3c35379079090a",
+      "sourceName": "contracts/WETH9.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -920,81 +994,7 @@
         "^0.8.11"
       ],
       "artifacts": [
-        "PaintMulticall"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/TeamWallet.sol": {
-      "lastModificationDate": 1655801322569,
-      "contentHash": "b9d561c939342b755af083ed2aabed30",
-      "sourceName": "contracts/TeamWallet.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.11"
-      ],
-      "artifacts": [
-        "Context",
-        "IERC20",
-        "Ownable",
-        "SafeMath",
-        "TeamWallet"
-      ]
-    },
-    "/home/rus/Projects/yMeta-contracts/contracts/FetchFormula.sol": {
-      "lastModificationDate": 1659610435798,
-      "contentHash": "16fce2383d141c8731ffe40f87b74c78",
-      "sourceName": "contracts/FetchFormula.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.11"
-      ],
-      "artifacts": [
-        "FetchFormula"
+        "WETH9"
       ]
     }
   }

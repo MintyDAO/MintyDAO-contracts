@@ -3,6 +3,8 @@ const { ethers, waffle } = require("hardhat");
 const provider = waffle.provider;
 const Web3Utils = require('web3-utils');
 
+const minLockTime = 10368000 // 120 days in seconds
+
 function getCreate2Address(
   factoryAddress,
   [tokenA, tokenB],
@@ -132,7 +134,8 @@ describe("fetch", function () {
       minter.address,
       ve.address,
       treasury.address,
-      fetch_formula.address
+      fetch_formula.address,
+      minLockTime
     );
 
     await fetch.deployed();
@@ -214,7 +217,7 @@ describe("fetch", function () {
     const teamWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
 
     await fetch.convert(
-      31536000, // 365 days lock
+      minLockTime,
       {value:userInput}
     )
 
@@ -243,7 +246,7 @@ describe("fetch", function () {
     await ve_underlying.approve(fetch.address, userInput);
     await fetch.depositToken(
       userInput,
-      31536000 // 365 days lock
+      minLockTime
     )
 
     const nftAfter = Number(await ve.balanceOf(owner.address))

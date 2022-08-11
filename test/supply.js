@@ -116,7 +116,8 @@ describe("supply", function () {
       minter.address,
       ve.address,
       treasury.address,
-      fetch_formula.address
+      fetch_formula.address,
+      0 // min lock time
     );
 
     gauge_address = await gauge_factory.gauges(pair);

@@ -615,6 +615,8 @@ contract Fetch is Ownable {
 
   IFetchFormula public formula;
 
+  uint public minLockTime;
+
   /**
   * @dev constructor
   */
@@ -625,7 +627,8 @@ contract Fetch is Ownable {
     address _minter,
     address _VE,
     address _treasury,
-    address _formula
+    address _formula,
+    uint _minLockTime
     )
   {
     dexRouter = _dexRouter;
@@ -636,6 +639,7 @@ contract Fetch is Ownable {
     VE = IVE(_VE);
     treasury = _treasury;
     formula = IFetchFormula(_formula);
+    minLockTime = _minLockTime;
   }
 
   // convert for msg.sender
@@ -652,6 +656,7 @@ contract Fetch is Ownable {
   * @dev spit ETH input with DEX and Sale
   */
   function _convertFor(address receiver, uint _lockTime) internal {
+    require(_lockTime >= minLockTime, "min lock time");
     require(msg.value > 0, "zerro eth");
     // swap ETH to token
     swapETHInput(msg.value);
