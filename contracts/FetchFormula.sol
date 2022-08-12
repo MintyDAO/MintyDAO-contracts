@@ -1,6 +1,8 @@
 pragma solidity ^0.8.11;
 
 /*
+1w 1% 
+2w 2%
 1m 5%
 2m 15%
 3m 50%
@@ -12,7 +14,13 @@ pragma solidity ^0.8.11;
 
 contract FetchFormula {
   function bonusPercent(uint _lockTime) external view returns(uint){
-    if(_lockTime >= 30 days && _lockTime < 60 days){
+    if(_lockTime >= 7 days && _lockTime < 14 days){
+      return 1;
+    }
+    else if(_lockTime >= 14 days && _lockTime < 30 days){
+      return 2;
+    }
+    else if(_lockTime >= 30 days && _lockTime < 60 days){
       return 5;
     }
     else if(_lockTime >= 60 days && _lockTime < 90 days){

@@ -334,8 +334,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/FetchFormula.sol": {
-      "lastModificationDate": 1660217435751,
-      "contentHash": "36f51bc3caa672f6898078ac67657a34",
+      "lastModificationDate": 1660303513646,
+      "contentHash": "525974193348aef0473ddbc9ab54a52b",
       "sourceName": "contracts/FetchFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
