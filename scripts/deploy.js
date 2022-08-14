@@ -87,8 +87,6 @@ async function main() {
   await minter.deployed();
   console.log("minter ", minter.address)
 
-  // FAILED HERE 21.06.22
-
   await token.setMinter(minter.address);
   await ve.setVoter(voter.address);
   await ve_dist.setDepositor(minter.address);
@@ -121,6 +119,8 @@ async function main() {
   );
   await fetch.deployed();
   console.log("fetch ", fetch.address)
+
+  // STOPED HERE 14.08.22
 
   const rewardsLocker = await RewardsLocker.deploy(
     voter.address,
