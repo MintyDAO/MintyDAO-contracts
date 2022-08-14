@@ -5,6 +5,7 @@ const ldYmeta = "10000000000000000000"
 const ldETH = "100000000000000000"
 const WRAPPED_ETH = null
 const teamLockTime = 10368000 // 120 days in seconds
+const fetchMinTime = 604800 // 7 days
 
 async function main() {
   const [_owner] = await ethers.getSigners(1);
@@ -115,7 +116,8 @@ async function main() {
     minter.address,
     ve.address,
     treasury.address,
-    fetch_formula.address
+    fetch_formula.address,
+    fetchMinTime
   );
   await fetch.deployed();
   console.log("fetch ", fetch.address)
