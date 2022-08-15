@@ -177,6 +177,11 @@ async function main() {
     Date.now(),
     { value:ldETH }
   )
+
+  /*
+    For deploy DAO treasury check this repo
+    https://github.com/MintyDAO/MintyDAO-DAO-treasury
+  */
 }
 
 main()
