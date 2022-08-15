@@ -120,8 +120,6 @@ async function main() {
   await fetch.deployed();
   console.log("fetch ", fetch.address)
 
-  // STOPED HERE 14.08.22
-
   const rewardsLocker = await RewardsLocker.deploy(
     voter.address,
     token.address
