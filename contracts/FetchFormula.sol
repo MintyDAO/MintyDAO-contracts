@@ -1,7 +1,7 @@
 pragma solidity ^0.8.11;
 
 /*
-1w 1% 
+1w 1%
 2w 2%
 1m 5%
 2m 15%
@@ -37,6 +37,9 @@ contract FetchFormula {
     }
     else if(_lockTime >= 700 days && _lockTime < 1460 days){
       return 350;
+    }
+    else if(_lockTime >= 1095 days && _lockTime < 1460 days){
+      return 500;
     }
     else if(_lockTime >= 1460 days){
       return 800;
