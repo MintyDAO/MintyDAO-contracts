@@ -29,14 +29,14 @@ yarn hardhat run scripts/deploy.js --network ftm
 
 3) User can convert ETH or deposit Token in fetch and get % bonuses
 
-4) Add GaugesRewardDestributor for send rewards to special pools like USDT/yMeta
+4) Add GaugesRewardDestributor for destribute rewards by shares to special pools
 
-5) Add VotersRewardsLock for lock vote rewards and destribute by VotersRewardsFormula
+5) Add VotersRewardsLock for lock gauges rewards and destribute by VotersRewardsFormula
 
 6) Minter desrtribution now (
-  20% to team,
-  40% to gauges reward destributor,
-  40% Locker for voters pool
+  33% to team,
+  33% to gauges reward destributor,
+  34% Locker for voters pool
 )
 
 

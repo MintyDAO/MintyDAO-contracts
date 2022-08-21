@@ -227,10 +227,12 @@ contract BaseV1Minter is Ownable {
         uint _period = active_period;
         if (block.timestamp >= _period + week && initializer == address(0)) { // only trigger if new week
 
+            if(percentReduce == 0) return 0;
+
             if(percentReduce > 100){
               percentReduce -= (percentReduce / 100) * 2;
             }else{
-              percentReduce = 2;
+              percentReduce = 0;
             }
 
             _period = block.timestamp / week * week;
@@ -249,9 +251,9 @@ contract BaseV1Minter is Ownable {
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
 
             // compute destribution
-            uint teamRewards = (weekly / 100) * 20;
-            uint gaugeDestributorAmount = (weekly / 100) * 40;
-            uint votersLockAmount = (weekly / 100) * 40;
+            uint teamRewards = (weekly / 100) * 33;
+            uint gaugeDestributorAmount = (weekly / 100) * 33;
+            uint votersLockAmount = (weekly / 100) * 34;
 
             // 40% to platform pools gaugeDestributor
             _token.transfer(gaugeDestributor, gaugeDestributorAmount);

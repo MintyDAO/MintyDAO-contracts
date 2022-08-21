@@ -125,8 +125,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1659611784051,
-      "contentHash": "cf523e8325238533348bfe0869f8019e",
+      "lastModificationDate": 1661070554741,
+      "contentHash": "0c2d1005cb357143874fe975d08c2545",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",

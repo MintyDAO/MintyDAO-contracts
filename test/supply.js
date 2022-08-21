@@ -2,6 +2,9 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const Web3Utils = require('web3-utils');
 
+const csv = require('csv-parser');
+const fs = require('fs');
+
 function getCreate2Address(
   factoryAddress,
   [tokenA, tokenB],
@@ -180,18 +183,33 @@ describe("supply", function () {
 
     console.log("Supply before tests", Web3Utils.fromWei(String(await ve_underlying.totalSupply())))
 
-    for(let i = 0; i < 7; i++){
+    const row = []
+
+    for(let i = 0; i < 408; i++){
       console.log(`Week ${i + 1}`,"_______________________________________________________________________________________")
-      console.log(`Supply before`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
+      const supplyBefore = Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))).toFixed(2)
+      console.log(`Supply before`, supplyBefore)
       // increase time
       await network.provider.send("evm_increaseTime", [week])
       await network.provider.send("evm_mine")
       // console.log(`Weekly emmision`, Number(Web3Utils.fromWei(String(await minter.weekly_emission()))))
       // trigger minter
       await minter.update_period()
-      console.log(`Supply after`, Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))))
+      const supplyAfter = Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))).toFixed(2)
+      console.log(`Supply after`, supplyAfter)
       console.log("_______________________________________________________________________________________")
+
+      row.push(
+        {
+          week:i+1,
+          supplyBefore,
+          supplyAfter
+        }
+      )
     }
+
+    const fs = require('fs')
+    fs.writeFileSync('file.json', JSON.stringify(row));
 
     console.log("Supply after tests", Web3Utils.fromWei(String(await ve_underlying.totalSupply())))
   });
