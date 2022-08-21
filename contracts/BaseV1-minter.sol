@@ -227,8 +227,6 @@ contract BaseV1Minter is Ownable {
         uint _period = active_period;
         if (block.timestamp >= _period + week && initializer == address(0)) { // only trigger if new week
 
-            if(percentReduce == 0) return 0;
-
             if(percentReduce > 100){
               percentReduce -= (percentReduce / 100) * 2;
             }else{
@@ -251,17 +249,17 @@ contract BaseV1Minter is Ownable {
             _ve_dist.checkpoint_total_supply(); // checkpoint supply
 
             // compute destribution
-            uint teamRewards = (weekly / 100) * 33;
+            uint teamRewards = (weekly / 100) * 34;
             uint gaugeDestributorAmount = (weekly / 100) * 33;
-            uint votersLockAmount = (weekly / 100) * 34;
+            uint votersLockAmount = (weekly / 100) * 33;
 
-            // 40% to platform pools gaugeDestributor
+            // 33% to platform pools
             _token.transfer(gaugeDestributor, gaugeDestributorAmount);
 
-            // 40% to voters lock destributor
+            // 33% to voters gauges locker
             _token.transfer(votersLock, votersLockAmount);
 
-            // 20% bonus to team wallet (burn if less than 6 month)
+            // 34% bonus to team wallet (burn if less than 6 month)
              address _team = block.timestamp > teamUnlockDate
              ? teamWallet
              : address(0);
