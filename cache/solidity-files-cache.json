@@ -369,8 +369,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/GaugesRewardDestributor.sol": {
-      "lastModificationDate": 1659443210852,
-      "contentHash": "ad7c3c8bc8199be52af1a47afeb84430",
+      "lastModificationDate": 1661242678984,
+      "contentHash": "4077b85c3bfac3609981b633beda6a61",
       "sourceName": "contracts/GaugesRewardDestributor.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -886,8 +886,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1654247418013,
-      "contentHash": "8f760bb4883a4d2cd3059a91d966410b",
+      "lastModificationDate": 1661243117358,
+      "contentHash": "bb6cb00d690e13e621f25c62c6e5aeb1",
       "sourceName": "contracts/VotersRewardsFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -923,8 +923,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/VotersRewardsLock.sol": {
-      "lastModificationDate": 1659519631614,
-      "contentHash": "355045c463a2c89baadacfdc391e75d8",
+      "lastModificationDate": 1661243115154,
+      "contentHash": "263096a3c1e58aed89eef9c33757ddfb",
       "sourceName": "contracts/VotersRewardsLock.sol",
       "solcConfig": {
         "version": "0.8.11",
