@@ -23,59 +23,57 @@ yarn hardhat run scripts/deploy.js --network ftm
 ```
 0) No team pre mint ve
 
-1) Lock ve votes for 7 days after each vote in ve.abstain()
+1) Lock ve vote() option in voter for 7 days after each vote in ve.abstain() method
 
-2) Fetch mint % bonuses by fetch formula
+2) Fetch mint % bonuses of platform token by fetch formula
 
-3) User can convert ETH or deposit Token in fetch and get % bonuses
+3) User can convert and lock ETH or deposit and lock Platform Token in fetch and get % bonuses of Platform Token
 
-4) Add GaugesRewardDestributor for destribute rewards by shares to special pools
+4) Add GaugesRewardDestributor for destribute rewards by shares to special platform pools with platform token inside
 
-5) Add VotersRewardsLock for lock gauges rewards and destribute by VotersRewardsFormula
+5) Add VotersRewardsLock for lock users rewards and destribute rewards to users gauges by VotersRewardsFormula
 
-6) Minter desrtribution now (
+5.1) VotersRewardsFormula works like this
+
+Example
+(
+  Voters in total need to vote with 10x more ve than the weekly emissions to get full 100%
+
+  Example:
+  if 100 tokens are emitted, 1000 ve is need to emit full 100% to voter pools.
+
+  If only 200 ve then only 20% can be send for users voted pools
+)
+
+6) Minter desrtribution now
+
+Example
+(
   34% to team wallet
   33% platform pools (only mints based)
   33% locker for users pool (unlock by formula)
 )
 
+7) Add percentReduce for reduce weekly rewards in minter
 
-New logic for minter
+8) Add migration for minter for case if issue will be found in minter
 
-1. Total possible emissions is 2% per day (14% per week)
+9) Burn team rewards in minter
 
-2. 50% (0.5%) is set by team to important
- pools
+Example
+(
+  if now < unlock time
 
-3. Other 50% (0.5%) is set by vote
+  send to 0x address
 
-A. Voters in total need to vote with 10x more ve than the weekly emissions to get full 50% of platform emissions
+  else
 
-Example:
-if 100 tokens are emitted on week 50, 1000 ve is need to emit full 0.5% to voter pools.
-
-If only 200 ve votes then only 0.1% will be emitted for those voted pools
-
-
-7) Add percentReduce for reduce weekly mint percent
-
-
-8) Add migration for minter for case if issue will be found
-
-9) Burn team rewards
-
-if now < unlock time
-
-send to 0x address
-
-else
-
-send to team
-
+  send to team
+)
 
 10) Add lock time in fetch
 
-Mint now bonuses by this formula
+Mint fetch bonuses by this formula
 
 1m 5%
 2m 15%
@@ -83,6 +81,7 @@ Mint now bonuses by this formula
 6m 125%
 1y 200%
 2y 350%
+3y 500%
 4y 800%
 
 ```
