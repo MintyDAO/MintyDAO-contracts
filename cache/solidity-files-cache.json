@@ -243,7 +243,7 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-voter.sol": {
-      "lastModificationDate": 1659611676911,
+      "lastModificationDate": 1661242295161,
       "contentHash": "2c4897fe56c57e1b523a418e3b7ea0d7",
       "sourceName": "contracts/BaseV1-voter.sol",
       "solcConfig": {
@@ -334,8 +334,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/FetchFormula.sol": {
-      "lastModificationDate": 1660303513646,
-      "contentHash": "525974193348aef0473ddbc9ab54a52b",
+      "lastModificationDate": 1661072507070,
+      "contentHash": "f442f2aaf2d40573991d1f57f7cd955a",
       "sourceName": "contracts/FetchFormula.sol",
       "solcConfig": {
         "version": "0.8.11",

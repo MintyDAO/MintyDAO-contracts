@@ -185,7 +185,7 @@ describe("supply", function () {
 
     const row = []
 
-    for(let i = 0; i < 408; i++){
+    for(let i = 0; i < 7; i++){
       console.log(`Week ${i + 1}`,"_______________________________________________________________________________________")
       const supplyBefore = Number(Web3Utils.fromWei(String(await ve_underlying.totalSupply()))).toFixed(2)
       console.log(`Supply before`, supplyBefore)
