@@ -34,9 +34,9 @@ yarn hardhat run scripts/deploy.js --network ftm
 5) Add VotersRewardsLock for lock gauges rewards and destribute by VotersRewardsFormula
 
 6) Minter desrtribution now (
-  33% to team,
-  33% to gauges reward destributor,
-  34% Locker for voters pool
+  34% to team wallet
+  33% platform pools (only mints based)
+  33% locker for users pool (unlock by formula)
 )
 
 
