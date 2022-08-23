@@ -324,6 +324,7 @@ interface IGauges {
    function notifyRewardAmount(address token, uint amount) external;
 }
 
+// Only for platform pools with platform Token inside 
 contract GaugesRewardDestributor is Ownable {
   using SafeMath for uint;
 

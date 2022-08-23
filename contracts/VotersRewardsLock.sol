@@ -108,6 +108,8 @@ abstract contract Ownable is Context {
     }
 }
 
+// Locker for users pools rewards
+// Destribute rewards by formula 
 contract VotersRewardsLock is Ownable {
   address public voter;
   address public token;
