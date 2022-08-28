@@ -47,6 +47,7 @@ describe("core", function () {
   let owner3;
   let gauge_address;
   let destributor;
+  let gaugeWL
 
   it("deploy base coins", async function () {
     [owner, owner2, owner3] = await ethers.getSigners(3);
@@ -349,8 +350,21 @@ describe("core", function () {
     const BaseV1BribeFactory = await ethers.getContractFactory("BaseV1BribeFactory");
     const bribe_factory = await BaseV1BribeFactory.deploy();
     await bribe_factory.deployed();
+
+    const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
+    gaugeWL = await GaugeWL.deploy();
+    await gaugeWL.deployed();
+
+    await gaugeWL.disableVerification()
+
     const BaseV1Voter = await ethers.getContractFactory("BaseV1Voter");
-    gauge_factory = await BaseV1Voter.deploy(ve.address, factory.address, gauges_factory.address, bribe_factory.address);
+    gauge_factory = await BaseV1Voter.deploy(
+      ve.address,
+      factory.address,
+      gauges_factory.address,
+      bribe_factory.address,
+      gaugeWL.address
+    );
     await gauge_factory.deployed();
 
     await ve.setVoter(gauge_factory.address);

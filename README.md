@@ -84,6 +84,9 @@ Mint fetch bonuses by this formula
 3y 500%
 4y 800%
 
+
+11) Add GaugeWhiteList for now BaseV1Voter.createGauge require token in pool pair from GaugeWhiteList or pool it self should be white listed, or admin disable GaugeWhiteList verification 
+
 ```
 
 

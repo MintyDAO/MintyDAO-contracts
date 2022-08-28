@@ -68,8 +68,21 @@ describe("fetch", function () {
     const BaseV1BribeFactory = await ethers.getContractFactory("BaseV1BribeFactory");
     const bribe_factory = await BaseV1BribeFactory.deploy();
     await bribe_factory.deployed();
+
+    const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
+    const gaugeWL = await GaugeWL.deploy();
+    await gaugeWL.deployed();
+
+    await gaugeWL.disableVerification()
+
     const BaseV1Voter = await ethers.getContractFactory("BaseV1Voter");
-    const voter_gauge_factory = await BaseV1Voter.deploy(ve.address, factory.address, gauges_factory.address, bribe_factory.address);
+    const voter_gauge_factory = await BaseV1Voter.deploy(
+      ve.address,
+      factory.address,
+      gauges_factory.address,
+      bribe_factory.address,
+      gaugeWL.address
+    );
     await voter_gauge_factory.deployed();
 
     // SKIPPED

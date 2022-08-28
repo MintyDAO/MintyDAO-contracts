@@ -61,6 +61,13 @@ interface IMinter {
     function update_period() external returns (uint);
 }
 
+interface IGaugeWhiteList {
+    function verify(address token0, address token1, address pool)
+    external
+    view
+    returns(bool);
+}
+
 contract BaseV1Voter {
 
     address public immutable _ve; // the ve token that governs these contracts
@@ -70,6 +77,7 @@ contract BaseV1Voter {
     address public immutable bribefactory;
     uint internal constant DURATION = 7 days; // rewards are released over 7 days
     address public minter;
+    IGaugeWhiteList public gaugeWhiteList;
 
     uint public totalWeight; // total voting weight
 
@@ -95,13 +103,21 @@ contract BaseV1Voter {
     event Detach(address indexed owner, address indexed gauge, uint tokenId);
     event Whitelisted(address indexed whitelister, address indexed token);
 
-    constructor(address __ve, address _factory, address  _gauges, address _bribes) {
+    constructor(
+      address __ve,
+      address _factory,
+      address  _gauges,
+      address _bribes,
+      address _gaugeWhiteList
+      )
+    {
         _ve = __ve;
         factory = _factory;
         base = ve(__ve).token();
         gaugefactory = _gauges;
         bribefactory = _bribes;
         minter = msg.sender;
+        gaugeWhiteList = IGaugeWhiteList(_gaugeWhiteList);
     }
 
     // simple re-entrancy check
@@ -239,6 +255,7 @@ contract BaseV1Voter {
         require(IBaseV1Factory(factory).isPair(_pool), "!_pool");
         (address tokenA, address tokenB) = IBaseV1Core(_pool).tokens();
         require(isWhitelisted[tokenA] && isWhitelisted[tokenB], "!whitelisted");
+        require(gaugeWhiteList.verify(tokenA, tokenB, _pool), "!Gauge WhiteListed");
         address _bribe = IBaseV1BribeFactory(bribefactory).createBribe();
         address _gauge = IBaseV1GaugeFactory(gaugefactory).createGauge(_pool, _bribe, _ve);
         erc20(base).approve(_gauge, type(uint).max);

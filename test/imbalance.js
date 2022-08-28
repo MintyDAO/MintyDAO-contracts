@@ -166,8 +166,20 @@ describe("imbalance", function () {
     const bribe_factory = await BaseV1BribeFactory.deploy();
     await bribe_factory.deployed();
 
+    const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
+    const gaugeWL = await GaugeWL.deploy();
+    await gaugeWL.deployed();
+
+    await gaugeWL.disableVerification()
+
     const BaseV1Voter = await ethers.getContractFactory("BaseV1Voter");
-    gauge_factory = await BaseV1Voter.deploy(ve.address, factory.address, gauges_factory.address, bribe_factory.address);
+    gauge_factory = await BaseV1Voter.deploy(
+      ve.address,
+      factory.address,
+      gauges_factory.address,
+      bribe_factory.address,
+      gaugeWL.address
+    );
     await gauge_factory.deployed();
 
     await gauge_factory.initialize([ust.address, mim.address, dai.address, ve_underlying.address],owner.address);
