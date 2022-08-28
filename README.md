@@ -85,7 +85,7 @@ Mint fetch bonuses by this formula
 4y 800%
 
 
-11) Add GaugeWhiteList for now BaseV1Voter.createGauge require token in pool pair from GaugeWhiteList or pool it self should be white listed, or admin disable GaugeWhiteList verification 
+11) Add GaugeWhiteList for now BaseV1Voter.createGauge require token in pool pair from GaugeWhiteList or pool it self should be white listed, or admin disable GaugeWhiteList verification
 
 ```
 
@@ -141,7 +141,9 @@ DAO converter 0xbF23b40D404fDC556Bdd65c6Fe04dBeC9c8ca9cf
 
 DAO voter 0xAE25EADF2A478d2ef2Ad5F1830E4AcD0B305dBaC
 
-DAO treasury 0x5FAa42e0b0fDC1338eA01dEfEFb058Fe4682D7aa
+DAO for treasury 0x5FAa42e0b0fDC1338eA01dEfEFb058Fe4682D7aa
+
+New DAO for treasury 0x2cD119Da895bF24d517d425547ff56eDCb9569f8
 
 ```
 
