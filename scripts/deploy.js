@@ -30,6 +30,7 @@ async function main() {
   const GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
   const Library = await ethers.getContractFactory("solidly_library");
   const TeamWallet = await ethers.getContractFactory("TeamWallet");
+  const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
 
   console.log("Admin ", owner)
 
@@ -78,7 +79,19 @@ async function main() {
   await ve_dist.deployed();
   console.log("ve_dist ", ve_dist.address)
 
-  const voter = await BaseV1Voter.deploy(ve.address, core.address, gauges.address, bribes.address);
+  const gaugeWL = await GaugeWL.deploy();
+  await gaugeWL.deployed();
+  console.log("gaugeWL ", gaugeWL.address)
+
+  await gaugeWL.addToken(token.address)
+
+  const voter = await BaseV1Voter.deploy(
+    ve.address,
+    core.address,
+    gauges.address,
+    bribes.address,
+    gaugeWL.address
+  );
   await voter.deployed();
   console.log("voter ", voter.address)
 
