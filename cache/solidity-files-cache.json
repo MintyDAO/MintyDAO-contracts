@@ -846,8 +846,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/ve.sol": {
-      "lastModificationDate": 1659196831908,
-      "contentHash": "ddf0a719df6ea297f8eb0528f8758a25",
+      "lastModificationDate": 1661857020156,
+      "contentHash": "ff11723b57801092ac8b4d7ce46bb198",
       "sourceName": "contracts/ve.sol",
       "solcConfig": {
         "version": "0.8.11",
