@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 
-const initialYMeta = "1000000000000000000000000"
-const ldYmeta = "1000000000000000000000000"
+const initialTokens = "1000000000000000000000000"
+const ldTokens = "1000000000000000000000000"
 const ldETH = "100000000000000000"
 const WRAPPED_ETH = null
 const teamLockTime = 10368000 // 120 days in seconds
@@ -39,8 +39,8 @@ async function main() {
   await token.deployed();
   console.log("MintyDAO ", token.address)
 
-  // pre mint some for add LD to yMeta/ETH pool
-  await token.mint(owner, ldYmeta);
+  // pre mint some for add LD to Tokens/ETH pool
+  await token.mint(owner, ldTokens);
   console.log("call mint")
 
   const gauges = await Gauges.deploy();
@@ -199,7 +199,7 @@ async function main() {
 
   await minter.initialize(
     fetch.address,
-    initialYMeta,
+    initialTokens,
     destributor.address,
     rewardsLocker.address,
     OperWallet.address
@@ -210,11 +210,11 @@ async function main() {
   // SKIP add ld so far
 
   // // ADD SOME LD
-  // await token.approve(router.address, ldYmeta)
+  // await token.approve(router.address, ldTokens)
   // await router.addLiquidityFTM(
   //   token.address,
   //   false,
-  //   ldYmeta,
+  //   ldTokens,
   //   1,
   //   1,
   //   owner,

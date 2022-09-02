@@ -1,4 +1,4 @@
-# yMeta-contracts
+# MINTS-contracts
 
 # .env
 
