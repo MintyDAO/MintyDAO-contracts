@@ -207,20 +207,22 @@ async function main() {
 
   console.log("call initialize")
 
-  // ADD SOME LD
-  await token.approve(router.address, ldYmeta)
-  await router.addLiquidityFTM(
-    token.address,
-    false,
-    ldYmeta,
-    1,
-    1,
-    owner,
-    Date.now(),
-    { value:ldETH }
-  )
-
-  console.log("add LD")
+  // SKIP add ld so far
+  
+  // // ADD SOME LD
+  // await token.approve(router.address, ldYmeta)
+  // await router.addLiquidityFTM(
+  //   token.address,
+  //   false,
+  //   ldYmeta,
+  //   1,
+  //   1,
+  //   owner,
+  //   Date.now(),
+  //   { value:ldETH }
+  // )
+  //
+  // console.log("add LD")
 
 
   /*
