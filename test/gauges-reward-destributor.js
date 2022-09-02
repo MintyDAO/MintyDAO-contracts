@@ -29,9 +29,9 @@ describe("gauges-reward-destribution", function () {
     gauge_3 = await GaugeMockTransfer.deploy();
     await gauge_3.deployed();
 
-    GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
+    GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
 
-    destributor = await GaugesRewardDestributor.deploy(
+    destributor = await GaugesRewardDistributor.deploy(
       [gauge_1.address, gauge_2.address, gauge_3.address],
       [20,30,50]
     )

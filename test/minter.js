@@ -104,9 +104,9 @@ describe("minter", function () {
 
     gauge_address = await gauge_factory.gauges(pair);
 
-    GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
+    GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
 
-    destributor = await GaugesRewardDestributor.deploy(
+    destributor = await GaugesRewardDistributor.deploy(
       [gauge_address],
       [100]
     )

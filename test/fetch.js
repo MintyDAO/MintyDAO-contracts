@@ -170,9 +170,9 @@ describe("fetch", function () {
 
     rewardsLocker.updateFormula(rewardsFormula.address)
 
-    GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
+    GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
 
-    destributor = await GaugesRewardDestributor.deploy(
+    destributor = await GaugesRewardDistributor.deploy(
       [gauge_address],
       [100]
     )

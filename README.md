@@ -29,7 +29,7 @@ yarn hardhat run scripts/deploy.js --network ftm
 
 3) User can convert and lock ETH or deposit and lock Platform Token in fetch and get % bonuses of Platform Token
 
-4) Add GaugesRewardDestributor for destribute rewards by shares to special platform pools with platform token inside
+4) Add GaugesRewardDistributor for destribute rewards by shares to special platform pools with platform token inside
 
 5) Add VotersRewardsLock for lock users rewards and destribute rewards to users gauges by VotersRewardsFormula
 

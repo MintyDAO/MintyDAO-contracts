@@ -28,7 +28,7 @@ async function main() {
   const Fetch = await ethers.getContractFactory("Fetch");
   const RewardsLocker = await ethers.getContractFactory("VotersRewardsLock");
   const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
-  const GaugesRewardDestributor = await ethers.getContractFactory("GaugesRewardDestributor");
+  const GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
   const Library = await ethers.getContractFactory("solidly_library");
   const TeamWallet = await ethers.getContractFactory("TeamWallet");
   const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
@@ -189,7 +189,7 @@ async function main() {
   gauge_address = await voter.gauges(pair);
   console.log("gauge_address ", gauge_address)
 
-  const destributor = await GaugesRewardDestributor.deploy(
+  const destributor = await GaugesRewardDistributor.deploy(
     [gauge_address],
     [100]
   )
@@ -208,7 +208,7 @@ async function main() {
   console.log("call initialize")
 
   // SKIP add ld so far
-  
+
   // // ADD SOME LD
   // await token.approve(router.address, ldYmeta)
   // await router.addLiquidityFTM(
