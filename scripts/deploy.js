@@ -1,11 +1,12 @@
 const { ethers } = require("hardhat");
 
-const initialYMeta = "1000000000000000000000"
-const ldYmeta = "10000000000000000000"
+const initialYMeta = "1000000000000000000000000"
+const ldYmeta = "1000000000000000000000000"
 const ldETH = "100000000000000000"
 const WRAPPED_ETH = null
 const teamLockTime = 10368000 // 120 days in seconds
 const fetchMinTime = 604800 // 7 days
+
 
 async function main() {
   const [_owner] = await ethers.getSigners(1);
@@ -40,6 +41,7 @@ async function main() {
 
   // pre mint some for add LD to yMeta/ETH pool
   await token.mint(owner, ldYmeta);
+  console.log("call mint")
 
   const gauges = await Gauges.deploy();
   await gauges.deployed();
@@ -49,9 +51,11 @@ async function main() {
   await bribes.deployed();
   console.log("bribes ", bribes.address)
 
+
   const core = await Core.deploy();
   await core.deployed();
   console.log("factory ", core.address)
+
 
   if(!WRAPPED_ETH){
     const weth = await WETH9.deploy();
@@ -67,23 +71,28 @@ async function main() {
   await router.deployed();
   console.log("router ", router.address)
 
+
   const library = await Library.deploy(router.address)
   await library.deployed();
   console.log("library ", library.address)
+
 
   const ve = await Ve.deploy(token.address);
   await ve.deployed();
   console.log("ve ", ve.address)
 
+
   const ve_dist = await Ve_dist.deploy(ve.address);
   await ve_dist.deployed();
   console.log("ve_dist ", ve_dist.address)
+
 
   const gaugeWL = await GaugeWL.deploy();
   await gaugeWL.deployed();
   console.log("gaugeWL ", gaugeWL.address)
 
   await gaugeWL.addToken(token.address)
+  console.log("Call ADD token")
 
   const voter = await BaseV1Voter.deploy(
     ve.address,
@@ -95,16 +104,21 @@ async function main() {
   await voter.deployed();
   console.log("voter ", voter.address)
 
-
   const minter = await BaseV1Minter.deploy(voter.address, ve.address, ve_dist.address, teamLockTime);
   await minter.deployed();
   console.log("minter ", minter.address)
 
   await token.setMinter(minter.address);
+  console.log("call setMinter")
+
   await ve.setVoter(voter.address);
+  console.log("call setVoter")
+
   await ve_dist.setDepositor(minter.address);
+  console.log("call setDepositor")
 
   await voter.initialize([token.address, wrappedETH], minter.address);
+  console.log("call initialize")
 
   const treasury = await Treasury.deploy();
   await treasury.deployed();
@@ -116,9 +130,11 @@ async function main() {
   await teamWallet.deployed();
   console.log("teamWallet", teamWallet.address)
 
+
   const fetch_formula = await FetchFormula.deploy();
   await fetch_formula.deployed();
   console.log("fetch_formula ", fetch_formula.address)
+
 
   const fetch = await Fetch.deploy(
     router.address,
@@ -132,6 +148,7 @@ async function main() {
   );
   await fetch.deployed();
   console.log("fetch ", fetch.address)
+
 
   const rewardsLocker = await RewardsLocker.deploy(
     voter.address,
@@ -151,32 +168,13 @@ async function main() {
   console.log("rewardsFormula ", rewardsFormula.address)
 
   await rewardsLocker.updateFormula(rewardsFormula.address);
+  console.log("call updateFormula")
+
 
   await core.createPair(token.address, wrappedETH, false)
 
-  const pair = await router.pairFor(token.address, wrappedETH, false);
-  console.log("pair ", pair)
+  console.log("call updateFormula")
 
-  await voter.createGauge(pair);
-
-  // await voter.vote(1, [pair], [5000]);
-  gauge_address = await voter.gauges(pair);
-  console.log("gauge_address ", gauge_address)
-
-  const destributor = await GaugesRewardDestributor.deploy(
-    [gauge_address],
-    [100]
-  )
-  await destributor.deployed();
-  console.log("destributor", destributor.address)
-
-  await minter.initialize(
-    fetch.address,
-    initialYMeta,
-    destributor.address,
-    rewardsLocker.address,
-    teamWallet.address
-  );
 
   // ADD SOME LD
   await token.approve(router.address, ldYmeta)
@@ -190,6 +188,38 @@ async function main() {
     Date.now(),
     { value:ldETH }
   )
+
+  console.log("add LD")
+
+  const pair = await router.pairFor(token.address, wrappedETH, false);
+  console.log("pair ", pair)
+
+  await voter.createGauge(pair);
+  console.log("call createGauge")
+
+
+  // await voter.vote(1, [pair], [5000]);
+  gauge_address = await voter.gauges(pair);
+  console.log("gauge_address ", gauge_address)
+
+  const destributor = await GaugesRewardDestributor.deploy(
+    [gauge_address],
+    [100]
+  )
+  await destributor.deployed();
+  console.log("destributor", destributor.address)
+
+
+  await minter.initialize(
+    fetch.address,
+    initialYMeta,
+    destributor.address,
+    rewardsLocker.address,
+    teamWallet.address
+  );
+
+  console.log("call initialize")
+
 
   /*
     For deploy DAO treasury check this repo
