@@ -336,15 +336,15 @@ contract OperWallet is Ownable {
   uint public totalShares;
   uint public periodIndex;
   uint public periodDeadline;
-  IERC20 public yMeta;
+  IERC20 public platformToken;
 
   mapping(address => uint) public shares;
   mapping(uint => uint) public sharesRemoved;
   mapping(uint => mapping(address => bool)) public userRemoved;
 
-  constructor(address _yMeta) public {
+  constructor(address _platformToken) public {
     periodDeadline = block.timestamp + 7 days;
-    yMeta = IERC20(_yMeta);
+    platformToken = IERC20(_platformToken);
   }
 
   function updateShares(address _holder, uint _share) external onlyOwner {
@@ -375,9 +375,9 @@ contract OperWallet is Ownable {
     uint totalETH = address(this).balance;
     uint withdrawAmountETH = totalETH.div(totalShares.sub(_sharesRemoved)).mul(userShare);
 
-    // compute yMeta
-    uint totalYMeta = yMeta.balanceOf(address(this));
-    uint withdrawAmountYMeta = totalYMeta.div(totalShares.sub(_sharesRemoved)).mul(userShare);
+    // compute platformToken
+    uint totalRewards = platformToken.balanceOf(address(this));
+    uint withdrawAmountRewards = totalRewards.div(totalShares.sub(_sharesRemoved)).mul(userShare);
 
     // update shares data
     userRemoved[periodIndex][msg.sender] = true;
@@ -387,9 +387,9 @@ contract OperWallet is Ownable {
     if(withdrawAmountETH > 0)
       payable(msg.sender).transfer(withdrawAmountETH);
 
-    // withdraw yMeta
-    if(withdrawAmountYMeta > 0)
-      yMeta.transfer(msg.sender, withdrawAmountYMeta);
+    // withdraw platformToken
+    if(withdrawAmountRewards > 0)
+      platformToken.transfer(msg.sender, withdrawAmountRewards);
   }
 
   receive() external payable {}
