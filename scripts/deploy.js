@@ -124,11 +124,11 @@ async function main() {
   await treasury.deployed();
   console.log("treasury ", treasury.address)
 
-  const OperWallet = await OperWallet.deploy(
+  const operWallet = await OperWallet.deploy(
     token.address
   )
-  await OperWallet.deployed();
-  console.log("OperWallet", OperWallet.address)
+  await operWallet.deployed();
+  console.log("OperWallet", operWallet.address)
 
 
   const fetch_formula = await FetchFormula.deploy();
@@ -139,7 +139,7 @@ async function main() {
   const fetch = await Fetch.deploy(
     router.address,
     token.address,
-    OperWallet.address,
+    operWallet.address,
     minter.address,
     ve.address,
     treasury.address,
@@ -202,7 +202,7 @@ async function main() {
     initialTokens,
     destributor.address,
     rewardsLocker.address,
-    OperWallet.address
+    operWallet.address
   );
 
   console.log("call initialize")
