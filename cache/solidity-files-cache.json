@@ -441,10 +441,10 @@
         "solidly_router"
       ]
     },
-    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/TeamWallet.sol": {
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/OperWallet.sol": {
       "lastModificationDate": 1655801322569,
       "contentHash": "b9d561c939342b755af083ed2aabed30",
-      "sourceName": "contracts/TeamWallet.sol",
+      "sourceName": "contracts/OperWallet.sol",
       "solcConfig": {
         "version": "0.8.11",
         "settings": {
@@ -477,7 +477,7 @@
         "IERC20",
         "Ownable",
         "SafeMath",
-        "TeamWallet"
+        "OperWallet"
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/calculations.sol": {

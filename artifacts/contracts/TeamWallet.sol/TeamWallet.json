@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "TeamWallet",
-  "sourceName": "contracts/TeamWallet.sol",
+  "contractName": "OperWallet",
+  "sourceName": "contracts/OperWallet.sol",
   "abi": [
     {
       "inputs": [

@@ -30,7 +30,7 @@ async function main() {
   const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
   const GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
   const Library = await ethers.getContractFactory("solidly_library");
-  const TeamWallet = await ethers.getContractFactory("TeamWallet");
+  const OperWallet = await ethers.getContractFactory("OperWallet");
   const GaugeWL = await ethers.getContractFactory("GaugeWhiteList");
 
   console.log("Admin ", owner)
@@ -124,11 +124,11 @@ async function main() {
   await treasury.deployed();
   console.log("treasury ", treasury.address)
 
-  const teamWallet = await TeamWallet.deploy(
+  const OperWallet = await OperWallet.deploy(
     token.address
   )
-  await teamWallet.deployed();
-  console.log("teamWallet", teamWallet.address)
+  await OperWallet.deployed();
+  console.log("OperWallet", OperWallet.address)
 
 
   const fetch_formula = await FetchFormula.deploy();
@@ -139,7 +139,7 @@ async function main() {
   const fetch = await Fetch.deploy(
     router.address,
     token.address,
-    teamWallet.address,
+    OperWallet.address,
     minter.address,
     ve.address,
     treasury.address,
@@ -202,7 +202,7 @@ async function main() {
     initialYMeta,
     destributor.address,
     rewardsLocker.address,
-    teamWallet.address
+    OperWallet.address
   );
 
   console.log("call initialize")

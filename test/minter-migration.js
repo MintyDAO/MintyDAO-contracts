@@ -33,7 +33,7 @@ describe("Minter destribution", function () {
   let treasury;
   let gauge_address;
   let destributor;
-  let teamWallet;
+  let OperWallet;
   let voter_gauge_factory;
 
   it("deploy core ", async function () {

@@ -331,7 +331,7 @@ interface IERC20 {
 }
 
 
-contract TeamWallet is Ownable {
+contract OperWallet is Ownable {
   using SafeMath for uint;
   uint public totalShares;
   uint public periodIndex;

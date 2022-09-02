@@ -37,7 +37,7 @@ describe("fetch", function () {
   let treasury;
   let gauge_address;
   let destributor;
-  let teamWallet;
+  let OperWallet;
 
   it("deploy base fetch", async function () {
     [owner] = await ethers.getSigners(1);
@@ -134,16 +134,16 @@ describe("fetch", function () {
     fetch_formula = await FetchFormula.deploy();
     await fetch_formula.deployed();
 
-    const TeamWallet = await ethers.getContractFactory("TeamWallet");
-    teamWallet = await TeamWallet.deploy(ve_underlying.address);
-    await teamWallet.deployed();
+    const OperWallet = await ethers.getContractFactory("OperWallet");
+    OperWallet = await OperWallet.deploy(ve_underlying.address);
+    await OperWallet.deployed();
 
     const Fetch = await ethers.getContractFactory("Fetch");
 
     fetch = await Fetch.deploy(
       router.address,
       ve_underlying.address,
-      teamWallet.address,
+      OperWallet.address,
       minter.address,
       ve.address,
       treasury.address,
@@ -184,7 +184,7 @@ describe("fetch", function () {
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
       rewardsLocker.address,
-      teamWallet.address
+      OperWallet.address
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
@@ -227,7 +227,7 @@ describe("fetch", function () {
     const totalLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTBefore = Number(await ve.balanceOf(owner.address))
     const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
-    const teamWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
+    const OperWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(OperWallet.address))))
 
     await fetch.convert(
       minLockTime,
@@ -237,17 +237,17 @@ describe("fetch", function () {
     const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTAfter = Number(await ve.balanceOf(owner.address))
     const treasuryLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
-    const teamWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(teamWallet.address))))
+    const OperWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(OperWallet.address))))
 
     console.log("Total LD before fetch: ", totalLDBefore, "and after: ", totalLDAfter)
     console.log("User NFT balance before fetch: ", userNFTBefore, "and after: ", userNFTAfter)
     console.log("Treasury LD before fetch: ", treasuryLDBefore, "and after: ", treasuryLDAfter)
-    console.log("Team wallet ETH before fetch: ", teamWalletETHBefore, "and after: ", teamWalletETHAfter)
+    console.log("Team wallet ETH before fetch: ", OperWalletETHBefore, "and after: ", OperWalletETHAfter)
 
     expect(totalLDAfter).to.above(totalLDBefore);
     expect(userNFTAfter).to.above(userNFTBefore);
     expect(treasuryLDAfter).to.above(treasuryLDBefore);
-    expect(teamWalletETHAfter).to.above(teamWalletETHBefore);
+    expect(OperWalletETHAfter).to.above(OperWalletETHBefore);
   });
 
 
