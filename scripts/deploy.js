@@ -175,23 +175,10 @@ async function main() {
 
   console.log("call updateFormula")
 
+  await router.createPair(token.address, wrappedETH, false)
+  console.log("call createPair")
 
-  // ADD SOME LD
-  await token.approve(router.address, ldYmeta)
-  await router.addLiquidityFTM(
-    token.address,
-    false,
-    ldYmeta,
-    1,
-    1,
-    owner,
-    Date.now(),
-    { value:ldETH }
-  )
-
-  console.log("add LD")
-
-  const pair = await router.pairFor(token.address, wrappedETH, false);
+  const pair = await router.pairFor(token.address, wrappedETH, false)
   console.log("pair ", pair)
 
   await voter.createGauge(pair);
@@ -219,6 +206,21 @@ async function main() {
   );
 
   console.log("call initialize")
+
+  // ADD SOME LD
+  await token.approve(router.address, ldYmeta)
+  await router.addLiquidityFTM(
+    token.address,
+    false,
+    ldYmeta,
+    1,
+    1,
+    owner,
+    Date.now(),
+    { value:ldETH }
+  )
+
+  console.log("add LD")
 
 
   /*

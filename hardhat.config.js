@@ -42,6 +42,10 @@ module.exports = {
       url: "https://rpc.testnet.fantom.network/",
       accounts: [PRIVATE_KEY]
     },
+    eth: {
+      url: "https://mainnet.infura.io/v3/f232db04139546399712a992d17b3ace",
+      accounts: [PRIVATE_KEY]
+    },
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/f232db04139546399712a992d17b3ace",
       accounts: [PRIVATE_KEY]
