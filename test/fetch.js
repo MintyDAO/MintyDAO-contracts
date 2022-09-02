@@ -37,7 +37,7 @@ describe("fetch", function () {
   let treasury;
   let gauge_address;
   let destributor;
-  let OperWallet;
+  let operWallet;
 
   it("deploy base fetch", async function () {
     [owner] = await ethers.getSigners(1);
@@ -135,15 +135,15 @@ describe("fetch", function () {
     await fetch_formula.deployed();
 
     const OperWallet = await ethers.getContractFactory("OperWallet");
-    OperWallet = await OperWallet.deploy(ve_underlying.address);
-    await OperWallet.deployed();
+    operWallet = await OperWallet.deploy(ve_underlying.address);
+    await operWallet.deployed();
 
     const Fetch = await ethers.getContractFactory("Fetch");
 
     fetch = await Fetch.deploy(
       router.address,
       ve_underlying.address,
-      OperWallet.address,
+      operWallet.address,
       minter.address,
       ve.address,
       treasury.address,
@@ -184,7 +184,7 @@ describe("fetch", function () {
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
       rewardsLocker.address,
-      OperWallet.address
+      operWallet.address
     );
 
     expect(await fetch.dexRouter()).to.equal(router.address);
@@ -227,7 +227,7 @@ describe("fetch", function () {
     const totalLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTBefore = Number(await ve.balanceOf(owner.address))
     const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
-    const OperWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(OperWallet.address))))
+    const OperWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(operWallet.address))))
 
     await fetch.convert(
       minLockTime,
@@ -237,7 +237,7 @@ describe("fetch", function () {
     const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
     const userNFTAfter = Number(await ve.balanceOf(owner.address))
     const treasuryLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
-    const OperWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(OperWallet.address))))
+    const OperWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(operWallet.address))))
 
     console.log("Total LD before fetch: ", totalLDBefore, "and after: ", totalLDAfter)
     console.log("User NFT balance before fetch: ", userNFTBefore, "and after: ", userNFTAfter)

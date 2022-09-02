@@ -33,7 +33,7 @@ describe("Minter destribution", function () {
   let treasury;
   let gauge_address;
   let destributor;
-  let OperWallet;
+  let operWallet;
   let voter_gauge_factory;
 
   it("deploy core ", async function () {
@@ -124,8 +124,8 @@ describe("Minter destribution", function () {
     await treasury.deployed()
 
     const OperWallet = await ethers.getContractFactory("OperWallet");
-    OperWallet = await OperWallet.deploy(ve_underlying.address);
-    await OperWallet.deployed();
+    operWallet = await OperWallet.deploy(ve_underlying.address);
+    await operWallet.deployed();
 
 
     const RewardsLocker = await ethers.getContractFactory("VotersRewardsLock");
@@ -159,7 +159,7 @@ describe("Minter destribution", function () {
       ethers.BigNumber.from("10000000000000000000"),
       destributor.address,
       rewardsLocker.address,
-      OperWallet.address
+      operWallet.address
     );
 
   });
@@ -167,7 +167,7 @@ describe("Minter destribution", function () {
   it("First destribution team wallet should not receive, 0x should", async function () {
     expect(await ve_underlying.balanceOf(destributor.address)).to.be.equal(0);
     expect(await ve_underlying.balanceOf(rewardsLocker.address)).to.be.equal(0);
-    expect(await ve_underlying.balanceOf(OperWallet.address)).to.be.equal(0);
+    expect(await ve_underlying.balanceOf(operWallet.address)).to.be.equal(0);
     expect(await ve_underlying.balanceOf("0x0000000000000000000000000000000000000000")).to.be.equal(0);
 
     await network.provider.send("evm_increaseTime", [86400 * 21])
@@ -179,7 +179,7 @@ describe("Minter destribution", function () {
     expect(await ve_underlying.balanceOf("0x0000000000000000000000000000000000000000")).to.not.equal(0);
 
     // team wallet should not receive any tokens yet
-    expect(await ve_underlying.balanceOf(OperWallet.address)).to.be.equal(0);
+    expect(await ve_underlying.balanceOf(operWallet.address)).to.be.equal(0);
   });
 
 
@@ -198,6 +198,6 @@ describe("Minter destribution", function () {
     expect(await ve_underlying.balanceOf("0x0000000000000000000000000000000000000000")).to.be.equal(zerroBalanceBefore);
 
     // team wallet should receive now
-    expect(await ve_underlying.balanceOf(OperWallet.address)).to.not.equal(0);
+    expect(await ve_underlying.balanceOf(operWallet.address)).to.not.equal(0);
   });
 });

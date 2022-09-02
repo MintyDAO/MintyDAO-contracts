@@ -125,8 +125,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-minter.sol": {
-      "lastModificationDate": 1662111759292,
-      "contentHash": "865145541d8abfcc1234bed3cd98db1e",
+      "lastModificationDate": 1662124289064,
+      "contentHash": "1206a3ac15745705f58bd3c4c5a1ca58",
       "sourceName": "contracts/BaseV1-minter.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -439,45 +439,6 @@
         "solidly_library",
         "solidly_pair",
         "solidly_router"
-      ]
-    },
-    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/OperWallet.sol": {
-      "lastModificationDate": 1655801322569,
-      "contentHash": "b9d561c939342b755af083ed2aabed30",
-      "sourceName": "contracts/OperWallet.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.11"
-      ],
-      "artifacts": [
-        "Context",
-        "IERC20",
-        "Ownable",
-        "SafeMath",
-        "OperWallet"
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/calculations.sol": {
@@ -1031,6 +992,45 @@
         "GaugesRewardDistributor",
         "IERC20",
         "IGauges",
+        "Ownable",
+        "SafeMath"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/OperWallet.sol": {
+      "lastModificationDate": 1662124584374,
+      "contentHash": "d789e57ce2e5cf87df3be567c51955a8",
+      "sourceName": "contracts/OperWallet.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "OperWallet",
         "Ownable",
         "SafeMath"
       ]
