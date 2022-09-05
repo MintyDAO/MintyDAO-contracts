@@ -556,6 +556,9 @@ describe("core", function () {
   });
 
   it("vote hacking break mint", async function () {
+    await network.provider.send("evm_increaseTime", [604800])
+    await network.provider.send("evm_mine")
+    
     await gauge_factory.vote(1, [pair.address], [5000]);
 
     expect(await gauge_factory.usedWeights(1)).to.closeTo((await ve.balanceOfNFT(1)), 1000);

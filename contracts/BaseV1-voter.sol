@@ -92,6 +92,9 @@ contract BaseV1Voter {
     mapping(address => bool) public isGauge;
     mapping(address => bool) public isWhitelisted;
 
+    // Mapping NFT ID per deadline for unvote (_reset)
+    mapping(uint => uint) internal idPerDeadLine;
+
     event GaugeCreated(address indexed gauge, address creator, address indexed bribe, address indexed pool);
     event Voted(address indexed voter, uint tokenId, int256 weight);
     event Abstained(uint tokenId, int256 weight);
@@ -228,9 +231,15 @@ contract BaseV1Voter {
     }
 
     function vote(uint tokenId, address[] calldata _poolVote, int256[] calldata _weights) external {
+        // check deadline for unvote
+        require(block.timestamp > idPerDeadLine[tokenId], "lock period not finished");
+
         require(ve(_ve).isApprovedOrOwner(msg.sender, tokenId));
         require(_poolVote.length == _weights.length);
         _vote(tokenId, _poolVote, _weights);
+
+        // set deadline for unvote
+        idPerDeadLine[tokenId] = block.timestamp + 7 days;
     }
 
     function whitelist(address _token, uint _tokenId) public {

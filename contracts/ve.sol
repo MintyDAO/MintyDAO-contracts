@@ -381,9 +381,6 @@ contract ve is IERC721, IERC721Metadata {
     /// @dev Current count of token
     uint internal tokenId;
 
-    // @dev Mapping NFT ID per deadline for unvote
-    mapping(uint => uint) internal idPerDeadLine;
-
     /// @dev Mapping from NFT ID to the address that owns it.
     mapping(uint => address) internal idToOwner;
 
@@ -954,15 +951,11 @@ contract ve is IERC721, IERC721Metadata {
 
     function voting(uint _tokenId) external {
         require(msg.sender == voter);
-        // set deadline for unvote
-        idPerDeadLine[_tokenId] = block.timestamp + 7 days;
         voted[_tokenId] = true;
     }
 
     function abstain(uint _tokenId) external {
         require(msg.sender == voter);
-        // check deadline for unvote
-        require(block.timestamp > idPerDeadLine[_tokenId], "lock period not finished");
         voted[_tokenId] = false;
     }
 

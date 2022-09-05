@@ -23,7 +23,7 @@ yarn hardhat run scripts/deploy.js --network ftm
 ```
 0) No team pre mint ve
 
-1) Lock ve vote() option in voter for 7 days after each vote in ve.abstain() method
+1) Lock ve vote() option in voter for 7 days after each vote in ve.abstain() method. REDO MOVED lock logic from ve.abstain() to voter.vote() method. ve NFT original now, only changed name and symbol !
 
 2) Fetch mint % bonuses of platform token by fetch formula
 
