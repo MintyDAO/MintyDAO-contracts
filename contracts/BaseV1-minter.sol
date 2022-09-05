@@ -271,6 +271,11 @@ contract BaseV1Minter is Ownable {
         return _period;
     }
 
+    // allow owner update fetch 
+    function updateFetch(address _fetch) external onlyOwner {
+      fetch = _fetch;
+    }
+
     // allow migrate to new minter if issue will be with current
     function migrate(address _newMinter) external onlyOwner {
       _token.setMinter(_newMinter);

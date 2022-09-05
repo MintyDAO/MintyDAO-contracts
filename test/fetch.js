@@ -38,9 +38,10 @@ describe("fetch", function () {
   let gauge_address;
   let destributor;
   let operWallet;
+  let newFetch;
 
   it("deploy base fetch", async function () {
-    [owner] = await ethers.getSigners(1);
+    [owner, secondAccount] = await ethers.getSigners(1);
     token = await ethers.getContractFactory("Token");
     basev1 = await ethers.getContractFactory("BaseV1");
 
@@ -141,6 +142,17 @@ describe("fetch", function () {
     const Fetch = await ethers.getContractFactory("Fetch");
 
     fetch = await Fetch.deploy(
+      router.address,
+      ve_underlying.address,
+      operWallet.address,
+      minter.address,
+      ve.address,
+      treasury.address,
+      fetch_formula.address,
+      minLockTime
+    );
+
+    newFetch = await Fetch.deploy(
       router.address,
       ve_underlying.address,
       operWallet.address,
@@ -270,5 +282,35 @@ describe("fetch", function () {
 
   it("Owner can update formula ", async function () {
     await fetch.updateFormula(fetch.address)
+  });
+
+  it("Owner update fetch ", async function () {
+    await minter.updateFetch(newFetch.address)
+    expect(await minter.fetch()).to.be.equal(newFetch.address);
+  });
+
+  it("New fetch can mint ", async function () {
+    const userInput = "100000000000000000"
+
+    const totalLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
+    const userNFTBefore = Number(await ve.balanceOf(owner.address))
+    const treasuryLDBefore = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+    const OperWalletETHBefore = Number(Web3Utils.fromWei(String(await provider.getBalance(operWallet.address))))
+
+    await newFetch.convert(
+      minLockTime,
+      {value:userInput}
+    )
+
+    const totalLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.totalSupply())))
+    const userNFTAfter = Number(await ve.balanceOf(owner.address))
+    const treasuryLDAfter = Number(Web3Utils.fromWei(String(await ethPairToken.balanceOf(treasury.address))))
+    const OperWalletETHAfter = Number(Web3Utils.fromWei(String(await provider.getBalance(operWallet.address))))
+  });
+
+  it("Not owner can not update fetch ", async function () {
+    await minter.transferOwnership(newFetch.address)
+    await expect(minter.updateFetch(newFetch.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
   });
 });
