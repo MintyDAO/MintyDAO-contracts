@@ -35,6 +35,7 @@ describe("Minter destribution", function () {
   let destributor;
   let OperWallet;
   let voter_gauge_factory;
+  let newMinter;
 
   it("deploy core ", async function () {
     [owner] = await ethers.getSigners(1);
@@ -101,6 +102,16 @@ describe("Minter destribution", function () {
 
     await minter.deployed();
 
+
+    newMinter = await BaseV1Minter.deploy(
+      voter_gauge_factory.address,
+      ve.address,
+      ve_dist.address,
+      teamLockPeriod // 120 days in seconds
+    );
+
+    await newMinter.deployed();
+
     await ve_dist.setDepositor(minter.address);
     await ve_underlying.setMinter(minter.address);
     await voter_gauge_factory.initialize([mim.address, ve_underlying.address], minter.address);
@@ -112,11 +123,35 @@ describe("Minter destribution", function () {
     expect(await ve_underlying.minter()).to.be.equal(minter.address);
     expect(await voter_gauge_factory.minter()).to.be.equal(minter.address);
 
-    await minter.migrate(owner.address)
+    await minter.migrate(newMinter.address)
 
-    expect(await ve_dist.depositor()).to.be.equal(owner.address);
-    expect(await ve_underlying.minter()).to.be.equal(owner.address);
-    expect(await voter_gauge_factory.minter()).to.be.equal(owner.address);
+    expect(await ve_dist.depositor()).to.be.equal(newMinter.address);
+    expect(await ve_underlying.minter()).to.be.equal(newMinter.address);
+    expect(await voter_gauge_factory.minter()).to.be.equal(newMinter.address);
+  });
+
+  it("New minter can mint ", async function () {
+    const week = 604800
+
+    const tokenSupplyBefore = await ve_underlying.totalSupply()
+    const stakeBefore = await ve_underlying.balanceOf(ve_dist.address)
+
+    await newMinter.initialize(
+      owner.address,
+      ethers.BigNumber.from("20000000000000000000000000"),
+      ve_dist.address,
+      owner.address, // should be vote locker
+      owner.address // should be team wallet
+    )
+
+    await network.provider.send("evm_increaseTime", [week * 3])
+    await network.provider.send("evm_mine")
+    // console.log(`Weekly emmision`, Number(Web3Utils.fromWei(String(await minter.weekly_emission()))))
+    // trigger minter
+    await newMinter.update_period()
+
+    expect(await ve_underlying.totalSupply()).to.above(tokenSupplyBefore)
+    expect(await ve_underlying.balanceOf(ve_dist.address)).to.above(stakeBefore)
   });
 
 });
