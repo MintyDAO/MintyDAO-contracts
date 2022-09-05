@@ -154,4 +154,9 @@ describe("Minter destribution", function () {
     expect(await ve_underlying.balanceOf(ve_dist.address)).to.above(stakeBefore)
   });
 
+  it("Not owner can not call migrate ", async function () {
+    await newMinter.transferOwnership(newMinter.address)
+    await expect(newMinter.migrate(newMinter.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  });
 });
