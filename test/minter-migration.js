@@ -154,9 +154,20 @@ describe("Minter destribution", function () {
     expect(await ve_underlying.balanceOf(ve_dist.address)).to.above(stakeBefore)
   });
 
+  it("Owner can not call migrate after lock", async function () {
+    await newMinter.lockMigrationForever()
+    await expect(newMinter.migrate(newMinter.address))
+       .to.be.revertedWith('Migration locked');
+  });
+
   it("Not owner can not call migrate ", async function () {
     await newMinter.transferOwnership(newMinter.address)
     await expect(newMinter.migrate(newMinter.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  });
+
+  it("Not owner can not call lockMigrationForever ", async function () {
+    await expect(newMinter.lockMigrationForever())
        .to.be.revertedWith('Ownable: caller is not the owner');
   });
 });

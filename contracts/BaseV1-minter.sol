@@ -152,8 +152,9 @@ contract BaseV1Minter is Ownable {
 
     uint internal constant totalPercentReduce = 100000;
     uint public percentReduce = 14000;
-
     uint public operUnlockDate;
+    
+    bool public isMigrationLocked = false;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
 
@@ -271,15 +272,20 @@ contract BaseV1Minter is Ownable {
         return _period;
     }
 
-    // allow owner update fetch 
+    // allow owner update fetch
     function updateFetch(address _fetch) external onlyOwner {
       fetch = _fetch;
     }
 
     // allow migrate to new minter if issue will be with current
     function migrate(address _newMinter) external onlyOwner {
+      require(!isMigrationLocked, "Migration locked");
       _token.setMinter(_newMinter);
       _ve_dist.setDepositor(_newMinter);
       _voter.updateMinter(_newMinter);
+    }
+
+    function lockMigrationForever() external onlyOwner {
+      isMigrationLocked = true;
     }
 }
