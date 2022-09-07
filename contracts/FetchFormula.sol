@@ -36,7 +36,7 @@ contract FetchFormula {
     else if(_lockTime >= 365 days && _lockTime < 730 days){
       return 200;
     }
-    else if(_lockTime >= 700 days && _lockTime < 1095 days){
+    else if(_lockTime >= 730 days && _lockTime < 1095 days){
       return 350;
     }
     else if(_lockTime >= 1095 days && _lockTime < 1460 days){
