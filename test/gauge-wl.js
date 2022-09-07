@@ -21,7 +21,7 @@ function getCreate2Address(
   return getAddress(`0x${keccak256(sanitizedInputs).slice(-40)}`)
 }
 
-describe("fetch", function () {
+describe("Gauge WL", function () {
 
   let token;
   let ve_underlying;
@@ -40,6 +40,7 @@ describe("fetch", function () {
   let operWallet;
   let voter_gauge_factory;
   let gaugeWL;
+  let pair;
 
   it("deploy base gauge", async function () {
     [owner, secondAccount] = await ethers.getSigners(1);
@@ -113,19 +114,56 @@ describe("fetch", function () {
     await ve_underlying.approve(router.address, ve_underlying_1);
     await mim.approve(router.address, mim_1);
     await router.addLiquidity(mim.address, ve_underlying.address, false, mim_1, ve_underlying_1, 0, 0, owner.address, Date.now());
+    pair = await router.pairFor(mim.address, ve_underlying.address, false);
   });
 
   it("can not create gauge if one of tokens not in WL", async function () {
-    const pair = await router.pairFor(mim.address, ve_underlying.address, false);
     await ve_underlying.approve(voter_gauge_factory.address, ethers.BigNumber.from("500000000000000000000000"));
     await expect(voter_gauge_factory.createGauge(pair))
        .to.be.revertedWith('!Gauge WhiteListed');
   })
 
   it("can create gauge if one of tokens in WL", async function () {
-    const pair = await router.pairFor(mim.address, ve_underlying.address, false);
     await gaugeWL.addToken(ve_underlying.address)
     await voter_gauge_factory.createGauge(pair)
   })
 
+  it("can remove token from WL", async function () {
+    expect(await gaugeWL.isWhitelistedToken(ve_underlying.address)).to.be.equal(true);
+    await gaugeWL.removeToken(ve_underlying.address)
+    expect(await gaugeWL.isWhitelistedToken(ve_underlying.address)).to.be.equal(false);
+  })
+
+  it("can add pool to WL", async function () {
+    expect(await gaugeWL.isWhitelistedPool(pair)).to.be.equal(false);
+    await gaugeWL.addPool(pair)
+    expect(await gaugeWL.isWhitelistedPool(pair)).to.be.equal(true);
+  })
+
+  it("can remove pool from WL", async function () {
+    expect(await gaugeWL.isWhitelistedPool(pair)).to.be.equal(true);
+    await gaugeWL.removePool(pair)
+    expect(await gaugeWL.isWhitelistedPool(pair)).to.be.equal(false);
+  })
+
+  it("not owner can not add pool to WL", async function () {
+    await gaugeWL.transferOwnership(gaugeWL.address)
+    await expect(gaugeWL.addPool(pair))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  })
+
+  it("not owner can not remove pool from WL", async function () {
+    await expect(gaugeWL.removePool(pair))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  })
+
+  it("not owner can not add token to WL", async function () {
+    await expect(gaugeWL.addToken(ve_underlying.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  })
+
+  it("not owner can not remove token from WL", async function () {
+    await expect(gaugeWL.removeToken(ve_underlying.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  })
 });
