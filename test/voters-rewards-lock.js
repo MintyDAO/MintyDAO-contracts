@@ -8,6 +8,7 @@ describe("gauges-reward-destribution", function () {
   let token;
   let voter;
   let rewardsFormula;
+  let newRewardsFormula;
   let voterRewardsLock;
 
 
@@ -35,6 +36,14 @@ describe("gauges-reward-destribution", function () {
     );
     await rewardsFormula.deployed();
 
+    newRewardsFormula = await VotersRewardsFormula.deploy(
+      voter.address,
+      voterRewardsLock.address,
+      token.address
+    );
+
+    await newRewardsFormula.deployed();
+
     await voterRewardsLock.updateFormula(rewardsFormula.address)
   });
 
@@ -45,5 +54,17 @@ describe("gauges-reward-destribution", function () {
     await voter.setTotalWeight(String(1000000000000000000 * 10))
     expect(await voterRewardsLock.computeRewards()).to.not.equal(0)
     await voterRewardsLock.destributeRewards()
+  });
+
+  it("Owner can update formula", async function () {
+    expect(await voterRewardsLock.formula()).to.be.equal(rewardsFormula.address);
+    await voterRewardsLock.updateFormula(newRewardsFormula.address)
+    expect(await voterRewardsLock.formula()).to.be.equal(newRewardsFormula.address);
+  });
+
+  it("Not owner can not update formula", async function () {
+    await voterRewardsLock.transferOwnership(voterRewardsLock.address)
+    await expect(voterRewardsLock.updateFormula(newRewardsFormula.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
   });
 });
