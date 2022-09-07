@@ -372,4 +372,8 @@ contract GaugesRewardDistributor is Ownable {
       IGauges(iGauge).notifyRewardAmount(_token, iReward);
     }
   }
+
+  function totalGauges() external view returns(uint){
+    return gauges.length;
+  }
 }

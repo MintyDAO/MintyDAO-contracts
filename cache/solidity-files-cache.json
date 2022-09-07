@@ -957,8 +957,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/GaugesRewardDistributor.sol": {
-      "lastModificationDate": 1662116293133,
-      "contentHash": "4b100b12652c8e3bb33ea4f857b1bed1",
+      "lastModificationDate": 1662545043332,
+      "contentHash": "61695f77b0a9cfc344c010fc26efa4bd",
       "sourceName": "contracts/GaugesRewardDistributor.sol",
       "solcConfig": {
         "version": "0.8.11",

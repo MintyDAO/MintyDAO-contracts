@@ -9,7 +9,7 @@ describe("gauges-reward-destribution", function () {
   let gauge_1;
   let gauge_2;
   let gauge_3;
-  let destributor;
+  let distributor;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -31,20 +31,20 @@ describe("gauges-reward-destribution", function () {
 
     GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
 
-    destributor = await GaugesRewardDistributor.deploy(
+    distributor = await GaugesRewardDistributor.deploy(
       [gauge_1.address, gauge_2.address, gauge_3.address],
       [20,30,50]
     )
 
-    destributor.deployed();
+    distributor.deployed();
 
-    expect(await destributor.totalShares()).to.be.equal(100);
+    expect(await distributor.totalShares()).to.be.equal(100);
   });
 
 
   it("Destribution", async function () {
-    await token.transfer(destributor.address, "1000000000000000000")
-    await destributor.destribute(token.address)
+    await token.transfer(distributor.address, "1000000000000000000")
+    await distributor.destribute(token.address)
 
     expect(await token.balanceOf(gauge_1.address)).to.be.equal("200000000000000000");
     expect(await token.balanceOf(gauge_2.address)).to.be.equal("300000000000000000");
@@ -52,7 +52,19 @@ describe("gauges-reward-destribution", function () {
   });
 
   it("Update destribution shares", async function () {
-    await destributor.update([gauge_1.address, gauge_2.address], [100, 100])
-    expect(await destributor.totalShares()).to.be.equal(200);
+    await distributor.update([gauge_1.address, gauge_2.address], [100, 100])
+    expect(await distributor.totalShares()).to.be.equal(200);
+    expect(await distributor.totalGauges()).to.be.equal(2);
+  });
+
+  it("Owner can not set wrong shares length", async function () {
+    await expect(distributor.update([gauge_1.address, gauge_2.address], [100, 100, 100]))
+       .to.be.revertedWith('Wrong length');
+  });
+
+  it("Not owner can not update destribution shares", async function () {
+    await distributor.transferOwnership(distributor.address)
+    await expect(distributor.update([gauge_1.address, gauge_2.address], [100, 100]))
+       .to.be.revertedWith('Ownable: caller is not the owner');
   });
 });
