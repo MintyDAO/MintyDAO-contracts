@@ -313,4 +313,10 @@ describe("fetch", function () {
     await expect(minter.updateFetch(newFetch.address))
        .to.be.revertedWith('Ownable: caller is not the owner');
   });
+
+  it("Not owner can not update formula ", async function () {
+    await fetch.transferOwnership(newFetch.address)
+    await expect(fetch.updateFormula(fetch.address))
+       .to.be.revertedWith('Ownable: caller is not the owner');
+  });
 });
