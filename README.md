@@ -92,9 +92,13 @@ Mint fetch bonuses by this formula
 # Links
 
 ```
-OperWallet uint tests
+OperWallet unit tests
 
 https://github.com/MintyDAO/MintyDAO-wallet/blob/main/test/wallet-test.js
+
+DAO treasury unit tests
+
+https://github.com/MintyDAO/MintyDAO-DAO-treasury/tree/main/test
 ```
 
 
