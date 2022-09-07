@@ -153,7 +153,7 @@ contract BaseV1Minter is Ownable {
     uint internal constant totalPercentReduce = 100000;
     uint public percentReduce = 14000;
     uint public operUnlockDate;
-    
+
     bool public isMigrationLocked = false;
 
     event Mint(address indexed sender, uint weekly, uint circulating_supply, uint circulating_emission);
@@ -285,6 +285,7 @@ contract BaseV1Minter is Ownable {
       _voter.updateMinter(_newMinter);
     }
 
+    // allow owner lock migration for new minter forever 
     function lockMigrationForever() external onlyOwner {
       isMigrationLocked = true;
     }
