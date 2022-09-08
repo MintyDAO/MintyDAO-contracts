@@ -1,25 +1,6 @@
 const { expect } = require("chai");
 const { ethers, waffle } = require("hardhat");
 const provider = waffle.provider;
-const Web3Utils = require('web3-utils');
-
-const minLockTime = 10368000 // 120 days in seconds
-
-function getCreate2Address(
-  factoryAddress,
-  [tokenA, tokenB],
-  bytecode
-) {
-  const [token0, token1] = tokenA < tokenB ? [tokenA, tokenB] : [tokenB, tokenA]
-  const create2Inputs = [
-    '0xff',
-    factoryAddress,
-    keccak256(solidityPack(['address', 'address'], [token0, token1])),
-    keccak256(bytecode)
-  ]
-  const sanitizedInputs = `0x${create2Inputs.map(i => i.slice(2)).join('')}`
-  return getAddress(`0x${keccak256(sanitizedInputs).slice(-40)}`)
-}
 
 describe("name", function () {
 

@@ -82,8 +82,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/BaseV1-gauges.sol": {
-      "lastModificationDate": 1659443220807,
-      "contentHash": "1d1145e227ea8c9aca047067f78f64f4",
+      "lastModificationDate": 1662630374251,
+      "contentHash": "49d4b87bd33b88bd009349d92ffd5cd6",
       "sourceName": "contracts/BaseV1-gauges.sol",
       "solcConfig": {
         "version": "0.8.11",
