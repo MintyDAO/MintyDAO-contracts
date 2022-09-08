@@ -1,4 +1,5 @@
 // claim ater 365 days works
+// claim with set rescue formula works 
 
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
@@ -33,6 +34,7 @@ describe("gauge-pools-big-delay-claim", function () {
   let rewardsFormula;
   let gauge_factory;
   let pair;
+  let votersRewardsRescue;
 
   it("deploy base", async function () {
     [owner] = await ethers.getSigners(1);
@@ -134,9 +136,14 @@ describe("gauge-pools-big-delay-claim", function () {
     );
     rewardsFormula.deployed();
 
-    rewardsLocker.updateFormula(rewardsFormula.address)
+    await rewardsLocker.updateFormula(rewardsFormula.address)
 
-    GaugesRewardDistributor = await ethers.getContractFactory("GaugesRewardDistributor");
+    const VotersRewardsRescue = await ethers.getContractFactory("VotersRewardsRescue")
+    votersRewardsRescue = await VotersRewardsRescue.deploy(
+      rewardsLocker.address,
+      ve_underlying.address
+    )
+    votersRewardsRescue.deployed();
   });
 
   it("initialize veNFT", async function () {
@@ -159,12 +166,16 @@ describe("gauge-pools-big-delay-claim", function () {
     expect(await ve_underlying.balanceOf(rewardsLocker.address)).to.be.above(0)
     expect(await ve_underlying.balanceOf(gauge_factory.address)).to.equal(0)
 
+    const claimAmount = await rewardsFormula.computeRewards()
+
     console.log("Total weight ", Number(await gauge_factory.totalWeight() / 10**18))
     console.log("Total rewards ", Number(await ve_underlying.balanceOf(rewardsLocker.address) / 10**18))
-    console.log("Allow to claim ", Number(await rewardsFormula.computeRewards() / 10**18))
+    console.log("Allow to claim ", Number(claimAmount / 10**18))
 
     await rewardsLocker.destributeRewards()
-    expect(await ve_underlying.balanceOf(gauge_factory.address)).to.be.above(0)
+
+    console.log("Claimed ", Number(await ve_underlying.balanceOf(gauge_factory.address) / 10**18))
+    expect(await ve_underlying.balanceOf(gauge_factory.address)).to.equal(claimAmount)
   });
 
   it("platfom pools can claim ", async function () {
@@ -173,6 +184,24 @@ describe("gauge-pools-big-delay-claim", function () {
     await destributor.destribute(ve_underlying.address)
     console.log("Platform pools claimed ", Number(await ve_underlying.balanceOf(gauge_address) / 10**18))
     expect(await ve_underlying.balanceOf(gauge_address)).to.be.above(0)
+  });
+
+  it("Owner can rescue money by distribute by new formula if bug in old ", async function () {
+    const claimAmount = await rewardsFormula.computeRewards()
+    const totalRewards = await ve_underlying.balanceOf(rewardsLocker.address)
+    await network.provider.send("evm_increaseTime", [86400 * 7])
+    await network.provider.send("evm_mine")
+
+    console.log("Total weight ", Number(await gauge_factory.totalWeight() / 10**18))
+    console.log("Total rewards ", Number(totalRewards / 10**18))
+    console.log("Allow to claim ", Number(claimAmount / 10**18))
+
+    await rewardsLocker.updateFormula(votersRewardsRescue.address)
+
+    await rewardsLocker.destributeRewards()
+    expect(await ve_underlying.balanceOf(gauge_factory.address)).to.be.above(totalRewards)
+
+    console.log("Claimed ", Number(await ve_underlying.balanceOf(gauge_factory.address) / 10**18))
   });
 
 });

@@ -808,8 +808,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/VotersRewardsFormula.sol": {
-      "lastModificationDate": 1662623451759,
-      "contentHash": "48536de3414bab990b377416fad4cbc3",
+      "lastModificationDate": 1662626003491,
+      "contentHash": "fda44cbdead4f4e4d0ee655504ab1358",
       "sourceName": "contracts/VotersRewardsFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1033,6 +1033,43 @@
         "OperWallet",
         "Ownable",
         "SafeMath"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/test/VotersFormulaRescue.sol": {
+      "lastModificationDate": 1662626132503,
+      "contentHash": "17f6763e6475e6c522c3b6047f211194",
+      "sourceName": "contracts/test/VotersFormulaRescue.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.11"
+      ],
+      "artifacts": [
+        "IERC20",
+        "IVoter",
+        "VotersRewardsRescue"
       ]
     }
   }
