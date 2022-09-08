@@ -33,17 +33,7 @@ yarn hardhat run scripts/deploy.js --network ftm
 
 5) Add VotersRewardsLock for lock users rewards and destribute rewards to users gauges by VotersRewardsFormula
 
-5.1) VotersRewardsFormula works like this
-
-Example
-(
-  Voters in total need to vote with 10x more ve than the weekly emissions to get full 100%
-
-  Example:
-  if 100 tokens are emitted, 1000 ve is need to emit full 100% to voter pools.
-
-  If only 200 ve then only 20% can be send for users voted pools
-)
+5.1) VotersRewardsFormula - users need more ve voter.votes than weekly rewards for get full 100% rewards 
 
 6) Minter desrtribution now
 

@@ -137,7 +137,7 @@ describe("Minter destribution", function () {
 
     const RewardsFormula = await ethers.getContractFactory("VotersRewardsFormula");
     rewardsFormula = await RewardsFormula.deploy(
-      ve.address,
+      voter_gauge_factory.address,
       rewardsLocker.address,
       ve_underlying.address
     );

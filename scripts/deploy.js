@@ -159,7 +159,7 @@ async function main() {
   console.log("rewardsLocker ", rewardsLocker.address)
 
   const rewardsFormula = await RewardsFormula.deploy(
-    ve.address,
+    voter.address,
     rewardsLocker.address,
     token.address
   );
