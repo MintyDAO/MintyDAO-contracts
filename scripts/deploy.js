@@ -170,12 +170,7 @@ async function main() {
   await rewardsLocker.updateFormula(rewardsFormula.address);
   console.log("call updateFormula")
 
-
   await core.createPair(token.address, wrappedETH, false)
-
-  console.log("call updateFormula")
-
-  await router.createPair(token.address, wrappedETH, false)
   console.log("call createPair")
 
   const pair = await router.pairFor(token.address, wrappedETH, false)
