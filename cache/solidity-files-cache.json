@@ -957,8 +957,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/GaugesRewardDistributor.sol": {
-      "lastModificationDate": 1662545043332,
-      "contentHash": "61695f77b0a9cfc344c010fc26efa4bd",
+      "lastModificationDate": 1662968866572,
+      "contentHash": "a2fb4100bcf9bdb14cece51bbbeee7f8",
       "sourceName": "contracts/GaugesRewardDistributor.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -992,8 +992,7 @@
         "GaugesRewardDistributor",
         "IERC20",
         "IGauges",
-        "Ownable",
-        "SafeMath"
+        "Ownable"
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/OperWallet.sol": {

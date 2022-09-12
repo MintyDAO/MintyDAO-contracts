@@ -142,6 +142,8 @@ rewards locker formula 0x2975c2FDf1B077407DB7f77f63E03e95e235DB8E
 
 weth/mints pair 0x6BCbEf39C8A0ce72EE4a6f4B3A1D8Eb1CE127a26
 
+weth/mints gauge 0x075DF69AE78687866bcd4522c9EEa44C1f82C240
+
 ```
 
 # Addresses Rinkeby
