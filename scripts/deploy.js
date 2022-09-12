@@ -1,14 +1,18 @@
 const { ethers } = require("hardhat");
+const hardhatConf = require("../hardhat.config")
 
 const initialTokens = "1000000000000000000000000"
 const ldTokens = "1000000000000000000000000"
 const ldETH = "100000000000000000"
-const WRAPPED_ETH = null
+const WRAPPED_ETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
 const teamLockTime = 10368000 // 120 days in seconds
 const fetchMinTime = 604800 // 7 days
 
 
 async function main() {
+  if(WRAPPED_ETH)
+    console.log("WARNING YOU DEPLOY HARDCODED WETH address", WRAPPED_ETH)
+
   const [_owner] = await ethers.getSigners(1);
   const owner = _owner.address;
   let wrappedETH
