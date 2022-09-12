@@ -144,6 +144,8 @@ weth/mints pair 0x6BCbEf39C8A0ce72EE4a6f4B3A1D8Eb1CE127a26
 
 weth/mints gauge 0x075DF69AE78687866bcd4522c9EEa44C1f82C240
 
+platform gauges distributor 0xA20FAeafd5c0b66729BAfC2530398f3d1027C42E
+
 ```
 
 # Addresses Rinkeby
