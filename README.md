@@ -148,6 +148,8 @@ platform gauges distributor 0xA20FAeafd5c0b66729BAfC2530398f3d1027C42E
 
 DAO treasury voter 0x3A32d09dB549cE945630bc91179716AD7d7D5567
 
+DAO treasury converter 0x76521d62Fc2c5cD2a65917EE26EB3ae352d2d4F4
+
 ```
 
 # Addresses Rinkeby
