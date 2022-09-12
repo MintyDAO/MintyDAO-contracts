@@ -146,6 +146,8 @@ weth/mints gauge 0x075DF69AE78687866bcd4522c9EEa44C1f82C240
 
 platform gauges distributor 0xA20FAeafd5c0b66729BAfC2530398f3d1027C42E
 
+DAO treasury voter 0x3A32d09dB549cE945630bc91179716AD7d7D5567
+
 ```
 
 # Addresses Rinkeby
