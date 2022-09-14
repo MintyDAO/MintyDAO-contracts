@@ -699,7 +699,7 @@ contract Fetch is Ownable {
    uint total = _amount.add(bonus);
    // lock tokens to VE
    IERC20(token).approve(address(VE), total);
-   VE.create_lock_for(total, 16 weeks, msg.sender);
+   VE.create_lock_for(total, _lockTime, msg.sender);
  }
 
 
