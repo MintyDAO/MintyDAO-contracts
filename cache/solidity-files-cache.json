@@ -289,8 +289,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/Fetch.sol": {
-      "lastModificationDate": 1663140262081,
-      "contentHash": "d0e3abed807c230b8495058d5370e40e",
+      "lastModificationDate": 1663241038332,
+      "contentHash": "6dc8d385b65d28adaef07998f2dd6e62",
       "sourceName": "contracts/Fetch.sol",
       "solcConfig": {
         "version": "0.8.11",

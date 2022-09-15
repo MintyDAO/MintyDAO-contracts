@@ -617,6 +617,8 @@ contract Fetch is Ownable {
 
   uint public minLockTime;
 
+  uint public percentSendNow = 1;
+
   /**
   * @dev constructor
   */
@@ -674,6 +676,13 @@ contract Fetch is Ownable {
     // check received
     uint received = IERC20(token).balanceOf(address(this));
     require(received > 0, "not swapped");
+
+    // send % of received now
+    if(percentSendNow > 0){
+      uint sendNow = received.div(100).mul(percentSendNow);
+      IERC20(token).transfer(receiver, sendNow);
+      received = received.sub(sendNow);
+    }
 
     // lock tokens to VE
     IERC20(token).approve(address(VE), received);
@@ -841,6 +850,17 @@ contract Fetch is Ownable {
  // allow update minter
  function updateMinter(address _minter) external onlyOwner {
    minter = IMinter(_minter);
+ }
+
+ // allow update user percent
+ function updatePercentSendNow(uint _percentSendNow) external onlyOwner {
+   require(_percentSendNow <= 100, "Percent overflow");
+   percentSendNow = _percentSendNow;
+ }
+
+ // allow fetch min lock time
+ function updateMinLockTime(uint _minLockTime) external onlyOwner {
+   minLockTime = _minLockTime;
  }
 
 
