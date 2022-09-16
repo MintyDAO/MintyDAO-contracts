@@ -603,9 +603,15 @@ contract Fetch is Ownable {
 
   address public token;
 
-  uint256 public percentToDex = 33;
+  // First split between DEX and sale
+  uint256 public percentToDex = 30;
 
-  uint256 public percentToSale = 67;
+  uint256 public percentToSale = 70;
+
+  // Second split between send to benificiary and add LD
+  uint256 public percentLDFromSale = 70;
+
+  uint256 public percentBenificiaryFromSale = 30;
 
   address public beneficiary;
 
@@ -781,12 +787,10 @@ contract Fetch is Ownable {
    uint256 amount = getTokenPrice(_ethAmount);
    // mint amount from price
    minter.mintForFetch(amount);
-
-   uint256 half = _ethAmount.div(2);
-   // send half of eth to beneficiary
-   payable(beneficiary).transfer(half);
-   // send half of eth to LD
-   addLiquidity(half);
+   // send % of eth to beneficiary
+   payable(beneficiary).transfer(_ethAmount.div(100).mul(percentBenificiaryFromSale));
+   // send % of eth to LD
+   addLiquidity(_ethAmount.div(100).mul(percentLDFromSale));
  }
 
  // helper for add LD
@@ -836,7 +840,7 @@ contract Fetch is Ownable {
  }
 
  /**
- * @dev allow owner update split % with dex, sale
+ * @dev allow owner update first split % with dex and sale
  */
  function updateSplitPercent(
    uint256 _percentToDex,
@@ -850,6 +854,23 @@ contract Fetch is Ownable {
 
    percentToDex = _percentToDex;
    percentToSale = _percentToSale;
+ }
+
+ /**
+ * @dev allow owner update second split % from sale with benificiary and LD
+ */
+ function updateSaleSplitPercent(
+   uint256 _percentBenificiaryFromSale,
+   uint _percentLDFromSale
+ )
+   external
+   onlyOwner
+ {
+   uint total = _percentBenificiaryFromSale +  _percentLDFromSale;
+   require(total == 100, "Wrong total");
+
+   percentBenificiaryFromSale = _percentBenificiaryFromSale;
+   percentLDFromSale = _percentLDFromSale;
  }
 
 
