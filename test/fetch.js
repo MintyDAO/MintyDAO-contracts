@@ -263,22 +263,22 @@ describe("fetch", function () {
   });
 
 
-  it("Fetch can deposit with token", async function () {
-    const userInput = "100000000000000000"
-
-    const nftBefore = Number(await ve.balanceOf(owner.address))
-
-    await ve_underlying.approve(fetch.address, userInput);
-    await fetch.depositToken(
-      userInput,
-      minLockTime
-    )
-
-    const nftAfter = Number(await ve.balanceOf(owner.address))
-    console.log("User NFT balance before fetch: ", nftBefore, "and after: ", nftAfter)
-
-    expect(nftAfter).to.above(nftBefore);
-  });
+  // it("Fetch can deposit with token", async function () {
+  //   const userInput = "100000000000000000"
+  //
+  //   const nftBefore = Number(await ve.balanceOf(owner.address))
+  // 
+  //   await ve_underlying.approve(fetch.address, userInput);
+  //   await fetch.depositToken(
+  //     userInput,
+  //     minLockTime
+  //   )
+  //
+  //   const nftAfter = Number(await ve.balanceOf(owner.address))
+  //   console.log("User NFT balance before fetch: ", nftBefore, "and after: ", nftAfter)
+  //
+  //   expect(nftAfter).to.above(nftBefore);
+  // });
 
   it("Owner can update formula ", async function () {
     await fetch.updateFormula(fetch.address)

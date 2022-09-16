@@ -690,10 +690,11 @@ contract Fetch is Ownable {
  }
 
 
+ // NOT USED
  /**
  * @dev allow deposit token to ve with bonus
  */
- function depositToken(uint _amount, uint _lockTime) public {
+ /* function depositToken(uint _amount, uint _lockTime) external {
    // transfer token
    IERC20(token).transferFrom(msg.sender, address(this), _amount);
    // check bonus
@@ -709,7 +710,7 @@ contract Fetch is Ownable {
    // lock tokens to VE
    IERC20(token).approve(address(VE), total);
    VE.create_lock_for(total, _lockTime, msg.sender);
- }
+ } */
 
 
  /**
