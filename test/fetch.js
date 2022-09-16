@@ -232,6 +232,17 @@ describe("fetch", function () {
     );
   });
 
+  it("Min return revert ", async function () {
+    const userInput = "100000000000000000"
+
+    await expect(fetch.convert(
+      minLockTime,
+      "1000000000000000000000000000000",
+      {value:userInput}
+      )
+    ).to.be.revertedWith('min return error');
+  });
+
 
   it("Fetch can convert FTM for mint and lock ve NFT and add LD", async function () {
     const userInput = "100000000000000000"
@@ -243,6 +254,7 @@ describe("fetch", function () {
 
     await fetch.convert(
       minLockTime,
+      1,
       {value:userInput}
     )
 
@@ -267,7 +279,7 @@ describe("fetch", function () {
   //   const userInput = "100000000000000000"
   //
   //   const nftBefore = Number(await ve.balanceOf(owner.address))
-  // 
+  //
   //   await ve_underlying.approve(fetch.address, userInput);
   //   await fetch.depositToken(
   //     userInput,
@@ -299,6 +311,7 @@ describe("fetch", function () {
 
     await newFetch.convert(
       minLockTime,
+      1,
       {value:userInput}
     )
 

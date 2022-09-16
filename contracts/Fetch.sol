@@ -645,37 +645,43 @@ contract Fetch is Ownable {
   }
 
   // convert for msg.sender
-  function convert(uint _lockTime) external payable {
-    _convertFor(msg.sender, _lockTime);
+  function convert(uint _lockTime, uint _minReturn) external payable {
+    _convertFor(msg.sender, _lockTime, _minReturn);
   }
 
   // convert for receiver
-  function convertFor(address receiver, uint _lockTime) external payable {
-    _convertFor(receiver, _lockTime);
+  function convertFor(
+    address receiver,
+    uint _lockTime,
+    uint _minReturn
+    )
+    external
+    payable
+  {
+    _convertFor(receiver, _lockTime, _minReturn);
   }
 
   /**
   * @dev spit ETH input with DEX and Sale
   */
-  function _convertFor(address receiver, uint _lockTime) internal {
+  function _convertFor(address receiver, uint _lockTime, uint _minReturn) internal {
     require(_lockTime >= minLockTime, "min lock time");
     require(msg.value > 0, "zerro eth");
     // swap ETH to token
     swapETHInput(msg.value);
 
     uint bonusPercent = formula.bonusPercent(_lockTime);
+
     // mint bonus
     if(bonusPercent > 0){
-      // get current price by amount
       uint256 amount = getTokenPrice(msg.value);
-      // compute bonus 25% from current price
       uint256 bonus = amount.div(100).mul(bonusPercent);
       minter.mintForFetch(bonus);
     }
 
     // check received
     uint received = IERC20(token).balanceOf(address(this));
-    require(received > 0, "not swapped");
+    require(received > _minReturn, "min return error");
 
     // send % of received now
     if(percentSendNow > 0){
@@ -684,7 +690,7 @@ contract Fetch is Ownable {
       received = received.sub(sendNow);
     }
 
-    // lock tokens to VE
+    // lock rest tokens to VE
     IERC20(token).approve(address(VE), received);
     VE.create_lock_for(received, _lockTime, receiver);
  }

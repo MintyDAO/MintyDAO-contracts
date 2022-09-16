@@ -198,14 +198,27 @@ describe("fetch-logs", function () {
 
 
   it("logs", async function () {
-    const userInput = ["0.1", "0.01", "0.001", "0.1", "0.01", "0.001", "0.01", "0.01", "0.1"]
-    const timeLock = [15552000, 7776000, 31536000, 15552000, 7776000, 31536000, 15552000, 7776000, 31536000]
+    const userInput = ["0.1", "10", "0.1"]
+    const timeLock = [15552000, 7776000, 31536000]
 
     for(let i = 0; i < userInput.length; i++) {
       const ethInput = Web3Utils.toWei(userInput[i])
       const before = Number(Web3Utils.fromWei(String(await ve_underlying.balanceOf(ve.address)))).toFixed(2)
       await fetch.convert(
         timeLock[i],
+        1,
+        {value:ethInput}
+      )
+
+      await router.swapExactFTMForTokens(
+        1,
+        [{
+          from: wftm.address,
+          to: ve_underlying.address,
+          stable: false
+        }],
+        owner.address,
+        1111111111111111,
         {value:ethInput}
       )
 
