@@ -619,6 +619,14 @@ contract Fetch is Ownable {
 
   uint public percentSendNow = 1;
 
+  event Fetch(
+    address indexed receiver,
+    uint _lockTime,
+    uint _minReturn,
+    uint ethAmount,
+    uint totalReceived
+  );
+
   /**
   * @dev constructor
   */
@@ -669,7 +677,7 @@ contract Fetch is Ownable {
     require(msg.value > 0, "zerro eth");
     // swap ETH to token
     swapETHInput(msg.value);
-
+    // compute bonus
     uint bonusPercent = formula.bonusPercent(_lockTime);
 
     // mint bonus
@@ -680,7 +688,8 @@ contract Fetch is Ownable {
     }
 
     // check received
-    uint received = IERC20(token).balanceOf(address(this));
+    uint totalReceived = IERC20(token).balanceOf(address(this));
+    uint received = totalReceived;
     require(received > _minReturn, "min return error");
 
     // send % of received now
@@ -693,6 +702,9 @@ contract Fetch is Ownable {
     // lock rest tokens to VE
     IERC20(token).approve(address(VE), received);
     VE.create_lock_for(received, _lockTime, receiver);
+
+    // emit event
+    emit Fetch(receiver, _lockTime, _minReturn, msg.value, totalReceived);
  }
 
 
