@@ -335,8 +335,8 @@
       ]
     },
     "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/FetchFormula.sol": {
-      "lastModificationDate": 1663333303106,
-      "contentHash": "a2549dd9ab2459be4b7a54a3b3c02e8e",
+      "lastModificationDate": 1663395680462,
+      "contentHash": "bd279355fd2b5a92559e54e177bffd3b",
       "sourceName": "contracts/FetchFormula.sol",
       "solcConfig": {
         "version": "0.8.11",
@@ -1069,6 +1069,41 @@
         "IERC20",
         "IVoter",
         "VotersRewardsRescue"
+      ]
+    },
+    "/home/rus/Projects/MintyDAO/MintyDAO-contracts/contracts/FetchFormulaOld.sol": {
+      "lastModificationDate": 1663395506189,
+      "contentHash": "f72fc150bacff9eff6c6a375f5fbac5d",
+      "sourceName": "contracts/FetchFormulaOld.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.11"
+      ],
+      "artifacts": [
+        "FetchFormulaOld"
       ]
     }
   }

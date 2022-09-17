@@ -1,0 +1,1347 @@
+{
+  "id": "798accf6451f8591c51b0982bde69483",
+  "_format": "hh-sol-build-info-1",
+  "solcVersion": "0.8.11",
+  "solcLongVersion": "0.8.11+commit.d7f03943",
+  "input": {
+    "language": "Solidity",
+    "sources": {
+      "contracts/FetchFormula.sol": {
+        "content": "pragma solidity ^0.8.11;\n\ncontract FetchFormula {\n  function bonusPercent(uint _lockTime) external pure returns(uint){\n    if(_lockTime >= 90 days && _lockTime < 180 days){\n      return 50;\n    }\n    else if(_lockTime >= 180 days && _lockTime < 365 days){\n      return 75;\n    }\n    else if(_lockTime >= 365 days && _lockTime < 730 days){\n      return 100;\n    }\n    else if(_lockTime >= 730 days && _lockTime < 1095 days){\n      return 100;\n    }\n    else if(_lockTime >= 1095 days && _lockTime < 1460 days){\n      return 100;\n    }\n    else if(_lockTime >= 1460 days){\n      return 100;\n    }\n    else{\n      return 0;\n    }\n  }\n}\n"
+      }
+    },
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ],
+          "": [
+            "ast"
+          ]
+        }
+      }
+    }
+  },
+  "output": {
+    "contracts": {
+      "contracts/FetchFormula.sol": {
+        "FetchFormula": {
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_lockTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "bonusPercent",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
+            }
+          ],
+          "evm": {
+            "bytecode": {
+              "functionDebugData": {},
+              "generatedSources": [],
+              "linkReferences": {},
+              "object": "608060405234801561001057600080fd5b50610172806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610123565b610055565b60405190815260200160405180910390f35b60006276a700821015801561006c575062ed4e0082105b1561007957506032919050565b62ed4e00821015801561008f57506301e1338082105b1561009c5750604b919050565b6301e1338082101580156100b357506303c2670082105b156100c057506064919050565b6303c2670082101580156100d757506305a39a8082105b156100e457506064919050565b6305a39a8082101580156100fb5750630784ce0082105b1561010857506064919050565b630784ce00821061011b57506064919050565b506000919050565b60006020828403121561013557600080fd5b503591905056fea26469706673582212200bc5421ef93e3a3109257a76902022214c26e628cb481561a2c1a4a39c452aac64736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH2 0x172 DUP1 PUSH2 0x20 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x123 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x32 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8F JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0x9C JUMPI POP PUSH1 0x4B SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB3 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0xC0 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x3C26700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD7 JUMPI POP PUSH4 0x5A39A80 DUP3 LT JUMPDEST ISZERO PUSH2 0xE4 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x5A39A80 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xFB JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x108 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x11B JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x135 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 SIGNEXTEND 0xC5 TIMESTAMP 0x1E 0xF9 RETURNDATACOPY GASPRICE BALANCE MULMOD 0x25 PUSH27 0x76902022214C26E628CB481561A2C1A4A39C452AAC64736F6C6343 STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "sourceMap": "26:606:0:-:0;;;;;;;;;;;;;;;;;;;"
+            },
+            "deployedBytecode": {
+              "functionDebugData": {
+                "@bonusPercent_74": {
+                  "entryPoint": 85,
+                  "id": 74,
+                  "parameterSlots": 1,
+                  "returnSlots": 1
+                },
+                "abi_decode_tuple_t_uint256": {
+                  "entryPoint": 291,
+                  "id": null,
+                  "parameterSlots": 2,
+                  "returnSlots": 1
+                },
+                "abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed": {
+                  "entryPoint": null,
+                  "id": null,
+                  "parameterSlots": 2,
+                  "returnSlots": 1
+                }
+              },
+              "generatedSources": [
+                {
+                  "ast": {
+                    "nodeType": "YulBlock",
+                    "src": "0:378:1",
+                    "statements": [
+                      {
+                        "nodeType": "YulBlock",
+                        "src": "6:3:1",
+                        "statements": []
+                      },
+                      {
+                        "body": {
+                          "nodeType": "YulBlock",
+                          "src": "84:110:1",
+                          "statements": [
+                            {
+                              "body": {
+                                "nodeType": "YulBlock",
+                                "src": "130:16:1",
+                                "statements": [
+                                  {
+                                    "expression": {
+                                      "arguments": [
+                                        {
+                                          "kind": "number",
+                                          "nodeType": "YulLiteral",
+                                          "src": "139:1:1",
+                                          "type": "",
+                                          "value": "0"
+                                        },
+                                        {
+                                          "kind": "number",
+                                          "nodeType": "YulLiteral",
+                                          "src": "142:1:1",
+                                          "type": "",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "functionName": {
+                                        "name": "revert",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "132:6:1"
+                                      },
+                                      "nodeType": "YulFunctionCall",
+                                      "src": "132:12:1"
+                                    },
+                                    "nodeType": "YulExpressionStatement",
+                                    "src": "132:12:1"
+                                  }
+                                ]
+                              },
+                              "condition": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "name": "dataEnd",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "105:7:1"
+                                      },
+                                      {
+                                        "name": "headStart",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "114:9:1"
+                                      }
+                                    ],
+                                    "functionName": {
+                                      "name": "sub",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "101:3:1"
+                                    },
+                                    "nodeType": "YulFunctionCall",
+                                    "src": "101:23:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "126:2:1",
+                                    "type": "",
+                                    "value": "32"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "slt",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "97:3:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "97:32:1"
+                              },
+                              "nodeType": "YulIf",
+                              "src": "94:52:1"
+                            },
+                            {
+                              "nodeType": "YulAssignment",
+                              "src": "155:33:1",
+                              "value": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "178:9:1"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "calldataload",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "165:12:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "165:23:1"
+                              },
+                              "variableNames": [
+                                {
+                                  "name": "value0",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "155:6:1"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "name": "abi_decode_tuple_t_uint256",
+                        "nodeType": "YulFunctionDefinition",
+                        "parameters": [
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulTypedName",
+                            "src": "50:9:1",
+                            "type": ""
+                          },
+                          {
+                            "name": "dataEnd",
+                            "nodeType": "YulTypedName",
+                            "src": "61:7:1",
+                            "type": ""
+                          }
+                        ],
+                        "returnVariables": [
+                          {
+                            "name": "value0",
+                            "nodeType": "YulTypedName",
+                            "src": "73:6:1",
+                            "type": ""
+                          }
+                        ],
+                        "src": "14:180:1"
+                      },
+                      {
+                        "body": {
+                          "nodeType": "YulBlock",
+                          "src": "300:76:1",
+                          "statements": [
+                            {
+                              "nodeType": "YulAssignment",
+                              "src": "310:26:1",
+                              "value": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "322:9:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "333:2:1",
+                                    "type": "",
+                                    "value": "32"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "add",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "318:3:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "318:18:1"
+                              },
+                              "variableNames": [
+                                {
+                                  "name": "tail",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "310:4:1"
+                                }
+                              ]
+                            },
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "352:9:1"
+                                  },
+                                  {
+                                    "name": "value0",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "363:6:1"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "345:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "345:25:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "345:25:1"
+                            }
+                          ]
+                        },
+                        "name": "abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed",
+                        "nodeType": "YulFunctionDefinition",
+                        "parameters": [
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulTypedName",
+                            "src": "269:9:1",
+                            "type": ""
+                          },
+                          {
+                            "name": "value0",
+                            "nodeType": "YulTypedName",
+                            "src": "280:6:1",
+                            "type": ""
+                          }
+                        ],
+                        "returnVariables": [
+                          {
+                            "name": "tail",
+                            "nodeType": "YulTypedName",
+                            "src": "291:4:1",
+                            "type": ""
+                          }
+                        ],
+                        "src": "199:177:1"
+                      }
+                    ]
+                  },
+                  "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n}",
+                  "id": 1,
+                  "language": "Yul",
+                  "name": "#utility.yul"
+                }
+              ],
+              "immutableReferences": {},
+              "linkReferences": {},
+              "object": "608060405234801561001057600080fd5b506004361061002b5760003560e01c8063faf1ebfd14610030575b600080fd5b61004361003e366004610123565b610055565b60405190815260200160405180910390f35b60006276a700821015801561006c575062ed4e0082105b1561007957506032919050565b62ed4e00821015801561008f57506301e1338082105b1561009c5750604b919050565b6301e1338082101580156100b357506303c2670082105b156100c057506064919050565b6303c2670082101580156100d757506305a39a8082105b156100e457506064919050565b6305a39a8082101580156100fb5750630784ce0082105b1561010857506064919050565b630784ce00821061011b57506064919050565b506000919050565b60006020828403121561013557600080fd5b503591905056fea26469706673582212200bc5421ef93e3a3109257a76902022214c26e628cb481561a2c1a4a39c452aac64736f6c634300080b0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x2B JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xFAF1EBFD EQ PUSH2 0x30 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x43 PUSH2 0x3E CALLDATASIZE PUSH1 0x4 PUSH2 0x123 JUMP JUMPDEST PUSH2 0x55 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x0 PUSH3 0x76A700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x6C JUMPI POP PUSH3 0xED4E00 DUP3 LT JUMPDEST ISZERO PUSH2 0x79 JUMPI POP PUSH1 0x32 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH3 0xED4E00 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0x8F JUMPI POP PUSH4 0x1E13380 DUP3 LT JUMPDEST ISZERO PUSH2 0x9C JUMPI POP PUSH1 0x4B SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x1E13380 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xB3 JUMPI POP PUSH4 0x3C26700 DUP3 LT JUMPDEST ISZERO PUSH2 0xC0 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x3C26700 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xD7 JUMPI POP PUSH4 0x5A39A80 DUP3 LT JUMPDEST ISZERO PUSH2 0xE4 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x5A39A80 DUP3 LT ISZERO DUP1 ISZERO PUSH2 0xFB JUMPI POP PUSH4 0x784CE00 DUP3 LT JUMPDEST ISZERO PUSH2 0x108 JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x784CE00 DUP3 LT PUSH2 0x11B JUMPI POP PUSH1 0x64 SWAP2 SWAP1 POP JUMP JUMPDEST POP PUSH1 0x0 SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x135 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 SIGNEXTEND 0xC5 TIMESTAMP 0x1E 0xF9 RETURNDATACOPY GASPRICE BALANCE MULMOD 0x25 PUSH27 0x76902022214C26E628CB481561A2C1A4A39C452AAC64736F6C6343 STOP ADDMOD SIGNEXTEND STOP CALLER ",
+              "sourceMap": "26:606:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;52:578;;;;;;:::i;:::-;;:::i;:::-;;;345:25:1;;;333:2;318:18;52:578:0;;;;;;;;112:4;139:7;126:9;:20;;:44;;;;;162:8;150:9;:20;126:44;123:503;;;-1:-1:-1;186:2:0;;52:578;-1:-1:-1;52:578:0:o;123:503::-;221:8;208:9;:21;;:45;;;;;245:8;233:9;:20;208:45;205:421;;;-1:-1:-1;269:2:0;;52:578;-1:-1:-1;52:578:0:o;205:421::-;304:8;291:9;:21;;:45;;;;;328:8;316:9;:20;291:45;288:338;;;-1:-1:-1;352:3:0;;52:578;-1:-1:-1;52:578:0:o;288:338::-;388:8;375:9;:21;;:46;;;;;412:9;400;:21;375:46;372:254;;;-1:-1:-1;437:3:0;;52:578;-1:-1:-1;52:578:0:o;372:254::-;473:9;460;:22;;:47;;;;;498:9;486;:21;460:47;457:169;;;-1:-1:-1;523:3:0;;52:578;-1:-1:-1;52:578:0:o;457:169::-;559:9;546;:22;543:83;;-1:-1:-1;584:3:0;;52:578;-1:-1:-1;52:578:0:o;543:83::-;-1:-1:-1;618:1:0;;52:578;-1:-1:-1;52:578:0:o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:1;;14:180;-1:-1:-1;14:180:1:o"
+            },
+            "methodIdentifiers": {
+              "bonusPercent(uint256)": "faf1ebfd"
+            }
+          },
+          "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_lockTime\",\"type\":\"uint256\"}],\"name\":\"bonusPercent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/FetchFormula.sol\":\"FetchFormula\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FetchFormula.sol\":{\"keccak256\":\"0x0b675ec5cf399525ebdd114f22365f7cc4837f3971db6722b7fd92707baca299\",\"urls\":[\"bzz-raw://bbdb45785b0cdbe118039eacd18a34347d79d1111b0b1f77a18b7fe6153f3656\",\"dweb:/ipfs/QmYtc6amTMq3pHPbUnvfipN1du1vHot5vEGQQUSaE65H6e\"]}},\"version\":1}"
+        }
+      }
+    },
+    "errors": [
+      {
+        "component": "general",
+        "errorCode": "1878",
+        "formattedMessage": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> contracts/FetchFormula.sol\n\n",
+        "message": "SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.",
+        "severity": "warning",
+        "sourceLocation": {
+          "end": -1,
+          "file": "contracts/FetchFormula.sol",
+          "start": -1
+        },
+        "type": "Warning"
+      }
+    ],
+    "sources": {
+      "contracts/FetchFormula.sol": {
+        "ast": {
+          "absolutePath": "contracts/FetchFormula.sol",
+          "exportedSymbols": {
+            "FetchFormula": [
+              75
+            ]
+          },
+          "id": 76,
+          "nodeType": "SourceUnit",
+          "nodes": [
+            {
+              "id": 1,
+              "literals": [
+                "solidity",
+                "^",
+                "0.8",
+                ".11"
+              ],
+              "nodeType": "PragmaDirective",
+              "src": "0:24:0"
+            },
+            {
+              "abstract": false,
+              "baseContracts": [],
+              "canonicalName": "FetchFormula",
+              "contractDependencies": [],
+              "contractKind": "contract",
+              "fullyImplemented": true,
+              "id": 75,
+              "linearizedBaseContracts": [
+                75
+              ],
+              "name": "FetchFormula",
+              "nameLocation": "35:12:0",
+              "nodeType": "ContractDefinition",
+              "nodes": [
+                {
+                  "body": {
+                    "id": 73,
+                    "nodeType": "Block",
+                    "src": "117:513:0",
+                    "statements": [
+                      {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "id": 14,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "commonType": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            },
+                            "id": 10,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "id": 8,
+                              "name": "_lockTime",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3,
+                              "src": "126:9:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": ">=",
+                            "rightExpression": {
+                              "hexValue": "3930",
+                              "id": 9,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "139:7:0",
+                              "subdenomination": "days",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_7776000_by_1",
+                                "typeString": "int_const 7776000"
+                              },
+                              "value": "90"
+                            },
+                            "src": "126:20:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "&&",
+                          "rightExpression": {
+                            "commonType": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            },
+                            "id": 13,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "id": 11,
+                              "name": "_lockTime",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3,
+                              "src": "150:9:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": "<",
+                            "rightExpression": {
+                              "hexValue": "313830",
+                              "id": 12,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "162:8:0",
+                              "subdenomination": "days",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_15552000_by_1",
+                                "typeString": "int_const 15552000"
+                              },
+                              "value": "180"
+                            },
+                            "src": "150:20:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "src": "126:44:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": {
+                          "condition": {
+                            "commonType": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "id": 24,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 20,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "id": 18,
+                                "name": "_lockTime",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3,
+                                "src": "208:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": ">=",
+                              "rightExpression": {
+                                "hexValue": "313830",
+                                "id": 19,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "221:8:0",
+                                "subdenomination": "days",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_15552000_by_1",
+                                  "typeString": "int_const 15552000"
+                                },
+                                "value": "180"
+                              },
+                              "src": "208:21:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": "&&",
+                            "rightExpression": {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 23,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "id": 21,
+                                "name": "_lockTime",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3,
+                                "src": "233:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "<",
+                              "rightExpression": {
+                                "hexValue": "333635",
+                                "id": 22,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "245:8:0",
+                                "subdenomination": "days",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_31536000_by_1",
+                                  "typeString": "int_const 31536000"
+                                },
+                                "value": "365"
+                              },
+                              "src": "233:20:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "src": "208:45:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "falseBody": {
+                            "condition": {
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "id": 34,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 30,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "id": 28,
+                                  "name": "_lockTime",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 3,
+                                  "src": "291:9:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": ">=",
+                                "rightExpression": {
+                                  "hexValue": "333635",
+                                  "id": 29,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "304:8:0",
+                                  "subdenomination": "days",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_31536000_by_1",
+                                    "typeString": "int_const 31536000"
+                                  },
+                                  "value": "365"
+                                },
+                                "src": "291:21:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "&&",
+                              "rightExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 33,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "id": 31,
+                                  "name": "_lockTime",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 3,
+                                  "src": "316:9:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "<",
+                                "rightExpression": {
+                                  "hexValue": "373330",
+                                  "id": 32,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "328:8:0",
+                                  "subdenomination": "days",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_63072000_by_1",
+                                    "typeString": "int_const 63072000"
+                                  },
+                                  "value": "730"
+                                },
+                                "src": "316:20:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "src": "291:45:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "falseBody": {
+                              "condition": {
+                                "commonType": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                "id": 44,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "id": 40,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "id": 38,
+                                    "name": "_lockTime",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 3,
+                                    "src": "375:9:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": ">=",
+                                  "rightExpression": {
+                                    "hexValue": "373330",
+                                    "id": 39,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "number",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "388:8:0",
+                                    "subdenomination": "days",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_rational_63072000_by_1",
+                                      "typeString": "int_const 63072000"
+                                    },
+                                    "value": "730"
+                                  },
+                                  "src": "375:21:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "&&",
+                                "rightExpression": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "id": 43,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "id": 41,
+                                    "name": "_lockTime",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 3,
+                                    "src": "400:9:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": "<",
+                                  "rightExpression": {
+                                    "hexValue": "31303935",
+                                    "id": 42,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "number",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "412:9:0",
+                                    "subdenomination": "days",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_rational_94608000_by_1",
+                                      "typeString": "int_const 94608000"
+                                    },
+                                    "value": "1095"
+                                  },
+                                  "src": "400:21:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "src": "375:46:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "falseBody": {
+                                "condition": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  },
+                                  "id": 54,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 50,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "id": 48,
+                                      "name": "_lockTime",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 3,
+                                      "src": "460:9:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": ">=",
+                                    "rightExpression": {
+                                      "hexValue": "31303935",
+                                      "id": 49,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "473:9:0",
+                                      "subdenomination": "days",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_94608000_by_1",
+                                        "typeString": "int_const 94608000"
+                                      },
+                                      "value": "1095"
+                                    },
+                                    "src": "460:22:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": "&&",
+                                  "rightExpression": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 53,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "id": 51,
+                                      "name": "_lockTime",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 3,
+                                      "src": "486:9:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": "<",
+                                    "rightExpression": {
+                                      "hexValue": "31343630",
+                                      "id": 52,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "498:9:0",
+                                      "subdenomination": "days",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_126144000_by_1",
+                                        "typeString": "int_const 126144000"
+                                      },
+                                      "value": "1460"
+                                    },
+                                    "src": "486:21:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    }
+                                  },
+                                  "src": "460:47:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "falseBody": {
+                                  "condition": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 60,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "id": 58,
+                                      "name": "_lockTime",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 3,
+                                      "src": "546:9:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": ">=",
+                                    "rightExpression": {
+                                      "hexValue": "31343630",
+                                      "id": 59,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "559:9:0",
+                                      "subdenomination": "days",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_126144000_by_1",
+                                        "typeString": "int_const 126144000"
+                                      },
+                                      "value": "1460"
+                                    },
+                                    "src": "546:22:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    }
+                                  },
+                                  "falseBody": {
+                                    "id": 66,
+                                    "nodeType": "Block",
+                                    "src": "603:23:0",
+                                    "statements": [
+                                      {
+                                        "expression": {
+                                          "hexValue": "30",
+                                          "id": 64,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "kind": "number",
+                                          "lValueRequested": false,
+                                          "nodeType": "Literal",
+                                          "src": "618:1:0",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_rational_0_by_1",
+                                            "typeString": "int_const 0"
+                                          },
+                                          "value": "0"
+                                        },
+                                        "functionReturnParameters": 7,
+                                        "id": 65,
+                                        "nodeType": "Return",
+                                        "src": "611:8:0"
+                                      }
+                                    ]
+                                  },
+                                  "id": 67,
+                                  "nodeType": "IfStatement",
+                                  "src": "543:83:0",
+                                  "trueBody": {
+                                    "id": 63,
+                                    "nodeType": "Block",
+                                    "src": "569:25:0",
+                                    "statements": [
+                                      {
+                                        "expression": {
+                                          "hexValue": "313030",
+                                          "id": 61,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "kind": "number",
+                                          "lValueRequested": false,
+                                          "nodeType": "Literal",
+                                          "src": "584:3:0",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_rational_100_by_1",
+                                            "typeString": "int_const 100"
+                                          },
+                                          "value": "100"
+                                        },
+                                        "functionReturnParameters": 7,
+                                        "id": 62,
+                                        "nodeType": "Return",
+                                        "src": "577:10:0"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "id": 68,
+                                "nodeType": "IfStatement",
+                                "src": "457:169:0",
+                                "trueBody": {
+                                  "id": 57,
+                                  "nodeType": "Block",
+                                  "src": "508:25:0",
+                                  "statements": [
+                                    {
+                                      "expression": {
+                                        "hexValue": "313030",
+                                        "id": 55,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": true,
+                                        "kind": "number",
+                                        "lValueRequested": false,
+                                        "nodeType": "Literal",
+                                        "src": "523:3:0",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_rational_100_by_1",
+                                          "typeString": "int_const 100"
+                                        },
+                                        "value": "100"
+                                      },
+                                      "functionReturnParameters": 7,
+                                      "id": 56,
+                                      "nodeType": "Return",
+                                      "src": "516:10:0"
+                                    }
+                                  ]
+                                }
+                              },
+                              "id": 69,
+                              "nodeType": "IfStatement",
+                              "src": "372:254:0",
+                              "trueBody": {
+                                "id": 47,
+                                "nodeType": "Block",
+                                "src": "422:25:0",
+                                "statements": [
+                                  {
+                                    "expression": {
+                                      "hexValue": "313030",
+                                      "id": 45,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "437:3:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_100_by_1",
+                                        "typeString": "int_const 100"
+                                      },
+                                      "value": "100"
+                                    },
+                                    "functionReturnParameters": 7,
+                                    "id": 46,
+                                    "nodeType": "Return",
+                                    "src": "430:10:0"
+                                  }
+                                ]
+                              }
+                            },
+                            "id": 70,
+                            "nodeType": "IfStatement",
+                            "src": "288:338:0",
+                            "trueBody": {
+                              "id": 37,
+                              "nodeType": "Block",
+                              "src": "337:25:0",
+                              "statements": [
+                                {
+                                  "expression": {
+                                    "hexValue": "313030",
+                                    "id": 35,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "number",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "352:3:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_rational_100_by_1",
+                                      "typeString": "int_const 100"
+                                    },
+                                    "value": "100"
+                                  },
+                                  "functionReturnParameters": 7,
+                                  "id": 36,
+                                  "nodeType": "Return",
+                                  "src": "345:10:0"
+                                }
+                              ]
+                            }
+                          },
+                          "id": 71,
+                          "nodeType": "IfStatement",
+                          "src": "205:421:0",
+                          "trueBody": {
+                            "id": 27,
+                            "nodeType": "Block",
+                            "src": "254:24:0",
+                            "statements": [
+                              {
+                                "expression": {
+                                  "hexValue": "3735",
+                                  "id": 25,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "269:2:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_75_by_1",
+                                    "typeString": "int_const 75"
+                                  },
+                                  "value": "75"
+                                },
+                                "functionReturnParameters": 7,
+                                "id": 26,
+                                "nodeType": "Return",
+                                "src": "262:9:0"
+                              }
+                            ]
+                          }
+                        },
+                        "id": 72,
+                        "nodeType": "IfStatement",
+                        "src": "123:503:0",
+                        "trueBody": {
+                          "id": 17,
+                          "nodeType": "Block",
+                          "src": "171:24:0",
+                          "statements": [
+                            {
+                              "expression": {
+                                "hexValue": "3530",
+                                "id": 15,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "186:2:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_50_by_1",
+                                  "typeString": "int_const 50"
+                                },
+                                "value": "50"
+                              },
+                              "functionReturnParameters": 7,
+                              "id": 16,
+                              "nodeType": "Return",
+                              "src": "179:9:0"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "functionSelector": "faf1ebfd",
+                  "id": 74,
+                  "implemented": true,
+                  "kind": "function",
+                  "modifiers": [],
+                  "name": "bonusPercent",
+                  "nameLocation": "61:12:0",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 4,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 3,
+                        "mutability": "mutable",
+                        "name": "_lockTime",
+                        "nameLocation": "79:9:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 74,
+                        "src": "74:14:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 2,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "74:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "73:16:0"
+                  },
+                  "returnParameters": {
+                    "id": 7,
+                    "nodeType": "ParameterList",
+                    "parameters": [
+                      {
+                        "constant": false,
+                        "id": 6,
+                        "mutability": "mutable",
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 74,
+                        "src": "112:4:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 5,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "112:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "src": "111:6:0"
+                  },
+                  "scope": 75,
+                  "src": "52:578:0",
+                  "stateMutability": "pure",
+                  "virtual": false,
+                  "visibility": "external"
+                }
+              ],
+              "scope": 76,
+              "src": "26:606:0",
+              "usedErrors": []
+            }
+          ],
+          "src": "0:633:0"
+        },
+        "id": 0
+      }
+    }
+  }
+}
