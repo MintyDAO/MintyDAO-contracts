@@ -33,32 +33,43 @@ describe("fetch formula", function () {
     await fetch_formula.deployed();
   });
 
+  it("1 days equal to 1% ", async function () {
+    expect(await fetch_formula.bonusPercent(oneDay * 1)).to.be.equal(1);
+  });
 
-  it("60 days equal to 15% ", async function () {
-    expect(await fetch_formula.bonusPercent(oneDay * 60)).to.be.equal(0);
+  it("7 days equal to 5% ", async function () {
+    expect(await fetch_formula.bonusPercent(oneDay * 7)).to.be.equal(5);
+  });
+
+  it("14 days equal to 10% ", async function () {
+    expect(await fetch_formula.bonusPercent(oneDay * 14)).to.be.equal(10);
+  });
+
+  it("30 days equal to 20% ", async function () {
+    expect(await fetch_formula.bonusPercent(oneDay * 30)).to.be.equal(20);
   });
 
   it("90 days equal to 50% ", async function () {
     expect(await fetch_formula.bonusPercent(oneDay * 90)).to.be.equal(50);
   });
 
-  it("180 days equal to 125% ", async function () {
-    expect(await fetch_formula.bonusPercent(oneDay * 180)).to.be.equal(75);
+  it("180 days equal to 100% ", async function () {
+    expect(await fetch_formula.bonusPercent(oneDay * 180)).to.be.equal(100);
   });
 
-  it("365 days equal to 200% ", async function () {
+  it("365 days equal to 100% ", async function () {
     expect(await fetch_formula.bonusPercent(oneDay * 365)).to.be.equal(100);
   });
 
-  it("730 days equal to 350% ", async function () {
+  it("730 days equal to 100% ", async function () {
     expect(await fetch_formula.bonusPercent(oneDay * 730)).to.be.equal(100);
   });
 
-  it("1095 days equal to 500% ", async function () {
+  it("1095 days equal to 100% ", async function () {
     expect(await fetch_formula.bonusPercent(oneDay * 1095)).to.be.equal(100);
   });
 
-  it("1460 days equal to 800% ", async function () {
+  it("1460 days equal to 100% ", async function () {
     expect(await fetch_formula.bonusPercent(oneDay * 1460)).to.be.equal(100);
   });
 });
