@@ -72,15 +72,17 @@ Example
 
 Mint fetch bonuses by this formula
 
-1m 5%
-2m 15%
-3m 50%
-6m 125%
-1y 200%
-2y 350%
-3y 500%
-4y 800%
+1d 1
+1w 5
+2w 10
+1m 20
+3m 50
 
+6m 100
+1y 100
+2y 100
+3y 100
+4y 100
 
 11) Add GaugeWhiteList for now BaseV1Voter.createGauge require token in pool pair from GaugeWhiteList or pool it self should be white listed, or admin disable GaugeWhiteList verification
 
@@ -132,9 +134,11 @@ treasury  0x5ecb6C4E12D5248e9d9b42F8F3ef53FD2f06547B
 
 oper wallet 0xA1A9F0d533dcfD94aE5D222cd4A36F69AbC89F03
 
-old fetch formula 0x5656a53b8fa8355858f4e63d0d7087cA436FCf5f
+oldest fetch formula 0x5656a53b8fa8355858f4e63d0d7087cA436FCf5f
 
-new fetch formula 0x516949CBE797640562F8010E5B15f6c5Cd61ABb9
+old fetch formula 0x516949CBE797640562F8010E5B15f6c5Cd61ABb9
+
+fetch formula 0x99332B6685F52C2a0A838E8E413542A565D226B1
 
 old fetch1 0x1CAd851eD1640C78131016346b5E10A145b8FB4D
 
